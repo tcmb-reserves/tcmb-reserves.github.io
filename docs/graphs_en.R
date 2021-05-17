@@ -661,4 +661,8 @@ sub4 <- subplot(shnar_graph, shnetr_graph, shndr_graph, nrows = 3, shareX = T, t
                                     '<sup>',
                                     '(Billion Dollar)',
                                     '</sup>')),legend = list(orientation = 'h')) 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2c9036bbe4bbe4b31e9e1c0f8df055dfd9a0335e
 sub4
