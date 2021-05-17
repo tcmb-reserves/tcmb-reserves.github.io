@@ -1,0 +1,25 @@
+---
+output: 
+  rmdformats::downcute
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+
+## Arsiv
+
+
+
+<div><a href="https://aiasci.github.io/swap_pages/swap_2021_04_23">2021-04-23</a></div>
+<div><a href="https://aiasci.github.io/swap_pages/swap_2021_04_16">2021-04-16</a></div>
+<div><a href="https://aiasci.github.io/swap_pages/swap_2021_04_09">2021-04-09</a></div>
+<div><a href="https://aiasci.github.io/swap_pages/swap_2021_04_02">2021-04-02</a></div>
+<div><a href="https://aiasci.github.io/swap_pages/swap_2021_03_26">2021-03-26</a></div>
+<div><a href="https://aiasci.github.io/swap_pages/swap_2021_03_19">2021-03-19</a></div>
+<div><a href="https://aiasci.github.io/swap_pages/swap_2021_03_12">2021-03-12</a></div>
+<div><a href="https://aiasci.github.io/swap_pages/swap_2021_03_05">2021-03-05</a></div>
+<div><a href="https://aiasci.github.io/swap_pages/swap_2021_02_26">2021-02-26</a></div>
