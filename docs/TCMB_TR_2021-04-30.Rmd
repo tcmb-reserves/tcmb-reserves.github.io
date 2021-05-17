@@ -2,7 +2,10 @@
 title: TCMB Rezervleri ve Swap İşlemleri
 author: 
   - Anıl İsmet Aşçı
+   [E-mail](aiasci@outlook.com)
   - Ömer Taha Gülberk
+   [LinkedIn](https://www.linkedin.com/in/%C3%B6mer-taha-g%C3%BClberk-9a1b981bb/)
+    
 output:
  rmdformats::robobook
 ---
@@ -25,7 +28,6 @@ source(paste0(getwd(),"/graphs.R"))
 
 
 ## Merkez Bankasi Bilancosu
-
 <div style="float: right;"><a href="en">EN</a></div>
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
@@ -175,12 +177,12 @@ c("#808080" , #1
 "#B0B0B0" , #6 
 "#808080" , #7
 "#606060" , #8
-"#505050" , #9
-"#505050" , #10
+"#585858" , #9
+"#585858" , #10
 "#606060" , #11
-"#505050" , #12
-"#505050" , #13
-"#505050" , #14
+"#585858" , #12
+"#585858" , #13
+"#585858" , #14
 "#808080" , #15
 "#808080" , #16
 "#808080", #17
