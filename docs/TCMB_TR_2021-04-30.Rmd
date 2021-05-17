@@ -1,14 +1,17 @@
-<<<<<<< HEAD
 ---
-output: 
-  rmdformats::robobook
+title: TCMB Rezervleri ve Swap İşlemleri
+author: 
+  - Anıl İsmet Aşçı
+  - Ömer Taha Gülberk
+output:
+ rmdformats::robobook
 ---
 
 ```{r setup, include=FALSE}
 
 knitr::opts_chunk$set(echo = TRUE)
 
-source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/master/docs/netrezerv.R")
+source(paste0(getwd(), "/netrezerv.R"))
 
 zaman <- tdt[12]$time
 
@@ -16,14 +19,14 @@ zaman1 <- tdt[tdt[time == zaman, which = T] - 1]$time
 
 ilkk <- as.Date("2021-01-01")
 
-source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/master/docs/graphs.R")
+source(paste0(getwd(),"/graphs.R"))
 
 ```
 
 
 ## Merkez Bankasi Bilancosu
 
-<div style="float: right;"><a href=TCMB_EN_2021-04-30.html>EN</a></div>
+<div style="float: right;"><a href="en">EN</a></div>
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 DT::datatable(
@@ -250,257 +253,4 @@ Ayrıca yılbaşı hesaplamalarında 4 Ocak tarihli TCMB Taraflı Swap verileri 
 Fikir ve önerileriniz için aşağıdaki mail adreslerine mail atabilirsiniz.
 :::
 
-=======
----
-output: 
-  rmdformats::robobook
----
-
-```{r setup, include=FALSE}
-
-knitr::opts_chunk$set(echo = TRUE)
-
-source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/master/docs/netrezerv.R")
-
-zaman <- tdt[12]$time
-
-zaman1 <- tdt[tdt[time == zaman, which = T] - 1]$time
-
-ilkk <- as.Date("2021-01-01")
-
-source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/master/docs/graphs.R")
-
-```
-
-
-## Merkez Bankasi Bilancosu
-
-<div style="float: right;"><a href=TCMB_EN_2021-04-30.html>EN</a></div>
-
-```{r, echo=FALSE, warning=FALSE, message=FALSE}
-DT::datatable(
-  yutk,options = list(dom = 't' ), 
-  caption = paste0(zaman," Tarihli ",'Merkez Bankasi Bilancosu ')
-)
-```
-
-`r paste0("TCMB'nin ", 
-          zaman,
-          " tarihli net rezervleri gectigimiz haftaya gore ",
-          paste0(abs(round((tdt[time == zaman]$netr) - (tdt[time == zaman1]$netr), 2)))," Milyon Dolar",
-          ifelse(sign((tdt[time == zaman]$netr) - (tdt[time == zaman1]$netr)) == 1, paste0(" artarken"), paste0(" azalirken")),
-          " yilbasina gore ise ",
-          paste0(abs(round((tdt[time == zaman]$netr) - (tdt[time == "2021-01-01"]$netr), 2)))," Milyon Dolar",
-          ifelse(sign((tdt[time == zaman]$netr) - (tdt[time == "2021-01-01"]$netr)) == 1, paste0(" artmistir."), paste0(" azalmistir.")),
-          " Swap haric net rezervlerde bir hafta icinde ",
-          paste0(abs(round((tdt[time == zaman]$shnetr) - (tdt[time == zaman1]$shnetr), 2))), " Milyon Dolar'lik bir",
-          ifelse(sign((tdt[time == zaman]$shnetr) - (tdt[time == zaman1]$shnetr)) == 1, paste0(" artis oldugu"), paste0(" kayip yasandigi")),
-                 " gorunurken",
-                 " yilbasi ile kiyaslandiginda ",
-                 paste0(abs(round((tdt[time == zaman]$shnetr) - (tdt[time == "2021-01-01"]$shnetr), 2))), " Milyon Dolar",
-                 ifelse(sign((tdt[time == zaman]$shnetr) - (tdt[time == "2021-01-01"]$shnetr)) == 1, paste0(" arttigi"), paste0(" azaldigi")),
-                 " gorunuyor."
-          ) `
-          
-`r paste0("Net altin varliklari bir hafta sonunda ",
-                    paste0(abs(round((tdt[time == zaman]$nar) - (tdt[time == zaman1]$nar), 2))), " Milyon Dolar",
-                    ifelse(sign((tdt[time == zaman]$nar) - (tdt[time == zaman1]$nar)) == 1, paste0(" artmis"), paste0(" azalmis")),
-                    " ve yilbasindan bu yana ",
-                    paste0(abs(round((tdt[time == zaman]$nar) - (tdt[time == "2021-01-01"]$nar), 2))), " Milyon Dolar",
-                    ifelse(sign((tdt[time == zaman]$nar) - (tdt[time == "2021-01-01"]$nar)) == 1, paste0(" artarak "), paste0(" azalarak ")),
-                    paste0(round((tdt[time == zaman]$nar), 2)), " Milyon Dolar olmustur."
-                    
-          ) `
-`r paste0("Net doviz varliklari da bu bir haftada ",
-                    paste0(abs(round((tdt[time == zaman]$ndr) - (tdt[time == zaman1]$ndr), 2))), " Milyon Dolar",
-                    ifelse(sign((tdt[time == zaman]$ndr) - (tdt[time == zaman1]$ndr)) == 1, paste0(" artmis"), paste0(" azalmis")),
-                    " ve yilbasindan itibaren ise ",
-                    paste0(abs(round((tdt[time == zaman]$ndr) - (tdt[time == "2021-01-01"]$ndr), 2))), " Milyon Dolar",
-                    ifelse(sign((tdt[time == zaman]$ndr) - (tdt[time == "2021-01-01"]$ndr)) == 1, paste0(" artarak "), paste0(" azalarak ")),
-                    paste0(round((tdt[time == zaman]$ndr), 2)), " Milyon Dolar olmustur."
-                    
-          ) `
-          
-`r paste0("Swap haric net altin varliklari ise gecen haftaya gore ",
-                    paste0(abs(round((tdt[time ==zaman]$shnar) - (tdt[time == zaman1]$shnar), 2))), " Milyon Dolar'lik",
-          ifelse(sign((tdt[time ==zaman]$shnar) - (tdt[time == zaman1]$shnar)) == 1, paste0(" artisla"), paste0(" kayipla")), " birlikte ", 
-paste0(round(tdt[time ==zaman]$shnar, 2)), " Milyon Dolar'a ulasmis, ",
-"Swap haric net doviz varliklari da ",
-paste0(abs(round((tdt[time == zaman]$shndr) - (tdt[time == zaman1]$shndr), 2)))," Milyon Dolar'lik",
-ifelse(sign((tdt[time == zaman]$shndr) - (tdt[time == zaman1]$shndr)) == 1, paste0(" artis"), paste0(" azalis"))," ile ",
-paste0(round((tdt[time == zaman]$shndr), 2)), " olmustur."
-) `
-
-`r paste0("Bilanco ici ve bilanco disi toplam yukumlulukler ise gecen haftaya gore ",
-          paste0(abs(round((tdt[time == zaman]$ty) - (tdt[time == zaman1]$ty), 2))), " Milyon Dolar",
-          ifelse(sign((tdt[time == zaman]$ty) - (tdt[time == zaman1]$ty)) == 1, paste0(" artmis"), paste0(" azalmis"))," ve yilbasina gore de ",
-          paste0(abs(round((tdt[time == zaman]$ty) - (tdt[time == "2021-01-01"]$ty), 2))), " Milyon Dolar ",
-          ifelse(sign((tdt[time == zaman]$ty) - (tdt[time == "2021-01-01"]$ty)) == 1, paste0(" artarak "), paste0(" azalarak ")),
-          paste0(round((tdt[time == zaman]$ty)/1000, 2)), " Milyar Dolar olmustur."
-          
-) `
-
-`r paste0( "Bilanco disi yukumluluklerin brut rezervlere orani ise %", round(tdt[time == zaman]$bdybro, 2), " olmustur.")`
-
-
-### Merkez Bankasi Rezervleri ve Yukumlulukleri
-
-```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="100%"}
-fig
-sub2
-```
-
-### Net Rezerv Pozisyonu
-
-```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="100%"}
-nr
-sub3
-```
-
-### Swap Haric Net Rezerv Pozisyonu
-
-```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="100%"}
-snr
-sub4
-sub1
-```
-
-
-### Bilanco Disi Islemlerin Buyuklugu
-
-```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="100%"}
-zama
-```
-
-## Detayli Tablo
-
-```{r, echo=FALSE, warning=FALSE, message=FALSE}
-DT::datatable(
-  det_tab,options = list(dom = 't',
-                         pageLength = 33), 
-  caption = paste0(zaman," Tarihli ",'Detayli Merkez Bankasi Bilancosu ')
-) %>% formatStyle(
-  'Hesaplar',
-  target = 'row',
-  backgroundColor = styleEqual(c("Brut Rezerv Doviz" , #1
-"Toplam Nakit ve Mevduat" , #2
-"Menkul Kiymetler" , #3
-"Brut Rezerv Altin" , #4
-"Brut Rezerv SDR" , #5
-"Brut Rezervler Toplami" , #6 
-"Bankacilik Sektoru Bilancosu" , #7
-"Zorunlu Karsiliklar" , #8
-"Zorunlu Karsiliklar Doviz" , #9
-"Zorunlu Karsiliklar Altin" , #10
-"Yurtici Bankalar" , #11
-"Yurtici Banka Nakit" , #12
-"Yurtici Banka Teminat" , #13
-"Yurtici Bankalar Altin" , #14
-"Yurtdisi Bankalar" , #15
-"SDR yukululugu" , #16
-"Diger Mevduatlar" , #17
-"Bilanco ici Doviz Yukumlulugu" , #18
-"Bilanco ici Altin Yukumlulugu" , #19
-"Bilanco ici Yukumlulukler" , #20
-"Yurtici Bankalar Swap" , #21
-"Yurtici Bankalar Doviz Swapi" , #22
-"Yurtici Bankalar Altin Swapi" , #23
-"Yurtici Merkez Bankalari Swap" , #24
-"Bilanco Disi Doviz Yukumlulugu" , #25
-"Bilanco Disi Altin Yukumlulugu" , #26
-"Bilanco Disi Yukumlulukler" , #27
-"Net Doviz Rezervi" , #28
-"Net Altin Rezervi" , #29
-"Net Rezervler" , #30
-"Swap Haric Net Doviz Rezervi" , #31
-"Swap Haric Net Altin Rezervi" ,  #32
-"Swap Haric Net Rezervler"  #33
-), 
-c("#808080" , #1
-"#606060" , #2
-"#606060" , #3
-"#808080" , #4
-"#808080", #5
-"#B0B0B0" , #6 
-"#808080" , #7
-"#606060" , #8
-"#505050" , #9
-"#505050" , #10
-"#606060" , #11
-"#505050" , #12
-"#505050" , #13
-"#505050" , #14
-"#808080" , #15
-"#808080" , #16
-"#808080", #17
-"#A0A0A0" , #18
-"#A0A0A0" , #19
-"#B0B0B0" , #20
-"#808080" , #21
-"#606060" , #22
-"#606060" , #23
-"#808080" , #24
-"#A0A0A0" , #25
-"#A0A0A0" , #26
-"#B0B0B0" , #27
-"#A0A0A0" , #28
-"#A0A0A0" , #29
-"#B0B0B0" , #30
-"#A0A0A0" , #31
-"#A0A0A0" ,  #32
-"#B0B0B0"  #33
- ))
-)
-```
-
-## Metodoloji
-
-::: {style="text-align:"}
-Bu çalışmada TCMB'nin haftalık Net Rezerv ve Swap hariç Net Rezerv pozisyonları otomatik olarak güncellenecek şekilde düzenlenmiştir.
-Hesaplamalarda ortaya çıkabilecek hataları ve farklılıkları göstermek adına, kullanılan veri kaynakları ve hesaplama yöntemi aşağıda açıklanacaktır.
-:::
-
-::: {style="text-align:"}
-TCMB'nin [Brüt Resmi Rezerv Varlıkları](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/5/bie_abres2/tr), 
-döviz ve altın varlıkları alt kalemleriyle birlikte milyon dolar cinsinden elde edilmiştir. Bu verideki döviz varlıklarından 
-IMF Rezerv Pozisyonu çıkartılmış ve döviz varlıkları menkul kıymetler ile toplam nakit ve mevduatlar olarak ikiye ayrılmıştır. 
-IMF Rezerv Pozisyonu [Merkez Bankası Haftalık Vaziyeti](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/5/bie_mbblnch/tr) 
-veri setindeki A10 kalemi kullanılarak, döviz varlıklarındaki menkul kıymetler ise A31 kalemi kullanılarak elde edilmiştir. 
-Bu veriler TL cinsinden yayınlandığından alakalı haftadaki [kur verileri](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/1/bie_dkdovytl/tr)
-kullanılarak dolar cinsine çevirilmiştir. Döviz kurunun haftalık alınması, ani kur artışlarında değerleme etkisi sebebiyle yanlış sonuçlar 
-çıkartabilmektedir.
-:::
-
-::: {style="text-align:"}
-TCMB'nin Bilanço İçi Yükümlülükleri ise [Merkez Bankası Haftalık Vaziyeti](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/5/bie_mbblnch/tr)
-veri seti kullanılarak hazırlanmış ve alakalı haftadaki döviz kuruna bölünerek dolar cinsinden elde edilmiştir. 
-Kamu Sektörü Yabancı Para Mevduatı, rezerv hesaplamalarına dahil edilmemiştir. 
-Bu kalemin dahil edilmemesi ve değerleme etkisiyle net rezerv pozisyonu diğer hesaplama yöntemleriyle çıkan sonuçlardan farklılık gösterebilmektedir.
-:::
-
-::: {style="text-align:"}
-TCMB'nin Bilanço Dışı Yükümlülükleri, TCMB Taraflı Swap İşlemleri ile 
-[1 aya kadar vadeli yurt içi para karşılığında döviz forward ve futre'ların toplam açık ve fazla pozisyonu](https://www.tcmb.gov.tr/wps/wcm/connect/cc755e33-b5c0-4632-bfe4-2434d35da011/RT20210326TR.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-cc755e33-b5c0-4632-bfe4-2434d35da011-nzliV18) kullanılarak hesaplanmıştır.
-[TCMB Taraflı Swap İşlemleri](https://www.tcmb.gov.tr/wps/wcm/connect/a6ffdb2f-47d9-4ae9-8c39-5075867aaec3/TCMB+Tarafli+Swap+Islemleri.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-a6ffdb2f-47d9-4ae9-8c39-5075867aaec3-nzm2YQt%22) tarafımızca 
-[xlsx](https://github.com/aiasci/swap/raw/master/swap.xlsx) ve [csv](https://github.com/aiasci/swap/raw/master/swap.csv) formatına çevrilmiştir. 
-Çalışmada rezervler haftalık olarak incelendiğinden döviz forward ve future'larının toplamı yerine 1 aya kadar vadeli verilerin kullanımı diğer 
-kimi hesaplardan farklı sonuçlar çıkarabilir.
-:::
-                                                                        
-::: {style="text-align:"}
-Bilanço içi ve dışı yükümlülükler kendi içerisinde döviz ve altın cinsinden ayrılmış ve Brüt Resmi Rezerv Varlıklarından çıkartılarak Net Rezerv ve
-Swap Hariç Net Rezerv pozisyonu elde edilmiştir. Hesaplamalar detaylı tablodan görülebilmektedir.
-:::
-                                                                        
-::: {style="text-align:"}
-Resmi ve dini tatillerde veri yayınlanmamasından dolayı hesaplamalarda problemler çıkmaktadır.
-Böyle bir durumda en yakın tarihli veriler kullanılmaktadır. Örneğin 23 Nisan'da 22 Nisan tarihli Swap verilerinin kullanılması gibi. 
-Ayrıca yılbaşı hesaplamalarında 4 Ocak tarihli TCMB Taraflı Swap verileri kullanılmıştır. 
-:::
-
-::: {style="text-align:"}
-Fikir ve önerileriniz için aşağıdaki mail adreslerine mail atabilirsiniz.
-:::
-
->>>>>>> 4616da10487b4701c0ce907678bfb0ae6baa1129
 <a href="#">Go to top of page</a>
