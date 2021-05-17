@@ -1,0 +1,243 @@
+---
+output: 
+  rmdformats::downcute
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = TRUE)
+
+source(paste0(getwd(),"/netrezerv_en.R"))
+
+zaman <- tdt[11]$time
+
+zaman1 <- tdt[tdt[time == zaman, which = T] - 1]$time
+
+ilkk <- as.Date("2021-01-01")
+
+source(paste0(getwd(),"/graphs_en.R"))
+
+```
+
+
+## CBRT Balance Sheet
+
+<div style="float: left;"><a href=TCMB_TR_2021-04-22.html>TR</a></div>
+<div style="float: right;"><a href=arsiv.html>Archive</a></div>
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+DT::datatable(
+  yutk,options = list(dom = 't' ), 
+  caption = paste0('CBRT Balance Sheet Dated ', zaman)
+)
+```
+
+
+`r paste0(" CBRT's net reserves ",
+ifelse(sign((tdt[time == zaman]$netr) - (tdt[time == zaman1]$netr)) == 1, paste0(" increased "), paste0(" decreased ")),
+" by ",
+paste0(abs(round((tdt[time == zaman]$netr) - (tdt[time == zaman1]$netr), 2)))," Million Dollars ",
+" compared to last week, and ",
+ifelse(sign((tdt[time == zaman]$netr) - (tdt[time == "2021-01-01"]$netr)) == 1, paste0(" expanded "), paste0(" declined ")),
+" by ",
+paste0(abs(round((tdt[time == zaman]$netr) - (tdt[time == "2021-01-01"]$netr), 2))),
+" Million Dollars ",
+" compared to the new year. ",
+" Net reserves excluding swap ",
+ifelse(sign((tdt[time == zaman]$shnetr) - (tdt[time == zaman1]$shnetr)) == 1, paste0(" rise "), paste0(" fell ")),
+" by ",
+paste0(abs(round((tdt[time == zaman]$shnetr) - (tdt[time == zaman1]$shnetr), 2))), 
+" Million Dollars ",
+" compared to previous week, and ",
+ifelse(sign((tdt[time == zaman]$shnetr) - (tdt[time == "2021-01-01"]$shnetr)) == 1, paste0(" raised "), paste0(" dropped ")),
+" by ",
+paste0(abs(round((tdt[time == zaman]$shnetr) - (tdt[time == "2021-01-01"]$shnetr), 2))), 
+" Million Dollars ",
+" compared to the new year. " 
+       ) `
+       
+`r paste0(" Net gold reserves ",
+       ifelse(sign((tdt[time == zaman]$nar) - (tdt[time == zaman1]$nar)) == 1, paste0("rise"), paste0("decline")),
+       " by ",
+       paste0(abs(round((tdt[time == zaman]$nar) - (tdt[time == zaman1]$nar), 2))), 
+       " Million Dollars ",
+       " since last week and ",
+       ifelse(sign((tdt[time == zaman]$nar) - (tdt[time == "2021-01-01"]$nar)) == 1, paste0(" gain "), paste0(" loss ")),
+       paste0(abs(round((tdt[time == zaman]$nar) - (tdt[time == "2021-01-01"]$nar), 2))), 
+       " Million Dollars ",
+       " since the new year and reached to ",
+       paste0(round((tdt[time == zaman]$nar), 2)), " Million Dollars. "
+       
+) `
+`r paste0(" Net foreign exchange reserves ",
+       ifelse(sign((tdt[time == zaman]$ndr) - (tdt[time == zaman1]$ndr)) == 1, paste0(" increased "), paste0(" decreased ")),
+       " by ",
+       paste0(abs(round((tdt[time == zaman]$ndr) - (tdt[time == zaman1]$ndr), 2))), 
+       " Million Dollars ",
+       " compared to previous week and ",
+       ifelse(sign((tdt[time == zaman]$ndr) - (tdt[time == "2021-01-01"]$ndr)) == 1, paste0(" rise "), paste0(" fell ")),
+       " by ",
+       paste0(abs(round((tdt[time == zaman]$ndr) - (tdt[time == "2021-01-01"]$ndr), 2))), 
+       " Million Dollars ",
+       " and reached to ",
+       paste0(round((tdt[time == zaman]$ndr), 2)), " Million Dollars. "
+       
+) `
+
+`r paste0(" Since last week, net gold reserves excluding swap ",
+       ifelse(sign((tdt[time ==zaman]$shnar) - (tdt[time == zaman1]$shnar)) == 1, paste0(" raised "), paste0(" dropped ")),
+       " by ",
+       paste0(abs(round((tdt[time ==zaman]$shnar) - (tdt[time == zaman1]$shnar), 2))), 
+       " Million Dollars ",
+       " and reached to ",
+       paste0(round(tdt[time ==zaman]$shnar, 2)), " Million Dollars. ",
+       " In addition, net foreign exchange reserves excluding swap ",
+       ifelse(sign((tdt[time == zaman]$shndr) - (tdt[time == zaman1]$shndr)) == 1, paste0(" expanded "), paste0(" declined ")),
+       " by ",
+       paste0(abs(round((tdt[time == zaman]$shndr) - (tdt[time == zaman1]$shndr), 2))),
+       " Million Dollars ",
+       " and reached to ",
+       paste0(round((tdt[time == zaman]$shndr), 2)), " Million Dollars. "
+) `
+
+`r paste0(" Total liabilities (including balance sheet and off-balance sheet) ",
+       ifelse(sign((tdt[time == zaman]$ty) - (tdt[time == zaman1]$ty)) == 1, paste0(" increased "), paste0(" decreased ")),
+       " by ",
+       paste0(abs(round((tdt[time == zaman]$ty) - (tdt[time == zaman1]$ty), 2))), 
+       " Million Dollars ",
+       " since the last week. ",
+       " Also, it ",
+       ifelse(sign((tdt[time == zaman]$ty) - (tdt[time == "2021-01-01"]$ty)) == 1, paste0(" rise "), paste0(" fell ")),
+       " by ",
+       paste0(abs(round((tdt[time == zaman]$ty) - (tdt[time == "2021-01-01"]$ty), 2))), 
+       " Million Dollars ",
+       " and reached to ",
+       paste0(round((tdt[time == zaman]$ty)/1000, 2)), " Billion Dollars, ",
+       " compared to the new year. "
+       
+) `
+
+`r paste0(" The ratio of off-balance sheet liabilities to gross reserves is % ", round(tdt[time == zaman]$bdybro, 2), " . ")`
+
+### CBRT Reserves and Liabilities
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="110%"}
+fig
+```
+
+### Net Reserves Position
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="110%"}
+nr
+```
+
+### Net Reserves (excluding Swap) Position
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="110%"}
+snr
+```
+
+
+### Magnitude of Off-Balance Sheet Transactions
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="110%"}
+zama
+tgr
+a
+b
+c
+d
+e
+f
+g
+sub1
+sub2
+sub3
+sub4
+```
+
+## Detailed Table
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+DT::datatable(
+  det_tab,options = list(dom = 't',
+                         pageLength = 33), 
+  caption = paste0('Detailed CBRT Balance Sheet Dated ', zaman)
+) %>% formatStyle(
+  'Accounts',
+  target = 'row',
+  backgroundColor = styleEqual(c("Gross FX Reserves" , #1
+"Total Cash and Deposit" , #2
+"Securities" , #3
+"Gross Gold Reserves" , #4
+"Gross SDR Reserves" , #5
+"Total Gross Reserves" , #6 
+"Banking Sector Balance Sheet" , #7
+"Required Reserves" , #8
+"Required Reserves - FX" , #9
+"Required Reserves - Gold" , #10
+"Domestic Banks" , #11
+"Domestic Banks - Cash" , #12
+"Domestic Banks - Collateral" , #13
+"Domestic Banks - Gold" , #14
+"CBRT's Liabilities to Foreign Banks" , #15
+"SDR Liabilities" , #16
+"Other Deposits" , #17
+"Balance Sheet FX Liabilities" , #18
+"Balance Sheet Gold Liabilities" , #19
+"Balance Sheet Liabilities" , #20
+"Domestic Banks - Swap" , #21
+"Domestic Banks - Swap - FX" , #22
+"Domestic Banks - Swap - Gold" , #23
+"Foreign Central Banks - Swap" , #24
+"Off Balance Sheet FX Liabilities" , #25
+"Off Balance Sheet Gold Liabilities" , #26
+"Off Balance Sheet Liabilities" , #27
+"Net FX Reserves" , #28
+"Net Gold Reserves" , #29
+"Net Reserves" , #30
+"Net FX Reserves (excluding Swap)" , #31
+"Net Gold Reserves (excluding Swap)" ,  #32
+"Net Reserves (excluding Swap)"  #33
+), 
+c("#808080" , #1
+"#606060" , #2
+"#606060" , #3
+"#808080" , #4
+"#808080", #5
+"#B0B0B0" , #6 
+"#808080" , #7
+"#606060" , #8
+"#404040" , #9
+"#404040" , #10
+"#606060" , #11
+"#404040" , #12
+"#404040" , #13
+"#404040" , #14
+"#808080" , #15
+"#808080" , #16
+"#808080", #17
+"#A0A0A0" , #18
+"#A0A0A0" , #19
+"#B0B0B0" , #20
+"#808080" , #21
+"#606060" , #22
+"#606060" , #23
+"#808080" , #24
+"#A0A0A0" , #25
+"#A0A0A0" , #26
+"#B0B0B0" , #27
+"#A0A0A0" , #28
+"#A0A0A0" , #29
+"#B0B0B0" , #30
+"#A0A0A0" , #31
+"#A0A0A0" ,  #32
+"#B0B0B0"  #33
+ ))
+)
+```
+
+## Methodology
+
+
+<a href="#">Go to top of page</a>
