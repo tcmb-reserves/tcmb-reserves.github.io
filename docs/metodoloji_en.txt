@@ -1,47 +1,28 @@
 
 ::: {style="text-align:"}
-This study analyses the weekly Net Foreign Exchange Reserves and the Net Foreign Exchange Reserves Excluding Swaps of CBRT. Data on this page updates itself automatically.
-Data sources and the methodology is explained below in order to show the possible errors or differences that may occur because of methodology.
+This study analyses the weekly Net Foreign Exchange Reserves and the Net Foreign Exchange Reserves Excluding Swaps of CBRT. Data on this page updates itself automatically.Data sources and the methodology is explained below in order to show the possible errors or differences that may occur because of methodology.
 :::
   
 ::: {style="text-align:"}
-CBRT's [Gross Reserves](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/5/bie_abres2/en),
-were obtained along with the sub-accounts of foreign exchange and gold assets in terms of million dollars.
-The Treasury Liabilities Due to SDR Allocation has been removed from the Gross Reserves. 
-After that, Gross Foreign Exchange Reserves divided into Foreign Exchange Securities, and Cash and FX Deposits.
-The Treasury Liabilities Due to SDR Allocation is obtained from [Central Bank Weekly Statements](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/5/bie_mbblnch/en)
-by using the A10 item, and the foreign exchange securities are obtained by using the A31 item from the same dataset. 
-Since Central Bank Weekly Statement published in terms of Turkish Lira, they are converted into dollar terms by using [weekly exchange rates](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/1/bie_dkdovytl/en) data from CBRT.
-Using weekly exchange rate data may produce an error due to the valuation effect.
+CBRT's [Gross Reserves](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/5/bie_abres2/en),were obtained along with the sub-accounts of foreign exchange and gold assets in terms of million dollars.The Treasury Liabilities Due to SDR Allocation has been removed from the Gross Reserves. After that, Gross Foreign Exchange Reserves divided into Foreign Exchange Securities, and Cash and FX Deposits.The Treasury Liabilities Due to SDR Allocation is obtained from [Central Bank Weekly Statements](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/5/bie_mbblnch/en)by using the A10 item, and the foreign exchange securities are obtained by using the A31 item from the same dataset. Since Central Bank Weekly Statement published in terms of Turkish Lira, they are converted into dollar terms by using [weekly exchange rates](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/1/bie_dkdovytl/en) data from CBRT. Using weekly exchange rate data may produce an error due to the valuation effect.
 :::
   
 ::: {style="text-align:"}
 On-Balance Sheet Foreign Exchange Liabilities of the CBRT were obtained by [Central Bank Weekly Statements](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/5/bie_mbblnch/en)
-dataset and obtaiined in dollar terms by dividing values to the weekly exchange rate.
-Public Sector Foreign Exchange Liabilities are not included in this study.
-Because of exclusion of this item and the valuation effect  due to weekly foreign exchange, the Net Reserve position may differ from other calculations. 
+dataset and obtaiined in dollar terms by dividing values to the weekly exchange rate. Public Sector Foreign Exchange Liabilities are not included in this study. Because of exclusion of this item and the valuation effect  due to weekly foreign exchange, the Net Reserve position may differ from other calculations. 
 :::
 
 ::: {style="text-align:"}
-Off-Balance Sheet Foreign Exchange Liabilities of the CBRT are calculated by using CBRT Swap Transactions and 
-the [Aggregate short and long positions in forwards and futures in foreign currencies vis-à-vis the domestic currency (including the forward leg of currency swaps)](https://www.tcmb.gov.tr/wps/wcm/connect/ede968f2-dee8-4bb7-b7c4-c21f37a153eb/RT202103ING.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-ede968f2-dee8-4bb7-b7c4-c21f37a153eb-nAnhMEy).
-Also, the CBRT Swap Transactions, which published in [PDF](https://www.tcmb.gov.tr/wps/wcm/connect/a6ffdb2f-47d9-4ae9-8c39-5075867aaec3/TCMB+Tarafli+Swap+Islemleri.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-a6ffdb2f-47d9-4ae9-8c39-5075867aaec3-nzm2YQt%22) format, 
-converted to [xlsx](https://github.com/aiasci/swap/raw/master/swap.xlsx) and 
-[csv](https://github.com/aiasci/swap/raw/master/swap.csv) format by us.
-Since reserves are analysed weekly, we used foreign exchange forwards and futures for up to one month instead of the sum of them. Thus this account may yield different results.
+Off-Balance Sheet Foreign Exchange Liabilities of the CBRT are calculated by using CBRT Swap Transactions and the [Aggregate short and long positions in forwards and futures in foreign currencies vis-à-vis the domestic currency (including the forward leg of currency swaps)](https://www.tcmb.gov.tr/wps/wcm/connect/ede968f2-dee8-4bb7-b7c4-c21f37a153eb/RT202103ING.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-ede968f2-dee8-4bb7-b7c4-c21f37a153eb-nAnhMEy). Also, the CBRT Swap Transactions, which published in [PDF](https://www.tcmb.gov.tr/wps/wcm/connect/a6ffdb2f-47d9-4ae9-8c39-5075867aaec3/TCMB+Tarafli+Swap+Islemleri.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-a6ffdb2f-47d9-4ae9-8c39-5075867aaec3-nzm2YQt%22) format,converted to [xlsx](https://github.com/aiasci/swap/raw/master/swap.xlsx) and [csv](https://github.com/aiasci/swap/raw/master/swap.csv) format by us. Since reserves are analysed weekly, we used foreign exchange forwards and futures for up to one month instead of the sum of them. Thus this account may yield different results.
 :::
                                                                          
 ::: {style="text-align:"}
-Lastly, On-and-Off Balance Sheet liabilities aree seperated in terms of foreign exchange and gold and 
-the Net Foreign Exchange Reserves and the Net Foreign Exchange Reserves Excluding Swaps was obtained by subtracting those assets from Gross Reserves.
-Calculations can be seen from the detailed table above.
+Lastly, On-and-Off Balance Sheet liabilities aree seperated in terms of foreign exchange and gold and the Net Foreign Exchange Reserves and the Net Foreign Exchange Reserves Excluding Swaps was obtained by subtracting those assets from Gross Reserves. Calculations can be seen from the detailed table above.
 :::
   
 ::: {style="text-align:"}
 Problem may arises in te calculations due to holidays. 
-In such case, the most recent data are used.
-For example, the use of CBRT Swap Transactions data dated April 22 in calculations on April 23.  
-In addition, CBRT Swap Transactions data dated January 4 were used in the calculations dated January 1.
+In such case, the most recent data are used. For example, the use of CBRT Swap Transactions data dated April 22 in calculations on April 23. In addition, CBRT Swap Transactions data dated January 4 were used in the calculations dated January 1.
 :::
 
 ::: {style="text-align:"}

@@ -430,7 +430,7 @@ nr
 
 #################### swap bolu brutu hesapladiktan sonra "zama"daki data yerine koyucaz, grafik cikacak
 
-
+tdt <- tdt[time < as.Date(zaman+1)]
 
 
 zama <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = tdt[2:nrow(tdt)]$bdybro, 
@@ -633,7 +633,7 @@ sub1 <- subplot(netr_graph, shnetr_graph, nrows = 2, shareX = T, titleY  = T)%>%
                                     '<br>',
                                     '<sup>',
                                     '(Milyar Dolar)',
-                                    '</sup>'))) 
+                                    '</sup>')),legend = list(orientation = 'h')) 
 
 sub1
 
@@ -643,7 +643,7 @@ sub2 <- subplot(brut_graph, biy_graph, bdy_graph, nrows = 3, shareX = T, titleY 
                                     '<br>',
                                     '<sup>',
                                     '(Milyar Dolar)',
-                                    '</sup>'))) 
+                                    '</sup>')),legend = list(orientation = 'h')) 
 
 sub2
 
@@ -653,7 +653,7 @@ sub3 <- subplot(nar_graph, netr_graph, ndr_graph, nrows = 3, shareX = T, titleY 
                                     '<br>',
                                     '<sup>',
                                     '(Milyar Dolar)',
-                                    '</sup>'))) 
+                                    '</sup>')),legend = list(orientation = 'h')) 
 
 sub3
 
@@ -663,7 +663,7 @@ sub4 <- subplot(shnar_graph, shnetr_graph, shndr_graph, nrows = 3, shareX = T, t
                                     '<br>',
                                     '<sup>',
                                     '(Milyar Dolar)',
-                                    '</sup>'))) 
+                                    '</sup>')),legend = list(orientation = 'h')) 
 
 sub4
 
