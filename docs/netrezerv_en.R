@@ -51,11 +51,12 @@ BIY <- getDataSeries(c("TP.BL084", # Bankacilik Sektoru Mevduati (bsm)
                        "TP.BL129", # Nakit (nakit)
                        "TP.BL130", # Teminat (teminat)
                        "TP.BL136", # Altin (altin)
-                       "TP.BL086", # Yurt Disi Bankalar (ydb)                   
+                       "TP.BL086", # Yurt Disi Bankalar (ydb)                   bankalarin ydb a yukumlulugu       bydby
+                       "TP.BL087", # Zorunlu Karsiliklar Bloke Hesabi (zk)
                        "TP.BL088", # Zorunlu Karsilik Doviz Kismi (zkd)
                        "TP.BL089", # Zorunlu Karsiliklar Altin Kismi (zka)
                        "TP.BL091", # Diger Mevduat (dm)
-                       "TP.BL097", # Yurt Disi Bankalar YP (fb)                
+                       "TP.BL097", # Yurt Disi Bankalar YP (fb)                 merkez bankasinin ydb a yukumlulugu mbydby
                        "TP.BL099", # SDR 
                        "TP.DK.USD.A.YTL"), startDate = "01-01-2021", CBRTKey = myCBRTKey, freq = 3)
 
