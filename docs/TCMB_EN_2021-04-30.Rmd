@@ -1,5 +1,5 @@
 ---
-title: CBRT Resesrves and Swap Transcations
+title: CBRT Reserves and Swap Transcations
 author: 
   - Anıl İsmet Aşçı
    [E-mail](aiasci@outlook.com)
@@ -30,7 +30,13 @@ source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/
 
 <div style="float: right;"><a href=TCMB_TR_2021-04-30.html>TR</a></div>
 
-## About the Project 
+## About
+
+::: {style="text-align: justify;"}
+
+CBRT Off-Balance operations and CBRT Reserves are widespread on the media coverage. Also, CBRT Swap Transactions data cannot be reached from EVDS and published in PDF form which makes it difficult to analyze related data. We find publishing CBRT Reserves is necessary so that economists and academics with interest could easily access that. Data used in project can be found in [Gross Reserves](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/5/bie_abres2/en), [Central Bank Weekly Statements](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/5/bie_mbblnch/en) , and [Aggregate short and long positions in forwards and futures in foreign currencies vis-à-vis the domestic currency (including the forward leg of currency swaps) up to 1 month](https://www.tcmb.gov.tr/wps/wcm/connect/ede968f2-dee8-4bb7-b7c4-c21f37a153eb/RT202103ING.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-ede968f2-dee8-4bb7-b7c4-c21f37a153eb-nAnhMEy). We used R program to analyze and visualize the data. Detailed information is available in the Methodology section. This study is open-source and for those who are interested available on [GitHub](https://github.com/tcmb-reserves/tcmb-reserves.github.io). The page will be updated as new data are published. 
+
+:::
 
 # CBRT Balance Sheet
 
@@ -178,7 +184,7 @@ nr
 ### Weekly {.tabset}
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="100%"}
-nr
+sub3
 ```
 
 ## Net Reserves (excluding Swap) Position {.tabset}
@@ -312,7 +318,7 @@ dataset and obtaiined in dollar terms by dividing values to the weekly exchange 
 
 ::: {style="text-align: justify;"}
 
-Off-Balance Sheet Foreign Exchange Liabilities of the CBRT are calculated by using CBRT Swap Transactions and the [Aggregate short and long positions in forwards and futures in foreign currencies vis-à-vis the domestic currency (including the forward leg of currency swaps)](https://www.tcmb.gov.tr/wps/wcm/connect/ede968f2-dee8-4bb7-b7c4-c21f37a153eb/RT202103ING.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-ede968f2-dee8-4bb7-b7c4-c21f37a153eb-nAnhMEy). Also, the CBRT Swap Transactions, which published in [PDF](https://www.tcmb.gov.tr/wps/wcm/connect/a6ffdb2f-47d9-4ae9-8c39-5075867aaec3/TCMB+Tarafli+Swap+Islemleri.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-a6ffdb2f-47d9-4ae9-8c39-5075867aaec3-nzm2YQt%22) format,converted to [xlsx](https://github.com/aiasci/swap/raw/master/swap.xlsx) and [csv](https://github.com/aiasci/swap/raw/master/swap.csv) format by us. Since reserves are analysed weekly, we used foreign exchange forwards and futures for up to one month instead of the sum of them. Thus this account may yield different results.
+Off-Balance Sheet Foreign Exchange Liabilities of the CBRT are calculated by using CBRT Swap Transactions and the [Aggregate short and long positions in forwards and futures in foreign currencies vis-à-vis the domestic currency (including the forward leg of currency swaps) ](https://www.tcmb.gov.tr/wps/wcm/connect/ede968f2-dee8-4bb7-b7c4-c21f37a153eb/RT202103ING.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-ede968f2-dee8-4bb7-b7c4-c21f37a153eb-nAnhMEy). Also, the CBRT Swap Transactions, which published in [PDF](https://www.tcmb.gov.tr/wps/wcm/connect/a6ffdb2f-47d9-4ae9-8c39-5075867aaec3/TCMB+Tarafli+Swap+Islemleri.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-a6ffdb2f-47d9-4ae9-8c39-5075867aaec3-nzm2YQt%22) format,converted to [xlsx](https://github.com/aiasci/swap/raw/master/swap.xlsx) and [csv](https://github.com/aiasci/swap/raw/master/swap.csv) format by us. Since reserves are analysed weekly, we used foreign exchange forwards and futures for up to one month instead of the sum of them. Thus this account may yield different results.
 
 :::
                                                                          
@@ -335,4 +341,4 @@ You can send email for contact or any sugestions.
 
 :::
 
-<a href="#about-the-project">Go to Top of the Page</a>
+<a href="#about">Go to top of the page</a>
