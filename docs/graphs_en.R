@@ -427,7 +427,7 @@ nr
 
 #################### swap bolu brutu hesapladiktan sonra "zama"daki data yerine koyucaz, grafik cikacak
 
-
+tdt <- tdt[time < as.Date(zaman+1)]
 
 
 zama <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = tdt[2:nrow(tdt)]$bdybro, 
