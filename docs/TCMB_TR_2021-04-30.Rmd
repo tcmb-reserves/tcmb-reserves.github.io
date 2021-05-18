@@ -3,8 +3,10 @@ title: TCMB Rezervleri ve Swap İşlemleri
 author: 
   - Anıl İsmet Aşçı
    [E-mail](aiasci@outlook.com)
+   [LinkedIn](https://www.linkedin.com/in/ismetasci/)
   - Ömer Taha Gülberk
-   [LinkedIn](https://www.linkedin.com/in/%C3%B6mer-taha-g%C3%BClberk-9a1b981bb/)
+   [E-mail](omertahagulberk@hotmail.com)
+   [LinkedIn](https://www.linkedin.com/in/omertahagulberk/)
     
 output:
  rmdformats::robobook
@@ -26,9 +28,16 @@ source(paste0(getwd(),"/graphs.R"))
 
 ```
 
-
-## Merkez Bankasi Bilancosu
 <div style="float: right;"><a href="en">EN</a></div>
+
+## Çalışma Hakkında
+
+::: {style="text-align: justify;"}
+
+TCMB tarafından yapılan Swap işlemleri ve TCMB rezervleri gündemde geniş bir yer kaplıyor. TCMB’nin açıkladığı Swap verilerinin EVDS veri sisteminde olmaması ve PDF dosyasıyla paylaşılması da Swap verilerinin çekilmesini ve analiz edilmesini zorlaştırıyor. Bu konuyu araştıran birçok ekonomist ve akademisyenin verilere ve rezervlerin son durumuna daha rahat ulaşabilmesi için böyle bir site hazırlama gereği duyduk. Çalışmamızda kullandığımız verileri [TCMB Haftalık Vaziyeti](https://evds2.tcmb.gov.tr/index.php?/evds/serieMarket/collapse_13/5933/DataGroup/turkish/bie_mbblnch/), [TCMB Taraflı Swap İşlemleri](https://www.tcmb.gov.tr/wps/wcm/connect/a6ffdb2f-47d9-4ae9-8c39-5075867aaec3/TCMB+Tarafli+Swap+Islemleri.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-a6ffdb2f-47d9-4ae9-8c39-5075867aaec3-nzm2YQt%22) ve [1 aya kadar vadeli yurt içi para karşılığında döviz forward ve future’ların toplam açık ve fazla pozisyonu](https://www.tcmb.gov.tr/wps/wcm/connect/cc755e33-b5c0-4632-bfe4-2434d35da011/RT20210326TR.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-cc755e33-b5c0-4632-bfe4-2434d35da011-nzliV18)'ndan elde ettik. Bu işlemleri R programını kullanarak yaptık. Hesaplamalarımızı neye göre yaptığımıza dair bilgiler Metodoloji bölümünde bulunmaktadır. Çalışmamız açık kodludur. Hesaplamaları ayrıntılı olarak incelemek isteyenler [GitHub sayfamızı](https://github.com/tcmb-reserves/tcmb-reserves.github.io) ziyaret edebilirler. Yeni veriler açıklandıkça sayfa güncellenecektir.
+:::
+
+# Merkez Bankasi Bilancosu
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 DT::datatable(
@@ -36,6 +45,8 @@ DT::datatable(
   caption = paste0(zaman," Tarihli ",'Merkez Bankasi Bilancosu ')
 )
 ```
+
+::: {style="text-align: justify;"}
 
 `r paste0("TCMB'nin ", 
           zaman,
@@ -55,6 +66,10 @@ DT::datatable(
                  " gorunuyor."
           ) `
           
+:::     
+
+::: {style="text-align: justify;"}  
+
 `r paste0("Net altin varliklari bir hafta sonunda ",
                     paste0(abs(round((tdt[time == zaman]$nar) - (tdt[time == zaman1]$nar), 2))), " Milyon Dolar",
                     ifelse(sign((tdt[time == zaman]$nar) - (tdt[time == zaman1]$nar)) == 1, paste0(" artmis"), paste0(" azalmis")),
@@ -64,6 +79,11 @@ DT::datatable(
                     paste0(round((tdt[time == zaman]$nar), 2)), " Milyon Dolar olmustur."
                     
           ) `
+          
+:::          
+          
+::: {style="text-align: justify;"}           
+          
 `r paste0("Net doviz varliklari da bu bir haftada ",
                     paste0(abs(round((tdt[time == zaman]$ndr) - (tdt[time == zaman1]$ndr), 2))), " Milyon Dolar",
                     ifelse(sign((tdt[time == zaman]$ndr) - (tdt[time == zaman1]$ndr)) == 1, paste0(" artmis"), paste0(" azalmis")),
@@ -74,6 +94,10 @@ DT::datatable(
                     
           ) `
           
+:::
+
+::: {style="text-align: justify;"}   
+
 `r paste0("Swap haric net altin varliklari ise gecen haftaya gore ",
                     paste0(abs(round((tdt[time ==zaman]$shnar) - (tdt[time == zaman1]$shnar), 2))), " Milyon Dolar'lik",
           ifelse(sign((tdt[time ==zaman]$shnar) - (tdt[time == zaman1]$shnar)) == 1, paste0(" artisla"), paste0(" kayipla")), " birlikte ", 
@@ -84,6 +108,10 @@ ifelse(sign((tdt[time == zaman]$shndr) - (tdt[time == zaman1]$shndr)) == 1, past
 paste0(round((tdt[time == zaman]$shndr), 2)), " olmustur."
 ) `
 
+:::
+
+::: {style="text-align: justify;"} 
+
 `r paste0("Bilanco ici ve bilanco disi toplam yukumlulukler ise gecen haftaya gore ",
           paste0(abs(round((tdt[time == zaman]$ty) - (tdt[time == zaman1]$ty), 2))), " Milyon Dolar",
           ifelse(sign((tdt[time == zaman]$ty) - (tdt[time == zaman1]$ty)) == 1, paste0(" artmis"), paste0(" azalmis"))," ve yilbasina gore de ",
@@ -93,39 +121,70 @@ paste0(round((tdt[time == zaman]$shndr), 2)), " olmustur."
           
 ) `
 
+:::
+
+::: {style="text-align: justify;"} 
+
 `r paste0( "Bilanco disi yukumluluklerin brut rezervlere orani ise %", round(tdt[time == zaman]$bdybro, 2), " olmustur.")`
 
+:::
 
-### Merkez Bankasi Rezervleri ve Yukumlulukleri
+## Merkez Bankasi Rezervleri ve Yukumlulukleri {.tabset}
+
+### Güncel Durum {.tabset}
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="100%"}
 fig
+```
+
+### Haftalara Göre Durum {.tabset}
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="100%"}
 sub2
 ```
 
-### Net Rezerv Pozisyonu
+## Net Rezerv Pozisyonu {.tabset}
+
+### Güncel Durum {.tabset}
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="100%"}
 nr
+```
+
+### Haftalara Göre Durum {.tabset}
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="100%"}
 sub3
 ```
 
-### Swap Haric Net Rezerv Pozisyonu
+## Swap Haric Net Rezerv Pozisyonu{.tabset}
+
+### Güncel Durum{.tabset}
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="100%"}
 snr
+```
+
+### Haftalara Göre Durum{.tabset}
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="100%"}
 sub4
+```
+
+### Haftalara Göre Rezervler{.tabset}
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="100%"}
 sub1
 ```
 
 
-### Bilanco Disi Islemlerin Buyuklugu
+## Bilanco Disi Islemlerin Buyuklugu
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="100%"}
 zama
 ```
 
-## Detayli Tablo
+# Detayli Tablo
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 DT::datatable(
@@ -206,14 +265,14 @@ c("#808080" , #1
 )
 ```
 
-## Metodoloji
+# Metodoloji
 
-::: {style="text-align:"}
+::: {style="text-align: justify;"}
 Bu çalışmada TCMB'nin haftalık Net Rezerv ve Swap hariç Net Rezerv pozisyonları otomatik olarak güncellenecek şekilde düzenlenmiştir.
 Hesaplamalarda ortaya çıkabilecek hataları ve farklılıkları göstermek adına, kullanılan veri kaynakları ve hesaplama yöntemi aşağıda açıklanacaktır.
 :::
 
-::: {style="text-align:"}
+::: {style="text-align: justify;"}
 TCMB'nin [Brüt Resmi Rezerv Varlıkları](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/5/bie_abres2/tr), 
 döviz ve altın varlıkları alt kalemleriyle birlikte milyon dolar cinsinden elde edilmiştir. Bu verideki döviz varlıklarından 
 IMF Rezerv Pozisyonu çıkartılmış ve döviz varlıkları menkul kıymetler ile toplam nakit ve mevduatlar olarak ikiye ayrılmıştır. 
@@ -224,14 +283,14 @@ kullanılarak dolar cinsine çevirilmiştir. Döviz kurunun haftalık alınması
 çıkartabilmektedir.
 :::
 
-::: {style="text-align:"}
+::: {style="text-align: justify;"}
 TCMB'nin Bilanço İçi Yükümlülükleri ise [Merkez Bankası Haftalık Vaziyeti](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/5/bie_mbblnch/tr)
 veri seti kullanılarak hazırlanmış ve alakalı haftadaki döviz kuruna bölünerek dolar cinsinden elde edilmiştir. 
 Kamu Sektörü Yabancı Para Mevduatı, rezerv hesaplamalarına dahil edilmemiştir. 
 Bu kalemin dahil edilmemesi ve değerleme etkisiyle net rezerv pozisyonu diğer hesaplama yöntemleriyle çıkan sonuçlardan farklılık gösterebilmektedir.
 :::
 
-::: {style="text-align:"}
+::: {style="text-align: justify;"}
 TCMB'nin Bilanço Dışı Yükümlülükleri, TCMB Taraflı Swap İşlemleri ile 
 [1 aya kadar vadeli yurt içi para karşılığında döviz forward ve futre'ların toplam açık ve fazla pozisyonu](https://www.tcmb.gov.tr/wps/wcm/connect/cc755e33-b5c0-4632-bfe4-2434d35da011/RT20210326TR.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-cc755e33-b5c0-4632-bfe4-2434d35da011-nzliV18) kullanılarak hesaplanmıştır.
 [TCMB Taraflı Swap İşlemleri](https://www.tcmb.gov.tr/wps/wcm/connect/a6ffdb2f-47d9-4ae9-8c39-5075867aaec3/TCMB+Tarafli+Swap+Islemleri.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-a6ffdb2f-47d9-4ae9-8c39-5075867aaec3-nzm2YQt%22) tarafımızca 
@@ -240,19 +299,19 @@ TCMB'nin Bilanço Dışı Yükümlülükleri, TCMB Taraflı Swap İşlemleri ile
 kimi hesaplardan farklı sonuçlar çıkarabilir.
 :::
                                                                         
-::: {style="text-align:"}
+::: {style="text-align: justify;"}
 Bilanço içi ve dışı yükümlülükler kendi içerisinde döviz ve altın cinsinden ayrılmış ve Brüt Resmi Rezerv Varlıklarından çıkartılarak Net Rezerv ve
 Swap Hariç Net Rezerv pozisyonu elde edilmiştir. Hesaplamalar detaylı tablodan görülebilmektedir.
 :::
                                                                         
-::: {style="text-align:"}
+::: {style="text-align: justify;"}
 Resmi ve dini tatillerde veri yayınlanmamasından dolayı hesaplamalarda problemler çıkmaktadır.
 Böyle bir durumda en yakın tarihli veriler kullanılmaktadır. Örneğin 23 Nisan'da 22 Nisan tarihli Swap verilerinin kullanılması gibi. 
 Ayrıca yılbaşı hesaplamalarında 4 Ocak tarihli TCMB Taraflı Swap verileri kullanılmıştır. 
 :::
 
-::: {style="text-align:"}
+::: {style="text-align: justify;"}
 Fikir ve önerileriniz için aşağıdaki mail adreslerine mail atabilirsiniz.
 :::
 
-<a href="#">Go to top of page</a>
+<a href="#çalışma-hakkında">En Başa Dön</a>
