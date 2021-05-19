@@ -160,6 +160,60 @@ mat[, altin := mat[,7] + mat[,13]]
 
 mat[, doviz := mat[,16] - mat[,17]]
 
+viop <-  data.table(read_pdf("https://www.tcmb.gov.tr/wps/wcm/connect/a5df108d-d109-4dc0-9ea6-76a78b196b4d/V%C4%B0OP+%C4%B0%C5%9Flemleri.pdf?MOD=AJPERES"))
+
+viop <- viop %>%
+  unnest_tokens(word, text)
+
+viop$time <- as.Date(viop$word, format = "%d.%m.%Y")
+
+viop$rown <- c(1:nrow(viop)) 
+
+c <- viop[is.na(time) == F]
+
+c <- as.vector(c$rown)
+
+d <- c + 2
+
+d
+
+viop[, word := gsub(",", "", word, fixed = TRUE)]
+
+as.numeric(viop$word)
+
+viop_table <- data.table(
+  "time" = rep(as.Date("2021-01-04"), length(c)),
+  "BIST VIOP Nezdinde Turk Lirası Uzlasmali Vadeli Doviz Satım Islemleri" = rep(0,length(c)),
+  "Toplam Doviz Satım Pozisyonu" = rep(0, length(c))
+)
+
+q <- c()
+
+for (ii in 1:length(c)) {
+  
+  q <- viop[c[ii]:d[ii], ]$word
+  
+  for (k in 1:length(q)) {
+    
+    viop_table[ii,k] <- as.character(q[k])
+    
+  }
+}
+
+for (ii in 1:length(c)) {
+  
+  viop_table[ii,1]<- as.Date(viop[c[ii], ]$time) 
+  
+}
+
+viop_1 <- data.table(
+  "time" = as.Date("2021-01-01"),
+  "BIST VIOP Nezdinde Turk Lirası Uzlasmali Vadeli Doviz Satım Islemleri" = as.numeric(0),
+  "Toplam Doviz Satım Pozisyonu" = as.numeric(1397)
+)
+
+viop_table <- rbind(viop_1, viop_table)
+
 #### Yabanci MB swaplarini---------
 
 a <- data.table(read_pdf("https://www.tcmb.gov.tr/wps/wcm/connect/cc755e33-b5c0-4632-bfe4-2434d35da011/RT20210326TR.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-cc755e33-b5c0-4632-bfe4-2434d35da011-nzliV18"))
@@ -206,7 +260,7 @@ tswap <- paste0(t3, "-", t2, "-", t1)
 
 tswap <- as.Date(tswap)
 
-load(paste0(getwd(), "/Yabanci_MB.RData"))
+load(paste0("C:/Users/user/Documents/GitHub/tcmb-reserves.github.io/docs/Yabanci_MB.RData"))
 
 y_mb_new <- data.table(time = tswap, mb = val)
 
@@ -216,7 +270,7 @@ if (sum(tswap == y_mb$time) < 1){
   
 }
 
-save(y_mb, file = paste0(getwd(), "/Yabanci_MB.RData"))
+save(y_mb, file = paste0("C:/Users/user/Documents/GitHub/tcmb-reserves.github.io/docs/Yabanci_MB.RData"))
 
 rm(a)
 
@@ -308,6 +362,8 @@ tdt[, ty := biy + bdy]
 
 tdt[, bdybro := bdy/brut]
 
+tdt <- merge(tdt, viop_table, by = "time")
+
 ################# tdt verileri #################################################
 
 # time -   Date
@@ -385,3 +441,7 @@ tdt[, bdybro := bdy/brut]
 # ty -     Total Liabilities
 
 # bdybro - Ratio of Off-Balance Sheet Liabilities to Gross Reserves
+
+# viop - 
+
+# viop -
