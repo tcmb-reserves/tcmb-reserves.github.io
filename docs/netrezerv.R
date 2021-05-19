@@ -260,7 +260,7 @@ tswap <- paste0(t3, "-", t2, "-", t1)
 
 tswap <- as.Date(tswap)
 
-load(paste0("C:/Users/user/Documents/GitHub/tcmb-reserves.github.io/docs/Yabanci_MB.RData"))
+load(paste0(getwd(), "/Yabanci_MB.RData"))
 
 y_mb_new <- data.table(time = tswap, mb = val)
 
@@ -270,7 +270,7 @@ if (sum(tswap == y_mb$time) < 1){
   
 }
 
-save(y_mb, file = paste0("C:/Users/user/Documents/GitHub/tcmb-reserves.github.io/docs/Yabanci_MB.RData"))
+save(y_mb, file = paste0(getwd(), "/Yabanci_MB.RData"))
 
 rm(a)
 
