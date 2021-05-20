@@ -200,10 +200,10 @@ t1 <- substring(tt, 1, 1)
 
 t2 <- substring(tt, 2, 3)
 
-t3 <- substring(tt, 4, 7)
+t3 <- substring(tt, 4, 8)
 
 tswap <- paste0(t3, "-", t2, "-", t1)
-tswap 
+tswap
 tswap <- as.Date(tswap)
 
 load(paste0(getwd(), "/Yabanci_MB.RData"))
