@@ -306,7 +306,7 @@ tdt <- merge(tdt, a_BIY, by = "time")
 tdt[, biy := bsm + fb + sdr + dm]
 
 setnames(tdt, c("time", "bdy", "bsb", "yib", "yibn", "yibt", "yiba", "bydby", "zk",
-         "zkd", "zka", "dm", "mbydby", "sdry", "USD", "biy"))
+                "zkd", "zka", "dm", "mbydby", "sdry", "USD", "biy"))
 
 tdt[, bidy := zkd + yibn + yibt + mbydby + dm]
 
@@ -351,78 +351,44 @@ tdt[, bdybro := bdy/brut]
 
 tablo = tdt
 
-colnames(tablo) <- c("Zaman", "Brut Rezerv Altin",
-"Brut Rezerv Doviz",
-  
-"Brut Rezerv SDR",
-  
-"Menkul Kiymetler",
-  
-"Toplam Nakit ve Mevduat",
-  
-"Brut Rezerv",
-  
-"Bilanco Disi Yukumlulukler",
-  
-"Bankacilik Sektoru Bilancosu",
-  
-"Yurtici Bankalar",
-  
-"Yurtici Bankalar Nakit",
-  
-"Yurtici Bankalar Teminat",
-  
-"Yurtici Bankalar Altin",
-  
-"Bankalarin Yurtdisi Bankalara Yukumlulugu",
-  
-"Zorunlu Karsiliklar",
-  
-"Zorunlu Karsiliklar Doviz",
-  
-"Zorunlu Karsiliklar Altin",
-  
-"Diger Mevduatlar",
-  
-"MB'nin Yurtdisi Bankalara Yukumlulugu",
-  
-"SDR Yukumlulugu",
-  
-"Doviz Kuru",
-  
-"Bilanco İci Yukumlulukler",
-  
-"Bilanco İci Doviz Yukumlulugu",
-  
-"Bilanco İci Altin Yukumlulugu",
-  
-"Yurtici Bankalar Swap",
-
-"Yurtici Bankalar Altin Swapi",
-  
-"Yurtici Bankalar Doviz Swapi",
-  
-"Yurtdisi Merkez Bankalari Swap",
-
-"Bilanco Disi Doviz Yukumlulugu",
-  
-"Bilanco Disi Altin Yukumlulugu",
-  
-"Net Rezerv",
-  
-"Swap Haric Net Rezerv",
-  
-"Swap Haric Net Altin Rezervi",
-  
-"Net Doviz Rezervi",
-  
-"Net Altin Rezervi",
-  
-"Swap Haric Net Doviz Rezervi",
-
-"Toplam Yukumlulukler",
-
-"Bilanco Disi Yukumluluklerin Brut Rezerve Orani"
+colnames(tablo) <- c("Zaman", 
+                     "Brut Rezerv Altin",
+                     "Brut Rezerv Doviz",
+                     "Brut Rezerv SDR",
+                     "Menkul Kiymetler",
+                     "Toplam Nakit ve Mevduat",
+                     "Brut Rezerv",
+                     "Bilanco Disi Yukumlulukler",
+                     "Bankacilik Sektoru Bilancosu",
+                     "Yurtici Bankalar",
+                     "Yurtici Bankalar Nakit",
+                     "Yurtici Bankalar Teminat",
+                     "Yurtici Bankalar Altin",
+                     "Bankalarin Yurtdisi Bankalara Yukumlulugu",
+                     "Zorunlu Karsiliklar",
+                     "Zorunlu Karsiliklar Doviz",
+                     "Zorunlu Karsiliklar Altin",
+                     "Diger Mevduatlar",
+                     "MB'nin Yurtdisi Bankalara Yukumlulugu",
+                     "SDR Yukumlulugu",
+                     "Doviz Kuru",
+                     "Bilanco İci Yukumlulukler",
+                     "Bilanco İci Doviz Yukumlulugu",
+                     "Bilanco İci Altin Yukumlulugu",
+                     "Yurtici Bankalar Swap",
+                     "Yurtici Bankalar Altin Swapi",
+                     "Yurtici Bankalar Doviz Swapi",
+                     "Yurtdisi Merkez Bankalari Swap",
+                     "Bilanco Disi Doviz Yukumlulugu",
+                     "Bilanco Disi Altin Yukumlulugu",
+                     "Net Rezerv",
+                     "Swap Haric Net Rezerv",
+                     "Swap Haric Net Altin Rezervi",
+                     "Net Doviz Rezervi",
+                     "Net Altin Rezervi",
+                     "Swap Haric Net Doviz Rezervi",
+                     "Toplam Yukumlulukler",
+                     "Bilanco Disi Yukumluluklerin Brut Rezerve Orani"
 )
 
 
