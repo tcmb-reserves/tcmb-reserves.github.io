@@ -16,6 +16,8 @@ library(rmarkdown)
 
 library(DT)
 
+library(writexl)
+
 Sys.setlocale(category = "LC_ALL", locale = "Turkish")
 
 # BRUT REZERVLER
@@ -93,64 +95,70 @@ BIY[, sdr := sdr/(USD*1000)]
 
 ### Yurtici Swap --------------
 
-a <- data.table(read_pdf("https://www.tcmb.gov.tr/wps/wcm/connect/a6ffdb2f-47d9-4ae9-8c39-5075867aaec3/TCMB+Tarafli+Swap+Islemleri.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-a6ffdb2f-47d9-4ae9-8c39-5075867aaec3-nzm2YQt%22"))
-
-swap <- a %>%
-  unnest_tokens(word, text)
-
-swap$time <- as.Date(swap$word, format = "%d.%m.%Y")
-
-swap$rown <- c(1:nrow(swap)) 
-
-sel <- swap[is.na(time) == F]
-
-sel <- as.vector(sel$rown)
-
-selp <- sel+15
-
-selp
-
-swap[, word := gsub(",", "", word, fixed = TRUE)]
-
-as.numeric(swap$word)
-
-mat <- data.table(
-  "Valor Tarihi" = rep(as.Date("2020-10-10"),length(sel)),
-  "TCMB Doviz Karsiligi TL Swap Piyasasi" = rep(0,length(sel)),
-  "TCMB Doviz Karsiligi TL Swap Piyasasi - Stok"= rep(0,length(sel)), 
-  "BIST Swap Piyasasi" = rep(0,length(sel)),
-  "BIST Swap Piyasasi - Stok" = rep(0,length(sel)),
-  "TCMB TL Karsiligi Altin Swap Piyasasi " = rep(0,length(sel)),
-  "TCMB TL Karsiligi Altin Swap Piyasasi - Stok" = rep(0,length(sel)),
-  "TCMB Doviz Karsiligi TL Swap Geleneksel Ihaleleri" = rep(0,length(sel)),
-  "TCMB Doviz Karsiligi TL Swap Geleneksel Ihaleleri - Stok" = rep(0,length(sel)),
-  "TCMB Doviz Karsiligi TL Swap Miktar Ihaleleri" = rep(0,length(sel)),
-  "TCMB Doviz Karsiligi TL Swap Miktar Ihaleleri - Stok" = rep(0,length(sel)),
-  "TCMB Altin Karsiligi TL Swap Geleneksel Ihaleleri" = rep(0,length(sel)),
-  "TCMB Altin Karsiligi TL Swap Geleneksel Ihaleleri - Stok"= rep(0,length(sel)),
-  "TCMB Doviz Karsiligi Altin Swap Piyasasi (Net Alim)"= rep(0,length(sel)),
-  "TCMB Doviz Karsiligi Altin Swap Piyasasi - Stok (Net Alim)"= rep(0,length(sel)),
-  "TOPLAM - STOK" = rep(0,length(sel))
-)
-
-w <- c()
-
-for (ii in 1:length(sel)) {
+pdftable_to_dt <- function(x) {
+  a <-  data.table(read_pdf(x))
   
-  w <- swap[sel[ii]:selp[ii], ]$word
+  a <- a %>%
+    unnest_tokens(word, text)
   
-  for (k in 1:length(w)) {
+  a$time <- as.Date(a$word, format = "%d.%m.%Y")
+  
+  a$rown <- c(1:nrow(a)) 
+  
+  c <- a[is.na(time) == F]
+  
+  c <- as.vector(c$rown)
+  
+  c[2]-c[1]-1
+  
+  d <- c + c[2]-c[1]-1
+  
+  d
+  
+  a[, word := gsub(",", "", word, fixed = TRUE)]
+  
+  as.numeric(a$word)
+  
+  a_table <- data.table(matrix(0, nrow = length(c), ncol = c[2]-c[1]-1))
+  
+  dat <- data.table("time" = as.Date(rep("2020-01-01", length(c))))
+  
+  a_table <- cbind(dat, a_table)
+  
+  q <- c()
+  
+  for (ii in 1:length(c)) {
     
-    mat[ii,k] <- as.character(w[k])
+    q <- a[c[ii]:d[ii], ]$word
+    
+    for (k in 1:length(q)) {
+      
+      a_table[ii,k] <- as.character(q[k])
+      
+    }
+  }
+  
+  for (ii in 1:length(c)) {
+    
+    a_table[ii,1]<- as.Date(a[c[ii], ]$time) 
     
   }
+  
+  .GlobalEnv$a_table <- a_table
+  
 }
 
-for (ii in 1:length(sel)) {
-  
-  mat[ii,1]<- as.Date(swap[sel[ii], ]$time) 
-  
-}
+pdftable_to_dt("https://www.tcmb.gov.tr/wps/wcm/connect/a6ffdb2f-47d9-4ae9-8c39-5075867aaec3/TCMB+Tarafli+Swap+Islemleri.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-a6ffdb2f-47d9-4ae9-8c39-5075867aaec3-nzm2YQt%22")
+
+mat <- a_table
+
+setnames(mat, c("Valor Tarihi", "TCMB Doviz Karsiligi TL Swap Piyasasi", "TCMB Doviz Karsiligi TL Swap Piyasasi - Stok",
+         "BIST Swap Piyasasi", "BIST Swap Piyasasi - Stok", "TCMB TL Karsiligi Altin Swap Piyasasi ",
+         "TCMB TL Karsiligi Altin Swap Piyasasi - Stok", "TCMB Doviz Karsiligi TL Swap Geleneksel Ihaleleri",
+         "TCMB Doviz Karsiligi TL Swap Geleneksel Ihaleleri - Stok", "TCMB Doviz Karsiligi TL Swap Miktar Ihaleleri",
+         "TCMB Doviz Karsiligi TL Swap Miktar Ihaleleri - Stok", "TCMB Altin Karsiligi TL Swap Geleneksel Ihaleleri",
+         "TCMB Altin Karsiligi TL Swap Geleneksel Ihaleleri - Stok", "TCMB Doviz Karsiligi Altin Swap Piyasasi (Net Alim)",
+         "TCMB Doviz Karsiligi Altin Swap Piyasasi - Stok (Net Alim)", "TOPLAM - STOK"))
 
 colnames(mat)[1]<- "time"
 
@@ -159,6 +167,21 @@ colnames(mat)[16]<- "toplam"
 mat[, altin := mat[,7] + mat[,13]]
 
 mat[, doviz := mat[,16] - mat[,17]]
+
+pdftable_to_dt("https://www.tcmb.gov.tr/wps/wcm/connect/a5df108d-d109-4dc0-9ea6-76a78b196b4d/V%C4%B0OP+%C4%B0%C5%9Flemleri.pdf?MOD=AJPERES")
+
+viop_table <- a_table
+
+setnames(viop_table, c("time", "BIST VIOP Nezdinde Turk Lirası Uzlasmali Vadeli Doviz Satım Islemleri",
+                       "Toplam Doviz Satım Pozisyonu"))
+
+viop_1 <- data.table(
+  "time" = as.Date("2021-01-01"),
+  "BIST VIOP Nezdinde Turk Lirası Uzlasmali Vadeli Doviz Satım Islemleri" = as.numeric(0),
+  "Toplam Doviz Satım Pozisyonu" = as.numeric(1397)
+)
+
+viop_table <- rbind(viop_1, viop_table)
 
 #### Yabanci MB swaplarini---------
 
@@ -185,7 +208,7 @@ yswap <- na.omit(yswap)
 
 # 8 uzunluklu veri arar ?unku TR deki hi? bir veri trilyon degerinde olamaz
 
-demak <- nchar(yswap$word) == 7
+demak <- nchar(yswap$word) >= 7
 
 tt <- c()
 
@@ -195,15 +218,33 @@ for (ii in 1:length(demak)){
   
 }
 
+tswap <- c()
 
-t1 <- substring(tt, 1, 1)
+t1 <- c()
 
-t2 <- substring(tt, 2, 3)
+t2 <- c()
 
-t3 <- substring(tt, 4, 8)
+t3 <- c()
 
-tswap <- paste0(t3, "-", t2, "-", t1)
-tswap
+if (nchar(tt) == 7) {
+
+t1 = substring(tt, 1, 1)
+
+t2 = substring(tt, 2, 3)
+
+t3 = substring(tt, 4, 7)
+
+tswap = paste0(t3, "-", t2, "-", t1)
+} else if (nchar(tt) == 8){
+  t1 = substring(tt, 1, 2)
+  
+  t2 = substring(tt, 3, 4)
+  
+  t3 = substring(tt, 5, 8)
+  
+  tswap = paste0(t3, "-", t2, "-", t1)
+}
+
 tswap <- as.Date(tswap)
 
 load(paste0(getwd(), "/Yabanci_MB.RData"))
@@ -307,6 +348,85 @@ tdt[, shndr := brd - yibn - yibt - zkd - dm - mbydby - ydmbs - yibds]
 tdt[, ty := biy + bdy]
 
 tdt[, bdybro := bdy/brut]
+
+tablo = tdt
+
+colnames(tablo) <- c("Zaman", "Brut Rezerv Altin",
+"Brut Rezerv Doviz",
+  
+"Brut Rezerv SDR",
+  
+"Menkul Kiymetler",
+  
+"Toplam Nakit ve Mevduat",
+  
+"Brut Rezerv",
+  
+"Bilanco Disi Yukumlulukler",
+  
+"Bankacilik Sektoru Bilancosu",
+  
+"Yurtici Bankalar",
+  
+"Yurtici Bankalar Nakit",
+  
+"Yurtici Bankalar Teminat",
+  
+"Yurtici Bankalar Altin",
+  
+"Bankalarin Yurtdisi Bankalara Yukumlulugu",
+  
+"Zorunlu Karsiliklar",
+  
+"Zorunlu Karsiliklar Doviz",
+  
+"Zorunlu Karsiliklar Altin",
+  
+"Diger Mevduatlar",
+  
+"MB'nin Yurtdisi Bankalara Yukumlulugu",
+  
+"SDR Yukumlulugu",
+  
+"Doviz Kuru",
+  
+"Bilanco İci Yukumlulukler",
+  
+"Bilanco İci Doviz Yukumlulugu",
+  
+"Bilanco İci Altin Yukumlulugu",
+  
+"Yurtici Bankalar Swap",
+
+"Yurtici Bankalar Altin Swapi",
+  
+"Yurtici Bankalar Doviz Swapi",
+  
+"Yurtdisi Merkez Bankalari Swap",
+
+"Bilanco Disi Doviz Yukumlulugu",
+  
+"Bilanco Disi Altin Yukumlulugu",
+  
+"Net Rezerv",
+  
+"Swap Haric Net Rezerv",
+  
+"Swap Haric Net Altin Rezervi",
+  
+"Net Doviz Rezervi",
+  
+"Net Altin Rezervi",
+  
+"Swap Haric Net Doviz Rezervi",
+
+"Toplam Yukumlulukler",
+
+"Bilanco Disi Yukumluluklerin Brut Rezerve Orani"
+)
+
+
+write_xlsx(tablo, paste0(getwd(), '/Tablo.xlsx'))
 
 ################# tdt verileri #################################################
 
