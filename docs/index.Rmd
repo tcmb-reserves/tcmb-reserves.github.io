@@ -1,5 +1,5 @@
 ---
-title: TCMB Rezervleri ve Swap İşlemleri
+title: TCMB Rezervleri ve Swap İşlemleri <br> 12 Mayıs 2021
 author: 
   - Anıl İsmet Aşçı
    [E-mail](mailto:ismet.asci@outlook.com)
@@ -11,8 +11,6 @@ author:
 output:
  rmdformats::robobook
 ---
-
-
 
 ```{r setup, include=FALSE}
 
@@ -30,6 +28,10 @@ source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/
 
 ```
 
+<p style="color:blue">Bu sayfa yeni veriler geldikçe otomatik olarak güncellenecektir.</p>
+<p style="color:blue">Geçmiş haftaların verilerine bakmak için Arşiv'e tıklayabilirsiniz.</p>
+
+[Verileri İndir](https://github.com/tcmb-reserves/tcmb-reserves.github.io/blob/master/Tablo.xlsx?raw=true)
 
 <div style="float: right;"><a href="index_en.html">EN</a></div>
 
