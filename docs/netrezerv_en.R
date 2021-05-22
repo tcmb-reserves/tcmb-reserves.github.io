@@ -185,7 +185,7 @@ yswap <- na.omit(yswap)
 
 # 8 uzunluklu veri arar ?unku TR deki hi? bir veri trilyon degerinde olamaz
 
-demak <- nchar(yswap$word) == 7
+demak <- nchar(yswap$word) >= 7
 
 tt <- c()
 
@@ -195,15 +195,33 @@ for (ii in 1:length(demak)){
   
 }
 
+tswap <- c()
 
-t1 <- substring(tt, 1, 1)
+t1 <- c()
 
-t2 <- substring(tt, 2, 3)
+t2 <- c()
 
-t3 <- substring(tt, 4, 8)
- 
-tswap <- paste0(t3, "-", t2, "-", t1)
-tswap
+t3 <- c()
+
+if (nchar(tt) == 7) {
+  
+  t1 = substring(tt, 1, 1)
+  
+  t2 = substring(tt, 2, 3)
+  
+  t3 = substring(tt, 4, 7)
+  
+  tswap = paste0(t3, "-", t2, "-", t1)
+} else if (nchar(tt) == 8){
+  t1 = substring(tt, 1, 2)
+  
+  t2 = substring(tt, 3, 4)
+  
+  t3 = substring(tt, 5, 8)
+  
+  tswap = paste0(t3, "-", t2, "-", t1)
+}
+
 tswap <- as.Date(tswap)
 
 load(paste0(getwd(), "/Yabanci_MB.RData"))
