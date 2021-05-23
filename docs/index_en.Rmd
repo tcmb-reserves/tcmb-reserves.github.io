@@ -222,7 +222,7 @@ zama
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 DT::datatable(
   det_tab,options = list(dom = 't',
-                         pageLength = 33), 
+                         pageLength = 34), 
   caption = paste0('Detailed CBRT Balance Sheet Dated ', zaman)
 ) %>% formatStyle(
   'Accounts',
