@@ -345,11 +345,11 @@ tdt[, shnetr := netr - bdy]
 
 tdt[, shnar := bra - yiba - zka - yibas]
 
-tdt[, ndr := brd - yibn - yibt - zkd - dm - mbydby]
+tdt[, ndr := brd - yibn - yibt - zkd - dm - mbydby- viop]
 
 tdt[, nar := bra - yiba - zka]
 
-tdt[, shndr := brd - yibn - yibt - zkd - dm - mbydby - ydmbs - yibds]
+tdt[, shndr := brd - yibn - yibt - zkd - dm - mbydby - ydmbs - yibds - viop]
 
 tdt[, ty := biy + bdy]
 

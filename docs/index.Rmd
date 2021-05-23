@@ -134,7 +134,7 @@ paste0(round((tdt[time == zaman]$shndr), 2)), " olmustur."
 
 ::: {style="text-align: justify;"} 
 
-`r paste0( "Bilanco disi yukumluluklerin brut rezervlere orani ise %", round(tdt[time == zaman]$bdybro, 2), " olmustur.")`
+`r paste0( "Bilanco disi yukumluluklerin brut rezervlere orani ise %", round(100*tdt[time == zaman]$bdybro, 2), " olmustur.")`
 
 :::
 
