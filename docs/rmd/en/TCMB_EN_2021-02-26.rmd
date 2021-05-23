@@ -1,5 +1,5 @@
 ---
-title: CBRT Reserves and Swap Transcations
+title: CBRT Reserves and Swap Transcations <br> 26 February 2021
 author: 
   - Anıl İsmet Aşçı
    [E-mail](mailto:ismet.asci@outlook.com)
@@ -28,9 +28,11 @@ source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/
 
 ```
 
-<<div style="float: right;"><a href=TCMB_TR_2021-02-26.html>TR</a></div>
-
 ## About
+
+<div style="float: right;"><a href=index.html>TR</a></div>
+<div style="float: left;"><a href="archive.html">Archive</a></div>
+<br>
 
 ::: {style="text-align: justify;"}
 
@@ -154,7 +156,7 @@ DT::datatable(
 
 ::: {style="text-align: justify;"}
 
-`r paste0(" The ratio of off-balance sheet liabilities to gross reserves is % ", round(tdt[time == zaman]$bdybro, 2), " . ")`
+`r paste0(" The ratio of off-balance sheet liabilities to gross reserves is % ", round(100*tdt[time == zaman]$bdybro, 2), " . ")`
 
 :::
 
@@ -219,7 +221,7 @@ zama
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 DT::datatable(
   det_tab,options = list(dom = 't',
-                         pageLength = 33), 
+                         pageLength = 34), 
   caption = paste0('Detailed CBRT Balance Sheet Dated ', zaman)
 ) %>% formatStyle(
   'Accounts',
@@ -241,6 +243,7 @@ DT::datatable(
 "CBRT's Liabilities to Foreign Banks" , #15
 "SDR Liabilities" , #16
 "Other Deposits" , #17
+"Options", #17.5
 "Balance Sheet FX Liabilities" , #18
 "Balance Sheet Gold Liabilities" , #19
 "Balance Sheet Liabilities" , #20
@@ -274,7 +277,8 @@ c("#D3D3D3" , #1
 "#A8A8A8" , #14
 "#D3D3D3" , #15
 "#D3D3D3" , #16
-"#D3D3D3", #17
+"#D3D3D3" , #17
+"#D3D3D3" , #17.5
 "#E8E8E8" , #18
 "#E8E8E8" , #19
 "#FFFFFF" , #20
@@ -311,7 +315,7 @@ CBRT's [Gross Reserves](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/
   
 ::: {style="text-align: justify;"}
 
-On-Balance Sheet Foreign Exchange Liabilities of the CBRT were obtained by [Central Bank Weekly Statements](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/5/bie_mbblnch/en)
+On-Balance Sheet Foreign Exchange Liabilities of the CBRT were obtained by [Central Bank Weekly Statements](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/5/bie_mbblnch/en) and daily [Options](https://www.tcmb.gov.tr/wps/wcm/connect/a5df108d-d109-4dc0-9ea6-76a78b196b4d/V%C4%B0OP+%C4%B0%C5%9Flemleri.pdf?MOD=AJPERES)
 dataset and obtaiined in dollar terms by dividing values to the weekly exchange rate. Public Sector Foreign Exchange Liabilities are not included in this study. Because of exclusion of this item and the valuation effect  due to weekly foreign exchange, the Net Reserve position may differ from other calculations. 
 
 :::
