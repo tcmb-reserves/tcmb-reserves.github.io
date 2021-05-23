@@ -315,7 +315,7 @@ CBRT's [Gross Reserves](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/
   
 ::: {style="text-align: justify;"}
 
-On-Balance Sheet Foreign Exchange Liabilities of the CBRT were obtained by [Central Bank Weekly Statements](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/5/bie_mbblnch/en)
+On-Balance Sheet Foreign Exchange Liabilities of the CBRT were obtained by [Central Bank Weekly Statements](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/5/bie_mbblnch/en) and daily [Options](https://www.tcmb.gov.tr/wps/wcm/connect/a5df108d-d109-4dc0-9ea6-76a78b196b4d/V%C4%B0OP+%C4%B0%C5%9Flemleri.pdf?MOD=AJPERES)
 dataset and obtaiined in dollar terms by dividing values to the weekly exchange rate. Public Sector Foreign Exchange Liabilities are not included in this study. Because of exclusion of this item and the valuation effect  due to weekly foreign exchange, the Net Reserve position may differ from other calculations. 
 
 :::
