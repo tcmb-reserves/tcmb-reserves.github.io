@@ -277,6 +277,7 @@ lab= c(
   "Bilanco Disi Yukumlulukler", #4
   "Bankacilik Sektoru Mevduati", #5
   "Diger Mevduatlar", #6
+  "VIOP", #6.5
   "Yurtdisi Bankalar", #7
   "SDR Tahsisati", #8
   "Yurtici Bankalar", #9
@@ -312,6 +313,7 @@ par = c(
   "Bilanco Ici Yukumlulukler",
   "Bilanco Ici Yukumlulukler",
   "Bilanco Ici Yukumlulukler",
+  "Bilanco Ici Yukumlulukler",
   "Bankacilik Sektoru Mevduati",
   "Bankacilik Sektoru Mevduati",
   "Bankacilik Sektoru Mevduati",
@@ -339,6 +341,7 @@ valu = c(
   round(tdt[time == zaman]$bdy, 2),
   round(tdt[time == zaman]$bsb, 2),
   round(tdt[time == zaman]$dm, 2),
+  round(tdt[time == zaman]$viop, 2),
   round(tdt[time == zaman]$mbydby, 2),
   round(tdt[time == zaman]$sdry, 2),
   round(tdt[time == zaman]$yib, 2),
@@ -374,6 +377,7 @@ fig<-plot_ly(
                        "#ef3b2c", #4
                        "#6baed6", #5
                        "#6baed6", #6
+                       "#6baed6", #6.5
                        "#6baed6", #7
                        "#6baed6", #8
                        "#9ecae1", #9

@@ -314,7 +314,8 @@ tdt <- tdt[, -16]
 setnames(tdt, c("time", "bdy", "bsb", "yib", "yibn", "yibt", "yiba", "bydby", "zk",
                 "zkd", "zka", "dm", "mbydby", "sdry", "USD", "viop", "biy"))
 
-tdt[, bidy := zkd + yibn + yibt + mbydby + dm]
+
+tdt[, bidy := zkd + yibn + yibt + mbydby + dm + viop + sdry]
 
 tdt[, biay := zka + yiba]
 
