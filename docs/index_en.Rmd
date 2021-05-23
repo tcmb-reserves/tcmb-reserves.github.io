@@ -1,5 +1,5 @@
 ---
-title: CBRT Reserves and Swap Transcations
+title: CBRT Reserves and Swap Transcations <br> 12 May 2021
 author: 
   - Anıl İsmet Aşçı
    [E-mail](mailto:ismet.asci@outlook.com)
@@ -28,9 +28,12 @@ source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/
 
 ```
 
-<div style="float: right;"><a href=index.html>TR</a></div>
-
 ## About
+
+<br>
+<div style="float: right;"><a href=index.html>TR</a></div>
+<div style="float: left;"><a href="archive.html">Archive</a></div>
+<br>
 
 ::: {style="text-align: justify;"}
 
@@ -241,6 +244,7 @@ DT::datatable(
 "CBRT's Liabilities to Foreign Banks" , #15
 "SDR Liabilities" , #16
 "Other Deposits" , #17
+"Options", #17.5
 "Balance Sheet FX Liabilities" , #18
 "Balance Sheet Gold Liabilities" , #19
 "Balance Sheet Liabilities" , #20
@@ -274,7 +278,8 @@ c("#D3D3D3" , #1
 "#A8A8A8" , #14
 "#D3D3D3" , #15
 "#D3D3D3" , #16
-"#D3D3D3", #17
+"#D3D3D3" , #17
+"#D3D3D3" , #17.5
 "#E8E8E8" , #18
 "#E8E8E8" , #19
 "#FFFFFF" , #20

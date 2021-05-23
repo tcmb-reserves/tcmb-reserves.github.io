@@ -303,10 +303,16 @@ tdt <- tdt[, c(1,20)]
 
 tdt <- merge(tdt, a_BIY, by = "time")
 
-tdt[, biy := bsm + fb + sdr + dm]
+tdt <- merge(tdt, viop_table, by = "time")
+
+names(tdt)[17] <- "viop"
+
+tdt[, biy := bsm + fb + sdr + dm + viop]
+
+tdt <- tdt[, -16]
 
 setnames(tdt, c("time", "bdy", "bsb", "yib", "yibn", "yibt", "yiba", "bydby", "zk",
-                "zkd", "zka", "dm", "mbydby", "sdry", "USD", "biy"))
+                "zkd", "zka", "dm", "mbydby", "sdry", "USD", "viop", "biy"))
 
 tdt[, bidy := zkd + yibn + yibt + mbydby + dm]
 
@@ -316,7 +322,7 @@ tdt <- merge(a_brut, tdt, by = "time")
 
 setnames(tdt, c("time", "bra", "brd", "brsdr", "mk", "a", "tnvm", 
                 "brut", "bdy", "bsb", "yib", "yibn", "yibt", "yiba", "bydby",
-                "zk", "zkd", "zka", "dm", "mbydby", "sdry", "USD", "biy", 
+                "zk", "zkd", "zka", "dm", "mbydby", "sdry", "USD", "viop","biy", 
                 "bidy", "biay"))
 
 tdt[, a := NULL]
@@ -325,9 +331,9 @@ tdt <- merge(tdt, mat, by = "time")
 
 tdt <- merge(tdt, y_mb, by = "time")
 
-tdt <- tdt[, c(1:24, 39:42)]
+tdt <- tdt[, c(1:25, 40:43)]
 
-names(tdt)[25:28] <- c("yibs", "yibas", "yibds", "ydmbs")
+names(tdt)[26:29] <- c("yibs", "yibas", "yibds", "ydmbs")
 
 tdt[, bddy := yibds + ydmbs]
 
@@ -372,6 +378,7 @@ colnames(tablo) <- c("Zaman",
                      "MB'nin Yurtdisi Bankalara Yukumlulugu",
                      "SDR Yukumlulugu",
                      "Doviz Kuru",
+                     "VIOP",
                      "Bilanco İci Yukumlulukler",
                      "Bilanco İci Doviz Yukumlulugu",
                      "Bilanco İci Altin Yukumlulugu",
@@ -438,6 +445,8 @@ write_xlsx(tablo, paste0(getwd(), '/Tablo.xlsx'))
 
 # USD -    Doviz Kuru
 
+# viop -   VIOP
+ 
 # biy -    Bilanco İci Yukumlulukler
 
 # bidy -   Bilanco İci Doviz Yukumlulugu

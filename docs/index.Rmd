@@ -29,13 +29,15 @@ source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/
 ```
 
 <p style="color:blue">Bu sayfa yeni veriler geldikçe otomatik olarak güncellenecektir.</p>
-<p style="color:blue">Geçmiş haftaların verilerine bakmak için Arşiv'e tıklayabilirsiniz.</p>
 
 [Verileri İndir](https://github.com/tcmb-reserves/tcmb-reserves.github.io/blob/master/Tablo.xlsx?raw=true)
 
+## Çalışma Hakkında
+
+<br>
 <div style="float: right;"><a href="index_en.html">EN</a></div>
 
-## Çalışma Hakkında
+<div style="float: left;"><a href="arsiv.html">Arşiv</a></div>
 
 ::: {style="text-align: justify;"}
 
@@ -215,8 +217,9 @@ DT::datatable(
 "Yurtici Banka Teminat" , #13
 "Yurtici Bankalar Altin" , #14
 "Yurtdisi Bankalar" , #15
-"SDR yukululugu" , #16
+"SDR yukumlulugu" , #16
 "Diger Mevduatlar" , #17
+"VIOP", #17.5
 "Bilanco ici Doviz Yukumlulugu" , #18
 "Bilanco ici Altin Yukumlulugu" , #19
 "Bilanco ici Yukumlulukler" , #20
@@ -251,6 +254,7 @@ c("#D3D3D3" , #1
 "#D3D3D3" , #15
 "#D3D3D3" , #16
 "#D3D3D3", #17
+"#D3D3D3", #17.5
 "#E8E8E8" , #18
 "#E8E8E8" , #19
 "#FFFFFF" , #20
