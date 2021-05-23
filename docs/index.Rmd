@@ -34,7 +34,6 @@ source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/
 
 ## Çalışma Hakkında
 
-<br>
 <div style="float: right;"><a href="index_en.html">EN</a></div>
 
 <div style="float: left;"><a href="arsiv.html">Arşiv</a></div>

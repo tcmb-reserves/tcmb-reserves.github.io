@@ -30,7 +30,6 @@ source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/
 
 ## About
 
-<br>
 <div style="float: right;"><a href=index.html>TR</a></div>
 <div style="float: left;"><a href="archive.html">Archive</a></div>
 <br>
