@@ -1,5 +1,5 @@
 ---
-title: TCMB Rezervleri ve Swap İşlemleri
+title: TCMB Rezervleri ve Swap İşlemleri <br> 2 Nisan 2021
 author: 
   - Anıl İsmet Aşçı
    [E-mail](mailto:ismet.asci@outlook.com)
@@ -11,8 +11,6 @@ author:
 output:
  rmdformats::robobook
 ---
-
-
 
 ```{r setup, include=FALSE}
 
@@ -30,14 +28,20 @@ source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/
 
 ```
 
+<p style="color:blue">Bu sayfa yeni veriler geldikçe otomatik olarak güncellenecektir.</p>
 
-<div style="float: right;"><a href="TCMB_EN_2021-04-02.html">EN</a></div>
+[Verileri İndir](https://github.com/tcmb-reserves/tcmb-reserves.github.io/blob/master/Tablo.xlsx?raw=true)
 
 ## Çalışma Hakkında
 
+<div style="float: right;"><a href="index_en.html">EN</a></div>
+
+<div style="float: left;"><a href="arsiv.html">Arşiv</a></div>
+<br>
+
 ::: {style="text-align: justify;"}
 
-TCMB tarafından yapılan Swap işlemleri ve TCMB Rezervleri gündemde geniş bir yer kaplıyor. TCMB’nin açıkladığı Swap verilerinin EVDS veri sisteminde olmaması ve PDF formatında paylaşılması da Swap verilerinin çekilmesini ve analiz edilmesini zorlaştırıyor. Bu konuyu araştıran birçok ekonomist ve akademisyenin verilere ve rezervlerin son durumuna daha rahat ulaşabilmesi için böyle bir site hazırlama gereği duyduk. Çalışmamızda kullandığımız verileri [Brüt Resmi Rezerv Varlıkları](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/5/bie_abres2/tr), [TCMB Haftalık Vaziyeti](https://evds2.tcmb.gov.tr/index.php?/evds/serieMarket/collapse_13/5933/DataGroup/turkish/bie_mbblnch/), [TCMB Taraflı Swap İşlemleri](https://www.tcmb.gov.tr/wps/wcm/connect/a6ffdb2f-47d9-4ae9-8c39-5075867aaec3/TCMB+Tarafli+Swap+Islemleri.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-a6ffdb2f-47d9-4ae9-8c39-5075867aaec3-nzm2YQt%22) ve [1 aya kadar vadeli yurt içi para karşılığında döviz forward ve future’ların toplam açık ve fazla pozisyonu](https://www.tcmb.gov.tr/wps/wcm/connect/cc755e33-b5c0-4632-bfe4-2434d35da011/RT20210326TR.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-cc755e33-b5c0-4632-bfe4-2434d35da011-nzliV18)'ndan elde ettik. Bu işlemleri R programını kullanarak yaptık. Hesaplamalara dair detaylı bilgiler Metodoloji bölümünde bulunmaktadır. Çalışmamız açık kodludur. Kaynak koduna [GitHub sayfamızdan](https://github.com/tcmb-reserves/tcmb-reserves.github.io) erişebilirsiniz. Yeni veriler açıklandıkça sayfa güncellenecektir.
+TCMB tarafından yapılan Swap işlemleri ve TCMB Rezervleri gündemde geniş bir yer kaplıyor. TCMB’nin açıkladığı Swap verilerinin EVDS veri sisteminde olmaması ve PDF formatında paylaşılması da Swap verilerinin çekilmesini ve analiz edilmesini zorlaştırıyor. Bu konuyu araştıran birçok ekonomist ve akademisyenin verilere ve rezervlerin son durumuna daha rahat ulaşabilmesi için rezervleri otomatik çıkartan bir site hazırlama gereği duyduk. Çalışmamızda kullandığımız verileri [Brüt Resmi Rezerv Varlıkları](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/5/bie_abres2/tr), [TCMB Haftalık Vaziyeti](https://evds2.tcmb.gov.tr/index.php?/evds/serieMarket/collapse_13/5933/DataGroup/turkish/bie_mbblnch/), [TCMB Taraflı Swap İşlemleri](https://www.tcmb.gov.tr/wps/wcm/connect/a6ffdb2f-47d9-4ae9-8c39-5075867aaec3/TCMB+Tarafli+Swap+Islemleri.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-a6ffdb2f-47d9-4ae9-8c39-5075867aaec3-nzm2YQt%22) ve [1 aya kadar vadeli yurt içi para karşılığında döviz forward ve future’ların toplam açık ve fazla pozisyonu](https://www.tcmb.gov.tr/wps/wcm/connect/cc755e33-b5c0-4632-bfe4-2434d35da011/RT20210326TR.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-cc755e33-b5c0-4632-bfe4-2434d35da011-nzliV18)'ndan elde ettik. Bu işlemleri R programını kullanarak yaptık. Hesaplamalara dair detaylı bilgiler Metodoloji bölümünde bulunmaktadır. Çalışmamız açık kodludur. Kaynak koduna [GitHub sayfamızdan](https://github.com/tcmb-reserves/tcmb-reserves.github.io) erişebilirsiniz. Yeni veriler açıklandıkça sayfa güncellenecektir.
 
 :::
 
@@ -129,7 +133,7 @@ paste0(round((tdt[time == zaman]$shndr), 2)), " olmustur."
 
 ::: {style="text-align: justify;"} 
 
-`r paste0( "Bilanco disi yukumluluklerin brut rezervlere orani ise %", round(tdt[time == zaman]$bdybro, 2), " olmustur.")`
+`r paste0( "Bilanco disi yukumluluklerin brut rezervlere orani ise %", round(100*tdt[time == zaman]$bdybro, 2), " olmustur.")`
 
 :::
 
@@ -193,7 +197,7 @@ zama
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 DT::datatable(
   det_tab,options = list(dom = 't',
-                         pageLength = 33), 
+                         pageLength = 34), 
   caption = paste0(zaman," Tarihli ",'Detayli Merkez Bankasi Bilancosu ')
 ) %>% formatStyle(
   'Hesaplar',
@@ -213,8 +217,9 @@ DT::datatable(
 "Yurtici Banka Teminat" , #13
 "Yurtici Bankalar Altin" , #14
 "Yurtdisi Bankalar" , #15
-"SDR yukululugu" , #16
+"SDR yukumlulugu" , #16
 "Diger Mevduatlar" , #17
+"VIOP", #17.5
 "Bilanco ici Doviz Yukumlulugu" , #18
 "Bilanco ici Altin Yukumlulugu" , #19
 "Bilanco ici Yukumlulukler" , #20
@@ -249,6 +254,7 @@ c("#D3D3D3" , #1
 "#D3D3D3" , #15
 "#D3D3D3" , #16
 "#D3D3D3", #17
+"#D3D3D3", #17.5
 "#E8E8E8" , #18
 "#E8E8E8" , #19
 "#FFFFFF" , #20
@@ -294,7 +300,7 @@ kullanılarak dolar cinsine çevirilmiştir. Döviz kurunun haftalık alınması
 ::: {style="text-align: justify;"}
 
 TCMB'nin Bilanço İçi Yükümlülükleri ise [Merkez Bankası Haftalık Vaziyeti](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/5/bie_mbblnch/tr)
-veri seti kullanılarak hazırlanmış ve alakalı haftadaki döviz kuruna bölünerek dolar cinsinden elde edilmiştir. 
+veri seti ve günlük [VIOP](https://www.tcmb.gov.tr/wps/wcm/connect/a5df108d-d109-4dc0-9ea6-76a78b196b4d/V%C4%B0OP+%C4%B0%C5%9Flemleri.pdf?MOD=AJPERES) işlemleri kullanılarak hazırlanmış ve alakalı haftadaki döviz kuruna bölünerek dolar cinsinden elde edilmiştir. 
 Kamu Sektörü Yabancı Para Mevduatı, rezerv hesaplamalarına dahil edilmemiştir. 
 Bu kalemin dahil edilmemesi ve değerleme etkisiyle net rezerv pozisyonu diğer hesaplama yöntemleriyle çıkan sonuçlardan farklılık gösterebilmektedir.
 
@@ -303,7 +309,7 @@ Bu kalemin dahil edilmemesi ve değerleme etkisiyle net rezerv pozisyonu diğer 
 ::: {style="text-align: justify;"}
 
 TCMB'nin Bilanço Dışı Yükümlülükleri, TCMB Taraflı Swap İşlemleri ile 
-[1 aya kadar vadeli yurt içi para karşılığında döviz forward ve futre'ların toplam açık ve fazla pozisyonu](https://www.tcmb.gov.tr/wps/wcm/connect/cc755e33-b5c0-4632-bfe4-2434d35da011/RT20210326TR.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-cc755e33-b5c0-4632-bfe4-2434d35da011-nzliV18) kullanılarak hesaplanmıştır.
+[1 aya kadar vadeli yurt içi para karşılığında döviz forward ve future'ların toplam açık ve fazla pozisyonu](https://www.tcmb.gov.tr/wps/wcm/connect/cc755e33-b5c0-4632-bfe4-2434d35da011/RT20210326TR.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-cc755e33-b5c0-4632-bfe4-2434d35da011-nzliV18) kullanılarak hesaplanmıştır.
 [TCMB Taraflı Swap İşlemleri](https://www.tcmb.gov.tr/wps/wcm/connect/a6ffdb2f-47d9-4ae9-8c39-5075867aaec3/TCMB+Tarafli+Swap+Islemleri.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-a6ffdb2f-47d9-4ae9-8c39-5075867aaec3-nzm2YQt%22) tarafımızca 
 [xlsx](https://github.com/aiasci/swap/raw/master/swap.xlsx) ve [csv](https://github.com/aiasci/swap/raw/master/swap.csv) formatına çevrilmiştir. 
 Çalışmada rezervler haftalık olarak incelendiğinden döviz forward ve future'larının toplamı yerine 1 aya kadar vadeli verilerin kullanımı diğer 
