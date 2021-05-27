@@ -1,5 +1,5 @@
 ---
-title: CBRT Reserves and Swap Transcations <br> 12 May 2021
+title: CBRT Reserves and Swap Transcations <br> 21 May 2021
 author: 
   - Anıl İsmet Aşçı
    [E-mail](mailto:ismet.asci@outlook.com)
@@ -18,7 +18,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/master/docs/netrezerv_en.R")
 
-zaman <- tdt[14]$time
+zaman <- tdt[nrow(tdt)]$time
 
 zaman1 <- tdt[tdt[time == zaman, which = T] - 1]$time
 
