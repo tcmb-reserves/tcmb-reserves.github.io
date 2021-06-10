@@ -196,7 +196,7 @@ yswap$rown <- c(1:nrow(yswap))
 
 yswap[, word := gsub(".", "", word, fixed = TRUE)]
 
-val <- as.numeric(yswap$word[yswap[ word == "kapsar"]$rown+6])
+val <- as.numeric(yswap$word[yswap[ word == "kapsar"]$rown+5])
 
 # tum kelimeleri numeric yapar
 

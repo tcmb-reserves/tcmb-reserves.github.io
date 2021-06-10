@@ -93,7 +93,7 @@ BIY[, sdr := sdr/(USD*1000)]
 
 # Bilanco Disi Yukumlulukler
 
-### Yurtiçi Swap --------------
+### Yurtici Swap --------------
 
 pdftable_to_dt <- function(x) {
   a <-  data.table(read_pdf(x))
@@ -196,7 +196,7 @@ yswap$rown <- c(1:nrow(yswap))
 
 yswap[, word := gsub(".", "", word, fixed = TRUE)]
 
-val <- as.numeric(yswap$word[yswap[ word == "kapsar"]$rown+5])
+val <- as.numeric(yswap$word[yswap[ word == "kapsar"]$rown+6])
 
 # tum kelimeleri numeric yapar
 
@@ -314,7 +314,6 @@ tdt <- tdt[, -16]
 setnames(tdt, c("time", "bdy", "bsb", "yib", "yibn", "yibt", "yiba", "bydby", "zk",
                 "zkd", "zka", "dm", "mbydby", "sdry", "USD", "viop", "biy"))
 
-
 tdt[, bidy := zkd + yibn + yibt + mbydby + dm + viop + sdry]
 
 tdt[, biay := zka + yiba]
@@ -356,128 +355,128 @@ tdt[, ty := biy + bdy]
 
 tdt[, bdybro := bdy/brut]
 
-data_table = tdt
+tablo = tdt
 
-colnames(data_table) <- c("Date", 
-                          "Gross Gold Reserves",
-                          "Gross  Foreign Exchange Reserves",
-                          "Gross SDR Reserves",
-                          "Securities",
-                          "Total Cash and Deposit",
-                          "Total Gross Reserves",
-                          "Off-Balance Sheet Liabilities",
-                          "Banking Sector Balance Sheet",
-                          "Domestic Banks",
-                          "Domestic Banks - Cash",
-                          "Domestic Banks - Collateral",
-                          "Domestic Banks - Gold",
-                          "Domestic Banks' Liabilities to Foreign Banks",
-                          "Required Reserves",
-                          "Required Reserves - FX",
-                          "Required Reserves - Gold",
-                          "Other Deposits",
-                          "CBRT's Liabilities to Foreign Banks",
-                          "SDR Liabilities",
-                          "Exchange Rate",
-                          "Options",
-                          "Balance Sheet Liabilities",
-                          "Balance Sheet FX Liabilities",
-                          "Balance Sheet Gold Liabilities",
-                          "Domestic Banks - Swap",
-                          "Domestic Banks - Swap - Gold",
-                          "Domestic Banks - Swap - FX",
-                          "Foreign Central Banks - Swap",
-                          "Off-Balance Sheet FX Liabilities",
-                          "Off-Balance Sheet Gold Liabilities",
-                          "Net Reserves",
-                          "Net Reserves (excluding Swap)",
-                          "Net Gold Reserves (excluding Swap)",
-                          "Net FX Reserves",
-                          "Net Gold Reserves",
-                          "Net FX Reserves (excluding Swap)",
-                          "Total Liabilities",
-                          "Ratio of Off-Balance Sheet Liabilities to Gross Reserves"
+colnames(tablo) <- c("Zaman", 
+                     "Brut Rezerv Altin",
+                     "Brut Rezerv Doviz",
+                     "Brut Rezerv SDR",
+                     "Menkul Kiymetler",
+                     "Toplam Nakit ve Mevduat",
+                     "Brut Rezerv",
+                     "Bilanco Disi Yukumlulukler",
+                     "Bankacilik Sektoru Bilancosu",
+                     "Yurtici Bankalar",
+                     "Yurtici Bankalar Nakit",
+                     "Yurtici Bankalar Teminat",
+                     "Yurtici Bankalar Altin",
+                     "Bankalarin Yurtdisi Bankalara Yukumlulugu",
+                     "Zorunlu Karsiliklar",
+                     "Zorunlu Karsiliklar Doviz",
+                     "Zorunlu Karsiliklar Altin",
+                     "Diger Mevduatlar",
+                     "MB'nin Yurtdisi Bankalara Yukumlulugu",
+                     "SDR Yukumlulugu",
+                     "Doviz Kuru",
+                     "VIOP",
+                     "Bilanco İci Yukumlulukler",
+                     "Bilanco İci Doviz Yukumlulugu",
+                     "Bilanco İci Altin Yukumlulugu",
+                     "Yurtici Bankalar Swap",
+                     "Yurtici Bankalar Altin Swapi",
+                     "Yurtici Bankalar Doviz Swapi",
+                     "Yurtdisi Merkez Bankalari Swap",
+                     "Bilanco Disi Doviz Yukumlulugu",
+                     "Bilanco Disi Altin Yukumlulugu",
+                     "Net Rezerv",
+                     "Swap Haric Net Rezerv",
+                     "Swap Haric Net Altin Rezervi",
+                     "Net Doviz Rezervi",
+                     "Net Altin Rezervi",
+                     "Swap Haric Net Doviz Rezervi",
+                     "Toplam Yukumlulukler",
+                     "Bilanco Disi Yukumluluklerin Brut Rezerve Orani"
 )
 
 
-write_xlsx(data_table, paste0(getwd(), '/data_table.xlsx'))
+write_xlsx(tablo, paste0(getwd(), '/Tablo.xlsx'))
 
 ################# tdt verileri #################################################
 
-# time -   Date
+# time -   Zaman
 
-# bra -    Gross Gold Reserves
+# bra -    Brut Rezerv Altin
 
-# brd -    Gross  Foreign Exchange Reserves
+# brd -    Brut Rezerv Doviz
 
-# brsdr -  Gross SDR Reserves
+# brsdr -  Brut Rezerv SDR
 
-# mk -     Securities
+# mk -     Menkul Kiymetler
 
-# tnvm -   Total Cash and Deposit
+# tnvm -   Toplam Nakit ve Mevduat
 
-# brut -   Total Gross Reserves
+# brut -   Brut Rezerv
 
-# bdy -    Off-Balance Sheet Liabilities
+# bdy -    Bilanco Disi Yukumlulukler
 
-# bsb -    Banking Sector Balance Sheet
+# bsb -    Bankacilik Sektoru Bilancosu
 
-# yib -    Domestic Banks
+# yib -    Yurtici Bankalar
 
-# yibn -   Domestic Banks - Cash
+# yibn -   Yurtici Bankalar Nakit
 
-# yibt -   Domestic Banks - Collateral
+# yibt -   Yurtici Bankalar Teminat
 
-# yiba -   Domestic Banks - Gold
+# yiba -   Yurtici Bankalar Altin
 
-# bydby -  Domestic Banks' Liabilities to Foreign Banks
+# bydby -  Bankalarin Yurtdisi Bankalara Yukumlulugu
 
-# zk -     Required Reserves
+# zk -     Zorunlu Karsiliklar
 
-# zkd -    Required Reserves - FX
+# zkd -    Zorunlu Karsiliklar Doviz
 
-# zka -    Required Reserves - Gold
+# zka -    Zorunlu Karsiliklar Altin
 
-# dm -     Other Deposits
+# dm -     Diger Mevduatlar
 
-# mbydby - CBRT's Liabilities to Foreign Banks
+# mbydby - MB'nin Yurtdisi Bankalara Yukumlulugu
 
-# sdry -   SDR Liabilities
+# sdry -   SDR Yukumlulugu
 
-# USD -    Exchange Rate
+# USD -    Doviz Kuru
 
-# viop -   Options
+# viop -   VIOP
 
-# biy -    Balance Sheet Liabilities
+# biy -    Bilanco İci Yukumlulukler
 
-# bidy -   Balance Sheet FX Liabilities
+# bidy -   Bilanco İci Doviz Yukumlulugu
 
-# biay -   Balance Sheet Gold Liabilities
+# biay -   Bilanco İci Altin Yukumlulugu
 
-# yibs -   Domestic Banks - Swap
+# yibs -   Yurtici Bankalar Swap
 
-# yibas -  Domestic Banks - Swap - Gold
+# yibas -  Yurtici Bankalar Altin Swapi
 
-# yibds -  Domestic Banks - Swap - FX
+# yibds -  Yurtici Bankalar Doviz Swapi
 
-# ydmbs -  Foreign Central Banks - Swap
+# ydmbs -  Yurtdisi Merkez Bankalari Swap 
 
-# bddy -   Off-Balance Sheet FX Liabilities
+# bddy -   Bilanco Disi Doviz Yukumlulugu
 
-# bday -   Off-Balance Sheet Gold Liabilities
+# bday -   Bilanco Disi Altin Yukumlulugu
 
-# netr -   Net Reserves
+# netr -   Net Rezerv
 
-# shnetr - Net Reserves (excluding Swap)
+# shnetr - Swap Haric Net Rezerv
 
-# shnar -  Net Gold Reserves (excluding Swap)
+# shnar -  Swap Haric Net Altin Rezervi
 
-# ndr -    Net FX Reserves
+# ndr -    Net Doviz Rezervi
 
-# nar -    Net Gold Reserves
+# nar -    Net Altin Rezervi
 
-# shndr -  Net FX Reserves (excluding Swap)
+# shndr -  Swap Haric Net Doviz Rezervi
 
-# ty -     Total Liabilities
+# ty -     Toplam Yukumlulukler
 
-# bdybro - Ratio of Off-Balance Sheet Liabilities to Gross Reserves
+# bdybro - Bilanco Disi Yukumluluklerin Brut Rezerve Orani
