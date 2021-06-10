@@ -1,5 +1,5 @@
 ---
-title: TCMB Rezervleri ve Swap İşlemleri <br> 28 Mayıs 2021
+title: TCMB Rezervleri ve Swap İşlemleri <br> 4 Haziran 2021
 author: 
   - Anıl İsmet Aşçı
    [E-mail](mailto:ismet.asci@outlook.com)
@@ -16,7 +16,7 @@ output:
 
 knitr::opts_chunk$set(echo = TRUE)
 
-source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/master/docs/netrezerv.R")
+source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/master/docs/netrezerv_6.R")
 
 zaman <- tdt[nrow(tdt)]$time
 
