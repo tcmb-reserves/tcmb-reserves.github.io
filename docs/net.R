@@ -265,19 +265,9 @@ save(total_swap, file = paste0(getwd(), "/Total_Swap.RData"))
 
 rm(a)
 
-rm(swap)
-
 rm(yswap)
 
 rm(ii)
-
-rm(k)
-
-rm(sel)
-
-rm(selp)
-
-rm(w)
 
 mat <- merge(mat, total_swap, by = "time")
 
