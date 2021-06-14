@@ -349,7 +349,17 @@ tdt[, ty := biy + bdy]
 
 tdt[, bdybro := bdy/brut]
 
+names(tdt)[25] <- "USD"
+
+names(tdt)[18] <- "bydby"
+
+setcolorder(tdt, c("time", "bra", "brd", "brsdr", "mk", "tnvm", "brut", "bdy", "bsb", "yib", "yibn",
+                   "yibt", "yiba", "bydby", "zk", "zkd", "zka", "dm", "mbydby", "sdry", "USD", "viop",
+                   "biy", "bidy", "biay", "yibs", "yibas", "yibds", "ydmbs", "bddy", "bday", "netr", "shnetr",
+                   "shnar", "ndr", "nar", "shndr", "ty", "bdybro"))
 tablo = tdt
+
+
 
 colnames(tablo) <- c("Zaman", 
                      "Brut Rezerv Altin",
