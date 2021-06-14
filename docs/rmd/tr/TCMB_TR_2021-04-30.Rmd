@@ -16,7 +16,7 @@ output:
 
 knitr::opts_chunk$set(echo = TRUE)
 
-source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/master/docs/netrezerv.R")
+source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/master/docs/net.R")
 
 zaman <- tdt[12]$time
 
@@ -28,20 +28,22 @@ source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/
 
 ```
 
+<p style="color:red"> Yaptığımız hesaplamalarda, Yurtdışı Merkez Bankaları Swap verisini hatalı topladığımız için Swap Hariç Net Rezervler olduğundan daha küçük (yaklaşık 7 Milyar Dolar) gözükmüştür.Yaptığımız bu hatadan dolayı öncelikle bu araştırmayı paylaşan kişilerden ve kamuoyundan özür dileriz. Bizi hatamız konusunda uyaran İris Cibre'ye ve "atk_1881" adlı Twitter kullanıcısına da teşekkür ederiz. Sayfadaki veriler bu hata ortadan kaldırılacak şekilde düzenlenmiştir.</p>
+
 <p style="color:blue">Bu sayfa yeni veriler geldikçe otomatik olarak güncellenecektir.</p>
 
 [Verileri İndir](https://github.com/tcmb-reserves/tcmb-reserves.github.io/blob/master/Tablo.xlsx?raw=true)
 
 ## Çalışma Hakkında
 
-<div style="float: right;"><a href="index_en.html">EN</a></div>
+<div style="float: right;"><a href="TCMB_EN_2021-05-28.html">EN</a></div>
 
 <div style="float: left;"><a href="arsiv.html">Arşiv</a></div>
 <br>
 
 ::: {style="text-align: justify;"}
 
-TCMB tarafından yapılan Swap işlemleri ve TCMB Rezervleri gündemde geniş bir yer kaplıyor. TCMB’nin açıkladığı Swap verilerinin EVDS veri sisteminde olmaması ve PDF formatında paylaşılması da Swap verilerinin çekilmesini ve analiz edilmesini zorlaştırıyor. Bu konuyu araştıran birçok ekonomist ve akademisyenin verilere ve rezervlerin son durumuna daha rahat ulaşabilmesi için rezervleri otomatik çıkartan bir site hazırlama gereği duyduk. Çalışmamızda kullandığımız verileri [Brüt Resmi Rezerv Varlıkları](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/5/bie_abres2/tr), [TCMB Haftalık Vaziyeti](https://evds2.tcmb.gov.tr/index.php?/evds/serieMarket/collapse_13/5933/DataGroup/turkish/bie_mbblnch/), [TCMB Taraflı Swap İşlemleri](https://www.tcmb.gov.tr/wps/wcm/connect/a6ffdb2f-47d9-4ae9-8c39-5075867aaec3/TCMB+Tarafli+Swap+Islemleri.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-a6ffdb2f-47d9-4ae9-8c39-5075867aaec3-nzm2YQt%22) ve [1 aya kadar vadeli yurt içi para karşılığında döviz forward ve future’ların toplam açık ve fazla pozisyonu](https://www.tcmb.gov.tr/wps/wcm/connect/cc755e33-b5c0-4632-bfe4-2434d35da011/RT20210326TR.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-cc755e33-b5c0-4632-bfe4-2434d35da011-nzliV18)'ndan elde ettik. Bu işlemleri R programını kullanarak yaptık. Hesaplamalara dair detaylı bilgiler Metodoloji bölümünde bulunmaktadır. Çalışmamız açık kodludur. Kaynak koduna [GitHub sayfamızdan](https://github.com/tcmb-reserves/tcmb-reserves.github.io) erişebilirsiniz. Yeni veriler açıklandıkça sayfa güncellenecektir.
+TCMB tarafından yapılan Swap işlemleri ve TCMB Rezervleri gündemde geniş bir yer kaplıyor. TCMB’nin açıkladığı Swap verilerinin EVDS veri sisteminde olmaması ve PDF formatında paylaşılması da Swap verilerinin çekilmesini ve analiz edilmesini zorlaştırıyor. Bu konuyu araştıran birçok ekonomist ve akademisyenin verilere ve rezervlerin son durumuna daha rahat ulaşabilmesi için rezervleri otomatik çıkartan bir site hazırlama gereği duyduk. Çalışmamızda kullandığımız verileri [Brüt Resmi Rezerv Varlıkları](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/5/bie_abres2/tr), [TCMB Haftalık Vaziyeti](https://evds2.tcmb.gov.tr/index.php?/evds/serieMarket/collapse_13/5933/DataGroup/turkish/bie_mbblnch/), [TCMB Taraflı Swap İşlemleri](https://www.tcmb.gov.tr/wps/wcm/connect/a6ffdb2f-47d9-4ae9-8c39-5075867aaec3/TCMB+Tarafli+Swap+Islemleri.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-a6ffdb2f-47d9-4ae9-8c39-5075867aaec3-nzm2YQt%22) ve [Uluslararası Rezervler ve Döviz Likiditesi](https://www.tcmb.gov.tr/wps/wcm/connect/cc755e33-b5c0-4632-bfe4-2434d35da011/RT20210326TR.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-cc755e33-b5c0-4632-bfe4-2434d35da011-nzliV18)'nden elde ettik. Bu işlemleri R programını kullanarak yaptık. Hesaplamalara dair detaylı bilgiler Metodoloji bölümünde bulunmaktadır. Çalışmamız açık kodludur. Kaynak koduna [GitHub sayfamızdan](https://github.com/tcmb-reserves/tcmb-reserves.github.io) erişebilirsiniz. Yeni veriler açıklandıkça sayfa güncellenecektir.
 
 :::
 
@@ -308,12 +310,11 @@ Bu kalemin dahil edilmemesi ve değerleme etkisiyle net rezerv pozisyonu diğer 
 
 ::: {style="text-align: justify;"}
 
-TCMB'nin Bilanço Dışı Yükümlülükleri, TCMB Taraflı Swap İşlemleri ile 
-[1 aya kadar vadeli yurt içi para karşılığında döviz forward ve future'ların toplam açık ve fazla pozisyonu](https://www.tcmb.gov.tr/wps/wcm/connect/cc755e33-b5c0-4632-bfe4-2434d35da011/RT20210326TR.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-cc755e33-b5c0-4632-bfe4-2434d35da011-nzliV18) kullanılarak hesaplanmıştır.
+TCMB'nin Bilanço Dışı Yükümlülükleri, [TCMB Taraflı Swap İşlemleri](https://www.tcmb.gov.tr/wps/wcm/connect/a6ffdb2f-47d9-4ae9-8c39-5075867aaec3/TCMB+Tarafli+Swap+Islemleri.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-a6ffdb2f-47d9-4ae9-8c39-5075867aaec3-nzm2YQt%22) ile 
+[Uluslararası Rezervler ve Döviz Likiditesi](https://www.tcmb.gov.tr/wps/wcm/connect/cc755e33-b5c0-4632-bfe4-2434d35da011/RT20210326TR.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-cc755e33-b5c0-4632-bfe4-2434d35da011-nzliV18) kullanılarak hesaplanmıştır.
 [TCMB Taraflı Swap İşlemleri](https://www.tcmb.gov.tr/wps/wcm/connect/a6ffdb2f-47d9-4ae9-8c39-5075867aaec3/TCMB+Tarafli+Swap+Islemleri.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-a6ffdb2f-47d9-4ae9-8c39-5075867aaec3-nzm2YQt%22) tarafımızca 
 [xlsx](https://github.com/aiasci/swap/raw/master/swap.xlsx) ve [csv](https://github.com/aiasci/swap/raw/master/swap.csv) formatına çevrilmiştir. 
-Çalışmada rezervler haftalık olarak incelendiğinden döviz forward ve future'larının toplamı yerine 1 aya kadar vadeli verilerin kullanımı diğer 
-kimi hesaplardan farklı sonuçlar çıkarabilir.
+TCMB Taraflı Swap İşlemleri kullanılarak Yurtiçi Bankalar Swap verisi hesaplanmıştır. Toplam Swap değeri, Uluslararası Rezervler ve Döviz Likiditesi dosyasında yer alan “II. Döviz varlıklarından önceden belirlenmiş kısa dönem net çıkışlar (nominal değer)” tablosundaki “2.” ve “3.” değerleri toplanarak elde edilmiştir. Yurtdışı Merkez Bankaları Swap verisi ise Toplam Swap verisinden Yurtiçi Bankalar Swap verisi çıkartılarak elde edilmiştir.
 
 :::
                                                                         

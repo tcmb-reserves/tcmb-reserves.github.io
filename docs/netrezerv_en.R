@@ -196,7 +196,11 @@ yswap$rown <- c(1:nrow(yswap))
 
 yswap[, word := gsub(".", "", word, fixed = TRUE)]
 
-val <- as.numeric(yswap$word[yswap[ word == "kapsar"]$rown+5])
+toplam <- as.numeric(yswap$word[yswap[ word == "kapsar"]$rown+5])
+
+diger <- as.numeric(yswap$word[yswap[ word == "kapsar"]$rown+19])
+
+val <- toplam + diger
 
 # tum kelimeleri numeric yapar
 
@@ -247,33 +251,28 @@ if (nchar(tt) == 7) {
 
 tswap <- as.Date(tswap)
 
-load(paste0(getwd(), "/Yabanci_MB.RData"))
+load(paste0(getwd(), "/Total_Swap.RData"))
 
-y_mb_new <- data.table(time = tswap, mb = val)
+total_swap_new <- data.table(time = tswap, tswp = val)
 
-if (sum(tswap == y_mb$time) < 1){
+if (sum(tswap == total_swap$time) < 1){
   
-  y_mb <- rbind(y_mb, y_mb_new)
+  total_swap <- rbind(total_swap, total_swap_new)
   
 }
 
-save(y_mb, file = paste0(getwd(), "/Yabanci_MB.RData"))
+save(total_swap, file = paste0(getwd(), "/Total_Swap.RData"))
 
 rm(a)
-
-rm(swap)
 
 rm(yswap)
 
 rm(ii)
 
-rm(k)
+mat <- merge(mat, total_swap, by = "time")
 
-rm(sel)
+mat[, ydmbs := tsw - toplam]
 
-rm(selp)
-
-rm(w)
 
 ########################### Data Table #########################################
 
@@ -295,25 +294,29 @@ a_BIY <- na.locf(a_BIY, fromLast = T)
 
 mat[time == "2021-01-04", ]$time <- as.Date("2021-01-01")
 
-tdt <- merge(mat, y_mb, by = "time")
+tdt <- mat
 
-tdt[, bdy := toplam + mb]
+tdt[, bdy := tsw]
 
-tdt <- tdt[, c(1,20)]
+tdt[, tsw := NULL]
+
+tdt <- tdt[, c(1,16:20)]
+
+setnames(tdt, c("time", "yibs", "yibas", "yibds", "ydmbs", "bdy"))
 
 tdt <- merge(tdt, a_BIY, by = "time")
 
 tdt <- merge(tdt, viop_table, by = "time")
 
-names(tdt)[17] <- "viop"
+names(tdt)[21] <- "viop"
 
 tdt[, biy := bsm + fb + sdr + dm + viop]
 
-tdt <- tdt[, -16]
+tdt <- tdt[, -20]
 
-setnames(tdt, c("time", "bdy", "bsb", "yib", "yibn", "yibt", "yiba", "bydby", "zk",
-                "zkd", "zka", "dm", "mbydby", "sdry", "USD", "viop", "biy"))
+names(tdt)[9:11] <- c("yibn", "yibt", "yiba")
 
+names(tdt)[17:18] <- c("mbydby", "sdry")
 
 tdt[, bidy := zkd + yibn + yibt + mbydby + dm + viop + sdry]
 
@@ -321,20 +324,11 @@ tdt[, biay := zka + yiba]
 
 tdt <- merge(a_brut, tdt, by = "time")
 
-setnames(tdt, c("time", "bra", "brd", "brsdr", "mk", "a", "tnvm", 
-                "brut", "bdy", "bsb", "yib", "yibn", "yibt", "yiba", "bydby",
-                "zk", "zkd", "zka", "dm", "mbydby", "sdry", "USD", "viop","biy", 
-                "bidy", "biay"))
+names(tdt)[2:8] <- c("bra", "brd", "brsdr", "mk", "a", "tnvm", "brut")
 
 tdt[, a := NULL]
 
-tdt <- merge(tdt, mat, by = "time")
-
-tdt <- merge(tdt, y_mb, by = "time")
-
-tdt <- tdt[, c(1:25, 40:43)]
-
-names(tdt)[26:29] <- c("yibs", "yibas", "yibds", "ydmbs")
+names(tdt)[13] <- "bsb"
 
 tdt[, bddy := yibds + ydmbs]
 
@@ -355,6 +349,15 @@ tdt[, shndr := brd - yibn - yibt - zkd - dm - mbydby - ydmbs - yibds - viop]
 tdt[, ty := biy + bdy]
 
 tdt[, bdybro := bdy/brut]
+
+names(tdt)[25] <- "USD"
+
+names(tdt)[18] <- "bydby"
+
+setcolorder(tdt, c("time", "bra", "brd", "brsdr", "mk", "tnvm", "brut", "bdy", "bsb", "yib", "yibn",
+                   "yibt", "yiba", "bydby", "zk", "zkd", "zka", "dm", "mbydby", "sdry", "USD", "viop",
+                   "biy", "bidy", "biay", "yibs", "yibas", "yibds", "ydmbs", "bddy", "bday", "netr", "shnetr",
+                   "shnar", "ndr", "nar", "shndr", "ty", "bdybro"))
 
 data_table = tdt
 
