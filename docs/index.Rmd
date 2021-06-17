@@ -16,9 +16,9 @@ output:
 
 knitr::opts_chunk$set(echo = TRUE)
 
-n1 <-
+n1 <- 5
   
-n2 <-
+n2 <- 19
 
 source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/master/docs/net.R")
 
