@@ -16,10 +16,6 @@ output:
 
 knitr::opts_chunk$set(echo = TRUE)
 
-n1 <- 
-
-n2 <- 
-
 source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/master/docs/netrezerv_en.R")
 
 zaman <- tdt[nrow(tdt)]$time
@@ -31,8 +27,6 @@ ilkk <- as.Date("2021-01-01")
 source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/master/docs/graphs_en.R")
 
 ```
-
-<p style="color:red"> We are sorry to announce that we made a mistake while calculating "Foreign Central Banks - Swap" values before. We corrected the calculation methods, methodology, and all the values according to the mistake.</p>
 
 <p style="color:blue"> This page will be updated automatically as new data released.</p>
 
