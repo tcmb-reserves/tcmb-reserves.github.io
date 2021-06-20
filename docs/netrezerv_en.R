@@ -263,12 +263,6 @@ if (sum(tswap == total_swap$time) < 1){
 
 save(total_swap, file = paste0(getwd(), "/Total_Swap.RData"))
 
-rm(a)
-
-rm(yswap)
-
-rm(ii)
-
 mat <- merge(mat, total_swap, by = "time")
 
 mat[, ydmbs := tsw - toplam]
