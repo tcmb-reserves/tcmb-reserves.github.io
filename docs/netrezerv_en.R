@@ -251,7 +251,7 @@ if (nchar(tt) == 7) {
 
 tswap <- as.Date(tswap)
 
-load(paste0(getwd(), "/docs/Total_Swap.RData"))
+load(paste0(getwd(), "/Total_Swap.RData"))
 
 total_swap_new <- data.table(time = tswap, tsw = val)
 
@@ -261,7 +261,7 @@ if (sum(tswap == total_swap$time) < 1){
   
 }
 
-save(total_swap, file = paste0(getwd(), "/docs/Total_Swap.RData"))
+save(total_swap, file = paste0(getwd(), "/Total_Swap.RData"))
 
 rm(a)
 
