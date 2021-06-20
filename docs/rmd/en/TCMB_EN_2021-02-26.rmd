@@ -28,8 +28,6 @@ source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/
 
 ```
 
-<p style="color:red"> We are sorry to announce that we made a mistake while calculating "Foreign Central Banks - Swap" values before. We corrected the calculation methods, methodology, and all the values according to the mistake.</p>
-
 <p style="color:blue"> This page will be updated automatically as new data released.</p>
 
 [Download the Dataset](https://github.com/tcmb-reserves/tcmb-reserves.github.io/raw/master/data_table.xlsx)

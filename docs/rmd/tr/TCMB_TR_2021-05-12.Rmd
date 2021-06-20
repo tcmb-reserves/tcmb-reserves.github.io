@@ -28,8 +28,6 @@ source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/
 
 ```
 
-<p style="color:red"> Yaptığımız hesaplamalarda, Yurtdışı Merkez Bankaları Swap verisini hatalı topladığımız için Swap Hariç Net Rezervler olduğundan daha küçük (yaklaşık 7 Milyar Dolar) gözükmüştür.Yaptığımız bu hatadan dolayı öncelikle bu araştırmayı paylaşan kişilerden ve kamuoyundan özür dileriz. Bizi hatamız konusunda uyaran İris Cibre'ye ve "atk_1881" adlı Twitter kullanıcısına da teşekkür ederiz. Sayfadaki veriler bu hata ortadan kaldırılacak şekilde düzenlenmiştir.</p>
-
 <p style="color:blue">Bu sayfa yeni veriler geldikçe otomatik olarak güncellenecektir.</p>
 
 [Verileri İndir](https://github.com/tcmb-reserves/tcmb-reserves.github.io/blob/master/Tablo.xlsx?raw=true)
