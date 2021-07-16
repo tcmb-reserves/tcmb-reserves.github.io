@@ -23,6 +23,10 @@ knitr::opts_chunk$set(echo = TRUE)
 
 <div><a href="index_en.html">Go back to the home page </a></div>
 
+## July 2021
+
+<div><a href="TCMB_EN_2021-07-02.html">2021-07-02</a></div>
+
 ## June 2021
 
 <div><a href="TCMB_EN_2021-06-25.html">2021-06-25</a></div>
