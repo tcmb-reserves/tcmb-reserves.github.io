@@ -16,10 +16,6 @@ output:
 
 knitr::opts_chunk$set(echo = TRUE)
 
-mm1 <- 6
-  
-mm2 <- 20
-
 source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/master/docs/net.R")
 
 zaman <- tdt[nrow(tdt)]$time
