@@ -1,5 +1,5 @@
 ---
-title: CBRT Reserves and Swap Transcations <br> 02 July 2021
+title: CBRT Reserves and Swap Transcations <br> 09 July 2021
 author: 
   - Anıl İsmet Aşçı
    [E-mail](mailto:ismet.asci@outlook.com)
@@ -22,7 +22,7 @@ mm2 <- 19
 
 source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/master/docs/netrezerv_en.R")
 
-zaman <- tdt[21]$time
+zaman <- tdt[22]$time
 
 zaman1 <- tdt[tdt[time == zaman, which = T] - 1]$time
 
@@ -38,7 +38,7 @@ source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/
 
 ## About
 
-<div style="float: right;"><a href=TCMB_TR_2021-07-02.html>TR</a></div>
+<div style="float: right;"><a href=TCMB_TR_2021-07-09.html>TR</a></div>
 <div style="float: left;"><a href="archive.html">Archive</a></div>
 <br>
 
