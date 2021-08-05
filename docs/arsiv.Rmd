@@ -25,6 +25,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Temmuz 2021
 
+<div><a href="TCMB_TR_2021-07-16.html">2021-07-16</a></div>
 <div><a href="TCMB_TR_2021-07-09.html">2021-07-09</a></div>
 <div><a href="TCMB_TR_2021-07-02.html">2021-07-02</a></div>
 
