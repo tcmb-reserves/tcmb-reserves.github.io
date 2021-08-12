@@ -196,9 +196,9 @@ yswap$rown <- c(1:nrow(yswap))
 
 yswap[, word := gsub(".", "", word, fixed = TRUE)]
 
-toplam <- as.numeric(yswap$word[yswap[ word == "kapsar"]$rown+ 4])
+toplam <- as.numeric(yswap$word[yswap[ word == "kapsar"]$rown+ xxx])
 
-diger <- as.numeric(yswap$word[yswap[ word == "kapsar"]$rown+ 18])
+diger <- as.numeric(yswap$word[yswap[ word == "kapsar"]$rown+ yyy])
 
 val <- toplam + diger
 
