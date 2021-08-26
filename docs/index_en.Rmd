@@ -1,5 +1,5 @@
 ---
-title: CBRT Reserves and Swap Transcations <br> 13 August 2021
+title: CBRT Reserves and Swap Transcations <br> 20 August 2021
 author: 
   - Anıl İsmet Aşçı
    [E-mail](mailto:ismet.asci@outlook.com)
@@ -16,8 +16,8 @@ output:
 
 knitr::opts_chunk$set(echo = TRUE)
 
-xxx <-4
-yyy <-18
+xxx <-5
+yyy <-19
 
 source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/master/docs/netrezerv_en.R")
 
