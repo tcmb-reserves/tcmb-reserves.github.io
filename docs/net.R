@@ -283,6 +283,12 @@ setnames(all_dates_to_2025, "time")
 
 BRUTR[, brut := altin + doviz + SDR]
 
+ypmevd <- getDataSeries("TP.YPMEVD.M131", startDate = "01-01-2021", CBRTKey = myCBRTKey, freq = 3)
+
+ypmevd <- merge(all_dates_to_2025, ypmevd, by = "time", all.x = T, all.y = T)
+
+ypmevd <- na.locf(ypmevd, fromLast = T)
+
 a_brut <- merge(all_dates_to_2025, BRUTR, by = "time", all.x = T, all.y = T)
 
 a_brut <- na.locf(a_brut, fromLast = T)
@@ -309,7 +315,9 @@ tdt <- merge(tdt, viop_table, by = "time")
 
 names(tdt)[21] <- "viop"
 
-tdt[, biy := bsm + fb + sdr + dm + viop]
+tdt[, bdy := bdy + viop]
+
+tdt[, biy := bsm + fb + sdr + dm]
 
 tdt <- tdt[, -20]
 
@@ -317,7 +325,7 @@ names(tdt)[9:11] <- c("yibn", "yibt", "yiba")
 
 names(tdt)[17:18] <- c("mbydby", "sdry")
 
-tdt[, bidy := zkd + yibn + yibt + mbydby + dm + viop + sdry]
+tdt[, bidy := zkd + yibn + yibt + mbydby + dm + sdry]
 
 tdt[, biay := zka + yiba]
 
@@ -329,7 +337,7 @@ tdt[, a := NULL]
 
 names(tdt)[13] <- "bsb"
 
-tdt[, bddy := yibds + ydmbs]
+tdt[, bddy := yibds + ydmbs + viop]
 
 tdt[, bday := yibas]
 
@@ -337,13 +345,13 @@ tdt[, netr := brut - biy]
 
 tdt[, shnetr := netr - bdy]
 
-tdt[, shnar := bra - yiba - zka - yibas]
+tdt[, shnar := bra - bday]
 
-tdt[, ndr := brd - yibn - yibt - zkd - dm - mbydby- viop]
+tdt[, ndr := brd - bidy]
 
 tdt[, nar := bra - yiba - zka]
 
-tdt[, shndr := brd - yibn - yibt - zkd - dm - mbydby - ydmbs - yibds - viop]
+tdt[, shndr := ndr - bddy]
 
 tdt[, ty := biy + bdy]
 
@@ -353,10 +361,18 @@ names(tdt)[25] <- "USD"
 
 names(tdt)[18] <- "bydby"
 
+tdt[, ndp := shndr - viop]
+
+tdt <- merge(tdt, ypmevd, by = "time")
+
+names(tdt)[41] <- "ypmevd"
+
+tdt[, swbmevd := yibs/ypmevd]
+
 setcolorder(tdt, c("time", "bra", "brd", "brsdr", "mk", "tnvm", "brut", "bdy", "bsb", "yib", "yibn",
                    "yibt", "yiba", "bydby", "zk", "zkd", "zka", "dm", "mbydby", "sdry", "USD", "viop",
                    "biy", "bidy", "biay", "yibs", "yibas", "yibds", "ydmbs", "bddy", "bday", "netr", "shnetr",
-                   "shnar", "ndr", "nar", "shndr", "ty", "bdybro"))
+                   "shnar", "ndr", "nar", "shndr", "ty", "bdybro", "ndp", "ypmevd", "swbmevd"))
 tablo = tdt
 
 
@@ -399,7 +415,10 @@ colnames(tablo) <- c("Zaman",
                      "Net Altin Rezervi",
                      "Swap Haric Net Doviz Rezervi",
                      "Toplam Yukumlulukler",
-                     "Bilanco Disi Yukumluluklerin Brut Rezerve Orani"
+                     "Bilanco Disi Yukumluluklerin Brut Rezerve Orani",
+                     "Net Doviz Pozisyonu",
+                     "Bankalarin YP Mevduatlari",
+                     "Yurtici Bankalar Swap'in Bankalarin YP Mevduatlarina Orani"
 )
 
 
@@ -484,3 +503,4 @@ write_xlsx(tablo, paste0(getwd(), '/Tablo.xlsx'))
 # ty -     Toplam Yukumlulukler
 
 # bdybro - Bilanco Disi Yukumluluklerin Brut Rezerve Orani
+
