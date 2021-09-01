@@ -301,13 +301,9 @@ mat[time == "2021-01-04", ]$time <- as.Date("2021-01-01")
 
 tdt <- mat
 
-tdt[, bdy := tsw]
-
-tdt[, tsw := NULL]
-
 tdt <- tdt[, c(1,16:20)]
 
-setnames(tdt, c("time", "yibs", "yibas", "yibds", "ydmbs", "bdy"))
+setnames(tdt, c("time", "yibs", "yibas", "yibds", "tsw", "ydmbs"))
 
 tdt <- merge(tdt, a_BIY, by = "time")
 
@@ -315,7 +311,7 @@ tdt <- merge(tdt, viop_table, by = "time")
 
 names(tdt)[21] <- "viop"
 
-tdt[, bdy := bdy + viop]
+tdt[, bdy := tsw + viop]
 
 tdt[, biy := bsm + fb + sdr + dm]
 
@@ -341,36 +337,40 @@ tdt[, bddy := yibds + ydmbs + viop]
 
 tdt[, bday := yibas]
 
+tdt[, tswa := yibas]
+
+tdt[, tswd := tsw - yibas]
+
 tdt[, netr := brut - biy]
 
-tdt[, shnetr := netr - bdy]
+tdt[, shnetr := netr - tsw]
 
-tdt[, shnar := bra - bday]
+tdt[, shnar := bra - biay - tswa]
 
 tdt[, ndr := brd - bidy]
 
-tdt[, nar := bra - yiba - zka]
+tdt[, nar := bra - biay]
 
-tdt[, shndr := ndr - bddy]
+tdt[, shndr := ndr - tswd]
 
 tdt[, ty := biy + bdy]
 
-tdt[, bdybro := bdy/brut]
+tdt[, swbro := tsw/brut]
 
 names(tdt)[25] <- "USD"
 
 names(tdt)[18] <- "bydby"
 
-tdt[, ndp := shndr - viop]
+tdt[, ndp := ndr - bddy]
 
 tdt <- merge(tdt, ypmevd, by = "time")
 
-names(tdt)[41] <- "ypmevd"
+names(tdt)[44] <- "ypmevd"
 
 tdt[, swbmevd := yibs/ypmevd]
 
-setcolorder(tdt, c("time", "bra", "brd", "brsdr", "mk", "tnvm", "brut", "bdy", "bsb", "yib", "yibn",
-                   "yibt", "yiba", "bydby", "zk", "zkd", "zka", "dm", "mbydby", "sdry", "USD", "viop",
+setcolorder(tdt, c("time", "bra", "brd", "brsdr", "mk", "tnvm", "brut", "yibs", "yibas", "yibds", "tsw",
+                   "ydmbs", "bsb", "yib", "zk", "zkd", "zka", "dm", "mbydby", "sdry", "USD", "viop",
                    "biy", "bidy", "biay", "yibs", "yibas", "yibds", "ydmbs", "bddy", "bday", "netr", "shnetr",
                    "shnar", "ndr", "nar", "shndr", "ty", "bdybro", "ndp", "ypmevd", "swbmevd"))
 tablo = tdt
