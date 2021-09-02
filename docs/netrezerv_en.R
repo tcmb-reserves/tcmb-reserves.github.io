@@ -414,7 +414,7 @@ colnames(data_table) <- c("Date",
                           "Total Liabilities",
                           "Domestic Banks - Total Deposits",
                           "Ratio of SWAP to Gross Reserves",
-                          "Ratio of Domestic Banks - Swap to Domestic Banks - Total Deposits",
+                          "Ratio of Domestic Banks Swap to Domestic Banks FX Deposits",
                           "USD"
 )
 

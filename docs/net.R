@@ -283,6 +283,8 @@ setnames(all_dates_to_2025, "time")
 
 BRUTR[, brut := altin + doviz + SDR]
 
+#### Bankacılık sektörü mevudat ----------------------
+
 ypmevd <- getDataSeries("TP.YPMEVD.M131", startDate = "01-01-2021", CBRTKey = myCBRTKey, freq = 3)
 
 ypmevd <- merge(all_dates_to_2025, ypmevd, by = "time", all.x = T, all.y = T)

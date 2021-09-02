@@ -163,7 +163,7 @@ DT::datatable(
 
 ::: {style="text-align: justify;"}
 
-`r paste0(" The ratio of SWAP to Gross Reserves is % ", round(100*tdt[time == zaman]$swbro, 2), " . ")`
+`r paste0(" While the ratio of SWAP to Gross Reserves is  ", round(100*tdt[time == zaman]$swbro, 2), "% , the ratio of SWAP to domestic banks' foreign exchange deposits is  ", round(tdt[2:nrow(tdt)]$swbmevd[length(tdt[2:nrow(tdt)]$swbmevd)]*100,2), "% . ")`
 
 :::
 
