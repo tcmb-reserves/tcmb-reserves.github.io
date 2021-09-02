@@ -35,6 +35,10 @@ source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/
 
 [Download the Dataset](https://github.com/tcmb-reserves/tcmb-reserves.github.io/raw/master/data_table.xlsx)
 
+::: {style="text-align: justify;color:red;"}
+We have rectified an issue related to TL settled FX FUTURES transactions at BIST derivatives market. In the earlier calculations, FX FUTURES was included in the Liabilities of the CBRT, and this caused an error margin of 0.2 to 1 billion dollars in Net Reserves excluding Swap. Yet, we have learned that it requires to be featured in the Off-Balance Sheet Liabilities due to the fact that these transactions are not affecting the Net Reserves excluding Swap, since they are TL settled, instead they are only affecting the Net FX position of the CBRT. We would like to thank Tunca ALP for warning us about this mistake, and A. Hakan Kara for his guidance related to this issue. Last but not least, we are sorry to misinform the public because of this error. We are looking forward to your advice.
+:::
+
 ## About
 
 <div style="float: right;"><a href=index.html>TR</a></div>
@@ -228,7 +232,7 @@ ndpg
 zama
 ```
 
-## Magnitude of Options Transactions
+## Magnitude of FX Futures
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="100%"}
 viog
