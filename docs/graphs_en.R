@@ -445,7 +445,7 @@ snr <- plot_ly(nets) %>%
                      y1 = round(sum(nets[4,]$value, nets[5,]$value)/1000,2), 
                      line = list(dash = 'dot', width = 3))) %>% 
   layout(annotations= list(yref = 'paper', xref = 0, y = 0.28, x = 1, showarrow = FALSE,
-                           text = paste0("Net Reserves (excluding Swap): ",round(sum(nets[4:5,2])/1000,2)), size = 10))
+                           text = paste0("Net Reserves (excluding Swap): ",round(nets[4:5,2]/1000,2)), size = 10))
 snr
 
 nr <- plot_ly(nets) %>%
@@ -458,7 +458,7 @@ nr <- plot_ly(nets) %>%
                      y1 = round(sum(nets[1,]$value, nets[2,]$value)/1000,2), 
                      line = list(dash = 'dot', width = 3))) %>% 
   layout(annotations= list(yref = 'paper', xref = 0, y = 0.64, x = 0, showarrow = FALSE,
-                           text = paste0("Net Reserves: ",round(sum(nets[1:2,2])/1000,2)), size = 10))
+                           text = paste0("Net Reserves: ",round(nets[3,2]/1000,2)), size = 10))
 nr
 
 
