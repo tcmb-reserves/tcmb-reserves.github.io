@@ -446,7 +446,7 @@ snr <- plot_ly(nets) %>%
                      y1 = round(sum(nets[4,]$value, nets[5,]$value)/1000, 2), 
                      line = list(dash = 'dot', width = 3))) %>% 
   layout(annotations = list(yref = 'paper', xref = 0, y = 0.28, x = 0, showarrow = FALSE,
-                           text = paste0("Swap Haric Net Rezerv: ", round(sum(nets[4:5,2])/1000, 2)), size = 10))
+                           text = paste0("Swap Haric Net Rezerv: ", nets[6,2]/1000, 2), size = 10))
 
 snr
 
@@ -460,7 +460,7 @@ nr <- plot_ly(nets) %>%
                      y1 = round(sum(nets[1,]$value, nets[2,]$value)/1000,2), 
                      line = list(dash = 'dot', width = 3))) %>% 
   layout(annotations= list(yref = 'paper', xref = 0, y = 0.64, x = 1, showarrow = FALSE,
-                           text = paste0("Net Rezerv: ",round(sum(nets[1:2,2])/1000,2)), size = 10))
+                           text = paste0("Net Rezerv: ", nets[3,2]/1000,2), size = 10))
 
 nr
 
@@ -481,11 +481,10 @@ zama <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = tdt[2:nrow(tdt)]$swbro,
 
 zama 
 
-viog <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = tdt[2:nrow(tdt)]$viop, 
+viog <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = tdt[2:nrow(tdt)]$viop/1000, 
                 type = 'scatter', mode = 'lines',
-                hovertemplate = "%{x} <br> %{y} <extra></extra>") %>%
+                hovertemplate = "%{x} <br> %{y} Milyar Dolar <extra></extra>") %>%
   layout(title = "VIOP",
-         yaxis = list(tickformat = "%"),
          xaxis = list(type = 'date',tickformat = "%d %B <br>%Y"))
 
 viog

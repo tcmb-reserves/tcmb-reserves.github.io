@@ -480,7 +480,7 @@ zama
 
 viog <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = tdt[2:nrow(tdt)]$viop, 
                 type = 'scatter', mode = 'lines',
-                hovertemplate = "%{x} <br> %{y} <extra></extra>") %>%
+                hovertemplate = "%{x} <br> %{y} Billion Dollar <extra></extra>") %>%
   layout(title = "Options",
          yaxis = list(tickformat = "%"),
          xaxis = list(type = 'date',tickformat = "%d %B <br>%Y"))
