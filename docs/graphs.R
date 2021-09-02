@@ -489,6 +489,14 @@ viog <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = tdt[2:nrow(tdt)]$viop/1000,
 
 viog
 
+ndpg <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = tdt[2:nrow(tdt)]$ndp/1000, 
+                type = 'scatter', mode = 'lines',
+                hovertemplate = "%{x} <br> %{y} Milyar Dolar <extra></extra>") %>%
+  layout(title = "Net Doviz Pozisyonu",
+         xaxis = list(type = 'date',tickformat = "%d %B <br>%Y"))
+
+ndpg
+
 ypme <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = tdt[2:nrow(tdt)]$swbmevd, 
                 type = 'scatter', mode = 'lines',
                 hovertemplate = "%{x} <br> %{y} <extra></extra>") %>%

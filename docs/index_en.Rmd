@@ -163,7 +163,7 @@ DT::datatable(
 
 ::: {style="text-align: justify;"}
 
-`r paste0(" The ratio of off-balance sheet liabilities to gross reserves is % ", round(100*tdt[time == zaman]$bdybro, 2), " . ")`
+`r paste0(" The ratio of SWAP to Gross Reserves is % ", round(100*tdt[time == zaman]$swbro, 2), " . ")`
 
 :::
 
@@ -214,6 +214,12 @@ sub4
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="100%"}
 sub1
+```
+
+## Net FX Position
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="100%"}
+ndpg
 ```
 
 ## Magnitude of SWAP Transactions
