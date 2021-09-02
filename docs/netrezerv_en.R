@@ -346,7 +346,7 @@ tdt[, shnetr := netr - tsw]
 
 tdt[, shnar := bra - biay - tswa]
 
-tdt[, ndr := brd - bidy]
+tdt[, ndr := brd + sdry - bidy]
 
 tdt[, nar := bra - biay]
 
