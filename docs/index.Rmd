@@ -217,7 +217,7 @@ ypme
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 DT::datatable(
   det_tab,options = list(dom = 't',
-                         pageLength = 34), 
+                         pageLength = 38), 
   caption = paste0(zaman," Tarihli ",'Detayli Merkez Bankasi Bilancosu ')
 ) %>% formatStyle(
   'Hesaplar',
@@ -290,8 +290,8 @@ c("#D3D3D3" , #1
 "#E8E8E8" , #27
 "#FFFFFF" , #28
 "#FFFFFF" , #29
-"#E8E8E8" , #30
-"#E8E8E8" , #31
+"#D3D3D3" , #30
+"#D3D3D3" , #31
 "#E8E8E8" , #32
 "#E8E8E8" , #33
 "#E8E8E8" , #34
