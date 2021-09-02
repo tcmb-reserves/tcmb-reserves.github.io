@@ -232,7 +232,7 @@ ndpg
 zama
 ```
 
-## Magnitude of FX Futures
+## Magnitude of FX Futures and Options
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="100%"}
 viog
