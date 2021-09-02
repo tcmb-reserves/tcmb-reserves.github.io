@@ -29,12 +29,17 @@ yutk <- data.frame(
           paste0(round((tdt[time == zaman1]$bdy)/1000, 2), " Billion $"),
           paste0(round((tdt[time == ilkk]$bdy)/1000, 2), " Billion $")),
   
+  "4" = c("SWAP",
+          paste0(round((tdt[time == zaman]$tsw)/1000, 2), " Milyar $"),
+          paste0(round((tdt[time == zaman1]$tsw)/1000, 2), " Milyar $"),
+          paste0(round((tdt[time == ilkk]$tsw)/1000, 2), " Milyar $")),
+  
   "=1-2" = c("Net Reserves",
              paste0(round((tdt[time == zaman]$netr)/1000, 2), " Billion $"),
              paste0(round((tdt[time == zaman1]$netr)/1000, 2), " Billion $"),
              paste0(round((tdt[time == ilkk]$netr)/1000, 2), " Billion $")),
   
-  "=1-2-3" = c("Net Reserves (excluding Swap)", 
+  "=1-2-4" = c("Net Reserves (excluding Swap)", 
                paste0(round((tdt[time == zaman]$shnetr)/1000, 2), " Billion $"),
                paste0(round((tdt[time == zaman1]$shnetr)/1000, 2), " Billion $"),
                paste0(round((tdt[time == ilkk]$shnetr)/1000, 2), " Billion $"))
@@ -44,7 +49,7 @@ yutk <- t(yutk)
 
 yutk <-as.data.frame(yutk)
 
-row.names(yutk) <- c("   1","   2","   3","   =1-2","   =1-2-3")
+row.names(yutk) <- c("   1","   2","   3","   4","   =1-2","   =1-2-4")
 
 colnames(yutk) <- c("Accounts", as.character(zaman), as.character(zaman1), as.character(ilkk))
 
@@ -142,7 +147,7 @@ det_tab <- data.frame(
           paste0(round((tdt[time == zaman1]$viop)/1000, 2), " Billion $"),
           paste0(round((tdt[time == ilkk]$viop)/1000, 2),  " Billion $")),
   
-  "10=5.11+5.21+5.22+6+7+8+9" = c("Balance Sheet FX Liabilities",
+  "10=5.11+5.21+5.22+6+7+8" = c("Balance Sheet FX Liabilities",
                              paste0(round((tdt[time == zaman]$bidy)/1000, 2), " Billion $"),
                              paste0(round((tdt[time == zaman1]$bidy)/1000, 2), " Billion $"),
                              paste0(round((tdt[time == ilkk]$bidy)/1000, 2), " Billion $")),
@@ -152,72 +157,92 @@ det_tab <- data.frame(
                      paste0(round((tdt[time == zaman1]$biay)/1000, 2), " Billion $"),
                      paste0(round((tdt[time == ilkk]$biay)/1000, 2), " Billion $")),
   
-  "11=9+10" = c("Balance Sheet Liabilities",
+  "12=10+11" = c("Balance Sheet Liabilities",
                 paste0(round((tdt[time == zaman]$biy)/1000, 2), " Billion $"),
                 paste0(round((tdt[time == zaman1]$biy)/1000, 2), " Billion $"),
                 paste0(round((tdt[time == ilkk]$biy)/1000, 2), " Billion $")),
   
-  "12" = c("Domestic Banks - Swap",
+  "13" = c("Domestic Banks - Swap",
            paste0(round((tdt[time == zaman]$yibs)/1000, 2), " Billion $"),
            paste0(round((tdt[time == zaman1]$yibs)/1000, 2), " Billion $"),
            paste0(round((tdt[time == ilkk]$yibs)/1000, 2), " Billion $")),
   
-  "12.1" = c("Domestic Banks - Swap - FX",
+  "13.1" = c("Domestic Banks - Swap - FX",
              paste0(round((tdt[time == zaman]$yibds)/1000, 2), " Billion $"),
              paste0(round((tdt[time == zaman1]$yibds)/1000, 2), " Billion $"),
              paste0(round((tdt[time == ilkk]$yibds)/1000, 2), " Billion $")),
   
-  "12.2" = c("Domestic Banks - Swap - Gold",
+  "13.2" = c("Domestic Banks - Swap - Gold",
              paste0(round((tdt[time == zaman]$yibas)/1000, 2), " Billion $"),
              paste0(round((tdt[time == zaman1]$yibas)/1000, 2), " Billion $"),
              paste0(round((tdt[time == ilkk]$yibas)/1000, 2), " Billion $")),
   
-  "13" = c("Foreign Central Banks - Swap",
+  "14" = c("Foreign Central Banks - Swap",
            paste0(round((tdt[time == zaman]$ydmbs)/1000, 2), " Billion $"),
            paste0(round((tdt[time == zaman1]$ydmbs)/1000, 2), " Billion $"),
            paste0(round((tdt[time == ilkk]$ydmbs)/1000, 2), " Billion $")),
   
-  "14=12.1+13" = c("Off Balance Sheet FX Liabilities",
+  "15=14+13.1+9" = c("Off Balance Sheet FX Liabilities",
                    paste0(round((tdt[time == zaman]$bddy)/1000, 2), " Billion $"),
                    paste0(round((tdt[time == zaman1]$bddy)/1000, 2), " Billion $"),
                    paste0(round((tdt[time == ilkk]$bddy)/1000, 2), " Billion $")),
   
-  "15" = c("Off Balance Sheet Gold Liabilities",
+  "16=13.2" = c("Off Balance Sheet Gold Liabilities",
            paste0(round((tdt[time == zaman]$bday)/1000, 2), " Billion $"),
            paste0(round((tdt[time == zaman1]$bday)/1000, 2), " Billion $"),
            paste0(round((tdt[time == ilkk]$bday)/1000, 2), " Billion $")),
   
-  "16=12+13" = c("Off Balance Sheet Liabilities",
+  "17=15+16" = c("Off Balance Sheet Liabilities",
                  paste0(round((tdt[time == zaman]$bdy)/1000, 2), " Billion $"),
                  paste0(round((tdt[time == zaman1]$bdy)/1000, 2), " Billion $"),
                  paste0(round((tdt[time == ilkk]$bdy)/1000, 2), " Billion $")),
   
-  "17=1-9" = c("Net FX Reserves",
+  "18" = c("Total SWAP",
+           paste0(round((tdt[time == zaman]$tsw)/1000, 2), " Milyar $"),
+           paste0(round((tdt[time == zaman1]$tsw)/1000, 2), " Milyar $"),
+           paste0(round((tdt[time == ilkk]$tsw)/1000, 2), " Milyar $")),
+  
+  "19" = c("Total Swap - FX",
+           paste0(round((tdt[time == zaman]$tswd)/1000, 2), " Milyar $"),
+           paste0(round((tdt[time == zaman1]$tswd)/1000, 2), " Milyar $"),
+           paste0(round((tdt[time == ilkk]$tswd)/1000, 2), " Milyar $")),
+  
+  "20" = c("Total Swap - Gold",
+           paste0(round((tdt[time == zaman]$tswa)/1000, 2), " Milyar $"),
+           paste0(round((tdt[time == zaman1]$tswa)/1000, 2), " Milyar $"),
+           paste0(round((tdt[time == ilkk]$tswa)/1000, 2), " Milyar $")),
+  
+  "21=22-15" = c("Net FX Position",
+                 paste0(round((tdt[time == zaman]$ndp)/1000, 2), " Milyar $"),
+                 paste0(round((tdt[time == zaman1]$ndp)/1000, 2), " Milyar $"),
+                 paste0(round((tdt[time == ilkk]$ndp)/1000, 2), " Milyar $")),
+  
+  "22=1-10" = c("Net FX Reserves",
                paste0(round((tdt[time == zaman]$ndr)/1000, 2), " Billion $"),
                paste0(round((tdt[time == zaman1]$ndr)/1000, 2), " Billion $"),
                paste0(round((tdt[time == ilkk]$ndr)/1000, 2), " Billion $")),
   
-  "18=2-10" = c("Net Gold Reserves",
+  "23=2-11" = c("Net Gold Reserves",
                 paste0(round((tdt[time == zaman]$nar)/1000, 2), " Billion $"),
                 paste0(round((tdt[time == zaman1]$nar)/1000, 2), " Billion $"),
                 paste0(round((tdt[time == ilkk]$nar)/1000, 2), " Billion $")),
   
-  "19=16+17" = c("Net Reserves",
+  "24=4-12" = c("Net Reserves",
                  paste0(round((tdt[time == zaman]$netr)/1000, 2), " Billion $"),
                  paste0(round((tdt[time == zaman1]$netr)/1000, 2), " Billion $"),
                  paste0(round((tdt[time == ilkk]$netr)/1000, 2), " Billion $")),
   
-  "20=16-14" = c("Net FX Reserves (excluding Swap)", 
+  "25=22-19" = c("Net FX Reserves (excluding Swap)", 
                  paste0(round((tdt[time == zaman]$shndr)/1000, 2), " Billion $"),
                  paste0(round((tdt[time == zaman1]$shndr)/1000, 2), " Billion $"),
                  paste0(round((tdt[time == ilkk]$shndr)/1000, 2), " Billion $")),
   
-  "21=17-12.2" = c("Net Gold Reserves (excluding Swap)", 
+  "26=23-20" = c("Net Gold Reserves (excluding Swap)", 
                    paste0(round((tdt[time == zaman]$shnar)/1000, 2), " Billion $"),
                    paste0(round((tdt[time == zaman1]$shnar)/1000, 2), " Billion $"),
                    paste0(round((tdt[time == ilkk]$shnar)/1000, 2), " Billion $")),
   
-  "22=19+20" = c("Net Reserves (excluding Swap)", 
+  "27=24-18" = c("Net Reserves (excluding Swap)", 
                  paste0(round((tdt[time == zaman]$shnetr)/1000, 2), " Billion $"),
                  paste0(round((tdt[time == zaman1]$shnetr)/1000, 2), " Billion $"),
                  paste0(round((tdt[time == ilkk]$shnetr)/1000, 2), " Billion $"))
@@ -247,22 +272,26 @@ row.names(det_tab)<-c("1",
                       "7",
                       "8",
                       "9",
-                      "10=5.11+5.21+5.22+6+7+8+9",
+                      "10=5.11+5.21+5.22+6+7+8",
                       "11=5.12+5.23",
                       "12=10+11",
                       "13",
                       "13.1",
                       "13.2",
                       "14",
-                      "15=13.1+14",
-                      "16",
-                      "17=15+13.2",
-                      "18=1-10",
-                      "19=2-11",
-                      "20=17+18",
-                      "21=17-15",
-                      "22=18-13.2",
-                      "23=20+21")
+                      "15=14+13.1+9",
+                      "16=13.2",
+                      "17=15+16",
+                      "18",
+                      "19",
+                      "20",
+                      "21=22-15",
+                      "22=1-10",
+                      "23=2-11",
+                      "24=4-12",
+                      "25=22-19",
+                      "26=23-20",
+                      "27=24-18")
 
 colnames(det_tab) <- c("Accounts", as.character(zaman), as.character(zaman1), as.character(ilkk))
 
@@ -440,7 +469,7 @@ nr
 tdt <- tdt[time < as.Date(zaman+1)]
 
 
-zama <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = tdt[2:nrow(tdt)]$bdybro, 
+zama <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = tdt[2:nrow(tdt)]$swbro, 
                 type = 'scatter', mode = 'lines',
                 hovertemplate = "%{x} <br> %{y} <extra></extra>") %>%
   layout(title = "SWAP - Gross Reserves Ratio",
@@ -448,6 +477,24 @@ zama <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = tdt[2:nrow(tdt)]$bdybro,
          xaxis = list(type = 'date',tickformat = "%d %B <br>%Y"))
 
 zama 
+
+viog <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = tdt[2:nrow(tdt)]$viop, 
+                type = 'scatter', mode = 'lines',
+                hovertemplate = "%{x} <br> %{y} <extra></extra>") %>%
+  layout(title = "Options",
+         yaxis = list(tickformat = "%"),
+         xaxis = list(type = 'date',tickformat = "%d %B <br>%Y"))
+
+viog
+
+ypme <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = tdt[2:nrow(tdt)]$swbmevd, 
+                type = 'scatter', mode = 'lines',
+                hovertemplate = "%{x} <br> %{y} <extra></extra>") %>%
+  layout(title = "Ratio of Domestic Banks - Swap to Domestic Banks - Total Deposits",
+         yaxis = list(tickformat = "%"),
+         xaxis = list(type = 'date',tickformat = "%d %B <br>%Y"))
+
+ypme
 
 tgr <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = round(tdt[2:nrow(tdt)]$brut/1000, 2), type = 'scatter', mode = 'lines', 
                name = 'Gross Reserves', hovertemplate = "Gross Reserves <br> %{y} Billion Dollar <br> %{x}<extra></extra>") %>%

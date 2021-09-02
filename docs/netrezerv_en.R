@@ -296,13 +296,9 @@ mat[time == "2021-01-04", ]$time <- as.Date("2021-01-01")
 
 tdt <- mat
 
-tdt[, bdy := tsw]
-
-tdt[, tsw := NULL]
-
 tdt <- tdt[, c(1,16:20)]
 
-setnames(tdt, c("time", "yibs", "yibas", "yibds", "ydmbs", "bdy"))
+setnames(tdt, c("time", "yibs", "yibas", "yibds", "tsw", "ydmbs"))
 
 tdt <- merge(tdt, a_BIY, by = "time")
 
@@ -310,7 +306,7 @@ tdt <- merge(tdt, viop_table, by = "time")
 
 names(tdt)[21] <- "viop"
 
-tdt[, bdy := bdy + viop]
+tdt[, bdy := tsw + viop]
 
 tdt[, biy := bsm + fb + sdr + dm]
 
@@ -336,83 +332,90 @@ tdt[, bddy := yibds + ydmbs + viop]
 
 tdt[, bday := yibas]
 
+tdt[, tswa := yibas]
+
+tdt[, tswd := tsw - yibas]
+
 tdt[, netr := brut - biy]
 
-tdt[, shnetr := netr - bdy]
+tdt[, shnetr := netr - tsw]
 
-tdt[, shnar := bra - bday]
+tdt[, shnar := bra - biay - tswa]
 
 tdt[, ndr := brd - bidy]
 
-tdt[, nar := bra - yiba - zka]
+tdt[, nar := bra - biay]
 
-tdt[, shndr := ndr - bddy]
+tdt[, shndr := ndr - tswd]
 
 tdt[, ty := biy + bdy]
 
-tdt[, bdybro := bdy/brut]
+tdt[, swbro := tsw/brut]
 
 names(tdt)[25] <- "USD"
 
 names(tdt)[18] <- "bydby"
 
-tdt[, ndp := shndr - viop]
+tdt[, ndp := ndr - bddy]
 
 tdt <- merge(tdt, ypmevd, by = "time")
 
-names(tdt)[41] <- "ypmevd"
+names(tdt)[44] <- "ypmevd"
 
 tdt[, swbmevd := yibs/ypmevd]
 
-setcolorder(tdt, c("time", "bra", "brd", "brsdr", "mk", "tnvm", "brut", "bdy", "bsb", "yib", "yibn",
-                   "yibt", "yiba", "bydby", "zk", "zkd", "zka", "dm", "mbydby", "sdry", "USD", "viop",
-                   "biy", "bidy", "biay", "yibs", "yibas", "yibds", "ydmbs", "bddy", "bday", "netr", "shnetr",
-                   "shnar", "ndr", "nar", "shndr", "ty", "bdybro", "ndp", "ypmevd", "swbmevd"))
+setcolorder(tdt, c("time", "brut", "brd", "bra", "brsdr", "mk","tnvm", "biy", "bidy", "biay", "dm",
+                   "sdry", "mbydby", "bydby", "bsb", "zk", "zkd", "zka", "yib", "yibn", "yibt", "yiba", "bdy",
+                   "bddy", "bday", "viop","yibs", "yibds", "yibas", "ydmbs", "tsw", "tswd", "tswa","netr", "ndr", "nar",
+                   "shnetr", "shndr", "shnar", "ndp", "ty", "ypmevd","swbro", "swbmevd", "USD"))
 
 data_table = tdt
 
-colnames(data_table) <- c("Date", 
-                          "Gross Gold Reserves",
+colnames(data_table) <- c("Date",
+                          "Gross Reserves",
                           "Gross  Foreign Exchange Reserves",
+                          "Gross Gold Reserves",
                           "Gross SDR Reserves",
                           "Securities",
                           "Total Cash and Deposit",
-                          "Total Gross Reserves",
-                          "Off-Balance Sheet Liabilities",
+                          "Balance Sheet Liabilities",
+                          "Balance Sheet FX Liabilities",
+                          "Balance Sheet Gold Liabilities",
+                          "Other Deposits",
+                          "SDR Liabilities",
+                          "CBRT's Liabilities to Foreign Banks",
+                          "Domestic Banks' Liabilities to Foreign Banks",
                           "Banking Sector Balance Sheet",
+                          "Required Reserves",
+                          "Required Reserves - FX",
+                          "Required Reserves - Gold",
                           "Domestic Banks",
                           "Domestic Banks - Cash",
                           "Domestic Banks - Collateral",
                           "Domestic Banks - Gold",
-                          "Domestic Banks' Liabilities to Foreign Banks",
-                          "Required Reserves",
-                          "Required Reserves - FX",
-                          "Required Reserves - Gold",
-                          "Other Deposits",
-                          "CBRT's Liabilities to Foreign Banks",
-                          "SDR Liabilities",
-                          "Exchange Rate",
-                          "Options",
-                          "Balance Sheet Liabilities",
-                          "Balance Sheet FX Liabilities",
-                          "Balance Sheet Gold Liabilities",
-                          "Domestic Banks - Swap",
-                          "Domestic Banks - Swap - Gold",
-                          "Domestic Banks - Swap - FX",
-                          "Foreign Central Banks - Swap",
+                          "Off-Balance Sheet Liabilities",
                           "Off-Balance Sheet FX Liabilities",
                           "Off-Balance Sheet Gold Liabilities",
+                          "Futures and Options Exchange",
+                          "Domestic Banks - Swap",
+                          "Domestic Banks - Swap - FX",
+                          "Domestic Banks - Swap - Gold",
+                          "Foreign Central Banks - Swap",
+                          "Total SWAP",
+                          "Total SWAP - FX",
+                          "Total SWAP - Gold",
                           "Net Reserves",
-                          "Net Reserves (excluding Swap)",
-                          "Net Gold Reserves (excluding Swap)",
                           "Net FX Reserves",
                           "Net Gold Reserves",
+                          "Net Reserves (excluding Swap)",
                           "Net FX Reserves (excluding Swap)",
-                          "Total Liabilities",
-                          "Ratio of Off-Balance Sheet Liabilities to Gross Reserves",
+                          "Net Gold Reserves (excluding Swap)",
                           "Net FX Position",
+                          "Total Liabilities",
                           "Domestic Banks - Total Deposits",
-                          "Ratio of Domestic Banks - Swap to Domestic Banks - Total Deposits"
+                          "Ratio of SWAP to Gross Reserves",
+                          "Ratio of Domestic Banks - Swap to Domestic Banks - Total Deposits",
+                          "USD"
 )
 
 

@@ -188,11 +188,22 @@ sub4
 sub1
 ```
 
-
-## Bilanco Disi Islemlerin Buyuklugu
+## SWAP Islemlerinin Buyuklugu
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="100%"}
 zama
+```
+
+## VIOP Islemlerinin Buyuklugu
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="100%"}
+viog
+```
+
+## Yurtici Bankalar SWAP - Bankalar YP Mevduati Orani
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="100%"}
+ypme
 ```
 
 # Detayli Tablo
@@ -222,29 +233,33 @@ DT::datatable(
 "Yurtdisi Bankalar" , #15
 "SDR yukumlulugu" , #16
 "Diger Mevduatlar" , #17
-"VIOP", #17.5
-"Bilanco ici Doviz Yukumlulugu" , #18
-"Bilanco ici Altin Yukumlulugu" , #19
-"Bilanco ici Yukumlulukler" , #20
-"Yurtici Bankalar Swap" , #21
-"Yurtici Bankalar Doviz Swapi" , #22
-"Yurtici Bankalar Altin Swapi" , #23
-"Yurtici Merkez Bankalari Swap" , #24
-"Bilanco Disi Doviz Yukumlulugu" , #25
-"Bilanco Disi Altin Yukumlulugu" , #26
-"Bilanco Disi Yukumlulukler" , #27
-"Net Doviz Rezervi" , #28
-"Net Altin Rezervi" , #29
-"Net Rezervler" , #30
-"Swap Haric Net Doviz Rezervi" , #31
-"Swap Haric Net Altin Rezervi" ,  #32
-"Swap Haric Net Rezervler"  #33
+"VIOP", #18
+"Bilanco ici Doviz Yukumlulugu" , #19
+"Bilanco ici Altin Yukumlulugu" , #20
+"Bilanco ici Yukumlulukler" , #21
+"Yurtici Bankalar Swap" , #22
+"Yurtici Bankalar Doviz Swapi" , #23
+"Yurtici Bankalar Altin Swapi" , #24
+"Yurtdisi Merkez Bankalari Swap" , #25
+"Bilanco Disi Doviz Yukumlulugu" , #26
+"Bilanco Disi Altin Yukumlulugu" , #27
+"Bilanco Disi Yukumlulukler" , #28
+"Toplam SWAP", #29
+"Toplam SWAP - Doviz", #30
+"Toplam SWAP - Altin", #31
+"Net Doviz Pozisyonu", #32
+"Net Doviz Rezervi" , #33
+"Net Altin Rezervi" , #34
+"Net Rezervler" , #35
+"Swap Haric Net Doviz Rezervi" , #36
+"Swap Haric Net Altin Rezervi" ,  #37
+"Swap Haric Net Rezervler"  #38
 ), 
 c("#D3D3D3" , #1
 "#BEBEBE" , #2
 "#BEBEBE" , #3
 "#D3D3D3" , #4
-"#D3D3D3", #5
+"#D3D3D3" , #5
 "#FFFFFF" , #6 
 "#D3D3D3" , #7
 "#BEBEBE" , #8
@@ -256,24 +271,28 @@ c("#D3D3D3" , #1
 "#A8A8A8" , #14
 "#D3D3D3" , #15
 "#D3D3D3" , #16
-"#D3D3D3", #17
-"#D3D3D3", #17.5
-"#E8E8E8" , #18
+"#D3D3D3" , #17
+"#D3D3D3" , #18
 "#E8E8E8" , #19
-"#FFFFFF" , #20
-"#D3D3D3" , #21
-"#BEBEBE" , #22
+"#E8E8E8" , #20
+"#FFFFFF" , #21
+"#D3D3D3" , #22
 "#BEBEBE" , #23
-"#D3D3D3" , #24
-"#E8E8E8" , #25
+"#BEBEBE" , #24
+"#D3D3D3" , #25
 "#E8E8E8" , #26
-"#FFFFFF" , #27
-"#E8E8E8" , #28
-"#E8E8E8" , #29
-"#FFFFFF" , #30
+"#E8E8E8" , #27
+"#FFFFFF" , #28
+"#FFFFFF" , #29
+"#E8E8E8" , #30
 "#E8E8E8" , #31
-"#E8E8E8" ,  #32
-"#FFFFFF"  #33
+"#E8E8E8" , #32
+"#E8E8E8" , #33
+"#E8E8E8" , #34
+"#FFFFFF" , #35
+"#E8E8E8" , #36
+"#E8E8E8" , #37
+"#FFFFFF"   #38
  ))
 )
 ```
