@@ -35,9 +35,7 @@ source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/
 
 [Verileri İndir](https://github.com/tcmb-reserves/tcmb-reserves.github.io/blob/master/Tablo.xlsx?raw=true)
 
-::: {style="text-align: justify;color:red;"}
-BIST VİOP Nezdinde TL uzlaşmalı vadeli döviz işlemleri ile ilgili yaptığımız hatayı düzeltmiş bulunmaktayız. VİOP işlemlerini Bilanço içi Döviz Yükümlülüklerine dahil etmiştik ancak bu kalemin Bilanço Dışı Döviz Yükümlülüklerine dahil etmemiz gerektiğini; VİOP işlemlerinin TL uzlaşmalı olması dolayısıyla Swap Hariç Net Döviz Rezervlerini değil, sadece Net Döviz pozisyonunu etkilemesi gerektiğini öğrendik. Hesaplama hatası sonucunda bundan önceki haftalarda SWAP hariç Net Rezervler 0.2 ila 1 milyar dolar daha düşük gözüküyordu. Bu konuda bizi uyaran Tunca ALP'e ve yönlendiren A. Hakan KARA hocamıza teşekkür eder, yaptığımız hatadan dolayı kamuoyundan özür dileriz. Bize her zaman tavsiye ve uyarılarınızı iletebilirsiniz.
-:::
+
 
 ## Çalışma Hakkında
 
