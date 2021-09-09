@@ -280,7 +280,7 @@ BRUTR[, brut := altin + doviz + SDR]
 
 ypmevd <- getDataSeries("TP.YPMEVD.M131", startDate = "01-01-2021", CBRTKey = myCBRTKey, freq = 3)
 
-ym <- data.table(time = as.Date("2021-08-27"), TP.YPMEVD.M131 = 260025.6)
+ym <- data.table(time = as.Date("2021-09-03"), TP.YPMEVD.M131 = 264875.7)
 
 ypmevd <- rbind(ypmevd, ym)
 
