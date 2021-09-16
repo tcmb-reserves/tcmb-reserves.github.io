@@ -1,5 +1,5 @@
 ---
-title: CBRT Reserves and Swap Transcations <br> 18 June 2021
+title: CBRT Reserves and Swap Transcations <br> June 18 2021
 author: 
   - Anıl İsmet Aşçı
    [E-mail](mailto:ismet.asci@outlook.com)
