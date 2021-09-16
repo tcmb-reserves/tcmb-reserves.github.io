@@ -446,7 +446,8 @@ snr <- plot_ly(nets) %>%
                      y1 = round(sum(nets[4,]$value, nets[5,]$value)/1000, 2), 
                      line = list(dash = 'dot', width = 3))) %>% 
   layout(annotations = list(yref = 'paper', xref = 0, y = 0.28, x = 0, showarrow = FALSE,
-                           text = paste0("Swap Haric Net Rezerv: ", round(nets[6,2]/1000, 2)), size = 10))
+                           text = paste0("Swap Haric Net Rezerv: ", round(nets[6,2]/1000, 2)), size = 10),
+         xaxis=list(fixedrange=T),yaxis=list(fixedrange=T))
 
 snr
 
@@ -460,7 +461,8 @@ nr <- plot_ly(nets) %>%
                      y1 = round(sum(nets[1,]$value, nets[2,]$value)/1000,2), 
                      line = list(dash = 'dot', width = 3))) %>% 
   layout(annotations= list(yref = 'paper', xref = 0, y = 0.64, x = 1, showarrow = FALSE,
-                           text = paste0("Net Rezerv: ", round(nets[3,2]/1000,2)), size = 10))
+                           text = paste0("Net Rezerv: ", round(nets[3,2]/1000,2)), size = 10),
+         xaxis=list(fixedrange=T),yaxis=list(fixedrange=T))
 
 nr
 
@@ -476,8 +478,8 @@ zama <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = tdt[2:nrow(tdt)]$swbro,
                 type = 'scatter', mode = 'lines',
                 hovertemplate = "%{x} <br> %{y} <extra></extra>") %>%
   layout(title = "SWAP - Brut Rezerv Orani",
-         yaxis = list(tickformat = "%"),
-         xaxis = list(type = 'date',tickformat = "%d %B <br>%Y"))
+         yaxis = list(tickformat = "%",fixedrange=T),
+         xaxis = list(type = 'date',tickformat = "%d %B <br>%Y",fixedrange=T))
 
 zama 
 
@@ -485,7 +487,8 @@ viog <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = tdt[2:nrow(tdt)]$viop/1000,
                 type = 'scatter', mode = 'lines',
                 hovertemplate = "%{x} <br> %{y} Milyar Dolar <extra></extra>") %>%
   layout(title = "VIOP",
-         xaxis = list(type = 'date',tickformat = "%d %B <br>%Y"))
+         xaxis = list(type = 'date',tickformat = "%d %B <br>%Y",fixedrange=T),
+         yaxis = list(fixedrange=T))
 
 viog
 
@@ -493,7 +496,8 @@ ndpg <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = tdt[2:nrow(tdt)]$ndp/1000,
                 type = 'scatter', mode = 'lines',
                 hovertemplate = "%{x} <br> %{y} Milyar Dolar <extra></extra>") %>%
   layout(title = "Net Doviz Pozisyonu",
-         xaxis = list(type = 'date',tickformat = "%d %B <br>%Y"))
+         xaxis = list(type = 'date',tickformat = "%d %B <br>%Y",fixedrange=T),
+         yaxis = list(fixedrange=T))
 
 ndpg
 
@@ -501,8 +505,8 @@ ypme <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = tdt[2:nrow(tdt)]$swbmevd,
                 type = 'scatter', mode = 'lines',
                 hovertemplate = "%{x} <br> %{y} <extra></extra>") %>%
   layout(title = "Yurtici Bankalar SWAP - Bankalar YP Mevduati Orani",
-         yaxis = list(tickformat = "%"),
-         xaxis = list(type = 'date',tickformat = "%d %B <br>%Y"))
+         yaxis = list(tickformat = "%",fixedrange=T),
+         xaxis = list(type = 'date',tickformat = "%d %B <br>%Y",fixedrange=T))
 
 ypme
 
@@ -517,7 +521,7 @@ tgr <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = round(tdt[2:nrow(tdt)]$brut/1
   add_trace(x = tdt[2:nrow(tdt)]$time, y = round(tdt[2:nrow(tdt)]$shnetr/1000, 2), mode = 'lines', name = 'Swap Hariç Net Rezervler',
             hovertemplate = "Swap Hariç Net Rezervler <br> %{y} Milyar Dolar <br> %{x}<extra></extra>")%>% 
   layout(title = " Net Rezerv Pozisyonu (Milyar Dolar)") %>% 
-  layout(yaxis = list(tickformat = "000"))
+  layout(yaxis = list(tickformat = "000", fixedrange=T),xaxis=list(fixedrange=T))
 tgr
 
 a <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = round(tdt[2:nrow(tdt)]$brut/1000, 2), type = 'scatter', mode = 'lines', 
@@ -527,7 +531,7 @@ a <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = round(tdt[2:nrow(tdt)]$brut/100
   add_trace(x = tdt[2:nrow(tdt)]$time, y = round(tdt[2:nrow(tdt)]$bdy/1000, 2), mode = 'lines', name = 'Bilanco Disi Yukumlulukler',
             hovertemplate = "Bilanco Disi Yukumlulukler <br> %{y} Milyar Dolar <br> %{x}<extra></extra>")%>% 
   layout(title = " Net Rezerv Pozisyonu (Milyar Dolar)") %>% 
-  layout(yaxis = list(tickformat = "000"))
+  layout(yaxis = list(tickformat = "000", fixedrange =T),xaxis=list(fixedrange=T))
 a
 
 b <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = round(tdt[2:nrow(tdt)]$netr/1000, 2), type = 'scatter', mode = 'lines', 
@@ -535,7 +539,7 @@ b <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = round(tdt[2:nrow(tdt)]$netr/100
   add_trace(x = tdt[2:nrow(tdt)]$time, y = round(tdt[2:nrow(tdt)]$shnetr/1000, 2), mode = 'lines', name = 'Swap Hariç Net Rezervler',
             hovertemplate = "Swap Hariç Net Rezervler <br> %{y} Milyar Dolar <br> %{x}<extra></extra>")%>% 
   layout(title = " Net Rezerv Pozisyonu (Milyar Dolar)") %>% 
-  layout(yaxis = list(tickformat = "000"))
+  layout(yaxis = list(tickformat = "000",fixedrange=T),xaxis=list(fixedrange=T))
 b
 
 c <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = round(tdt[2:nrow(tdt)]$brut/1000, 2), type = 'scatter', mode = 'lines', 
@@ -547,7 +551,7 @@ c <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = round(tdt[2:nrow(tdt)]$brut/100
   add_trace(x = tdt[2:nrow(tdt)]$time, y = round(tdt[2:nrow(tdt)]$netr/1000, 2), mode = 'lines', name = 'Net Rezervler',
             hovertemplate = "Net Rezervler <br> %{y} Milyar Dolar <br> %{x}<extra></extra>")%>% 
   layout(title = " Net Rezerv Pozisyonu (Milyar Dolar)") %>% 
-  layout(yaxis = list(tickformat = "000"))
+  layout(yaxis = list(tickformat = "000",fixedrange=T),xaxis=list(fixedrange=T))
 c
 
 d <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = round(tdt[2:nrow(tdt)]$netr/1000, 2), type = 'scatter', mode = 'marker + lines', 
@@ -557,7 +561,7 @@ d <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = round(tdt[2:nrow(tdt)]$netr/100
   add_trace(x = tdt[2:nrow(tdt)]$time, y = round(tdt[2:nrow(tdt)]$brut/1000, 2), type = 'bar', name = 'Brut Rezervler',
             hovertemplate = "Brut Rezervler <br> %{y} Milyar Dolar <br> %{x}<extra></extra>")%>% 
   layout(title = " Net Rezerv Pozisyonu (Milyar Dolar)") %>% 
-  layout(yaxis = list(tickformat = "000"),barmode = 'stack-relative')
+  layout(yaxis = list(tickformat = "000",fixedrange=T),barmode = 'stack-relative',xaxis=list(fixedrange=T))
 d
 
 e <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = round(tdt[2:nrow(tdt)]$shnetr/1000, 2), type = 'scatter', mode = 'marker + lines', 
@@ -569,7 +573,8 @@ e <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = round(tdt[2:nrow(tdt)]$shnetr/1
   add_trace(x = tdt[2:nrow(tdt)]$time, y = -1*round(tdt[2:nrow(tdt)]$bdy/1000, 2), type = 'bar', name = 'Bilanco Disi Yukumlulukler',
             hovertemplate = "Bilanco Disi Yukumlulukler <br> %{y} Milyar Dolar <br> %{x}<extra></extra>")%>% 
   layout(title = " Net Rezerv Pozisyonu (Milyar Dolar)") %>% 
-  layout(yaxis = list(tickformat = "000"),barmode = 'stack-relative')
+  layout(yaxis = list(tickformat = "000",fixedrange=T),barmode = 'stack-relative',
+         xaxis=list(fixedrange=T))
 e
 
 f <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = round(tdt[2:nrow(tdt)]$shnetr/1000, 2), type = 'scatter', mode = 'marker + lines', 
@@ -579,7 +584,8 @@ f <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = round(tdt[2:nrow(tdt)]$shnetr/1
   add_trace(x = tdt[2:nrow(tdt)]$time, y = round(tdt[2:nrow(tdt)]$shndr/1000, 2), type = 'bar', name = 'Doviz',
             hovertemplate = "Doviz <br> %{y} Milyar Dolar <br> %{x}<extra></extra>")%>% 
   layout(title = " Net Rezerv Pozisyonu (Milyar Dolar)") %>% 
-  layout(yaxis = list(tickformat = "000"),barmode = 'stack-relative')
+  layout(yaxis = list(tickformat = "000",fixedrange=T),barmode = 'stack-relative',
+         xaxis=list(fixedrange=T))
 f
 
 g <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = round(tdt[2:nrow(tdt)]$netr/1000, 2), type = 'scatter', mode = 'marker + lines', 
@@ -589,7 +595,8 @@ g <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = round(tdt[2:nrow(tdt)]$netr/100
   add_trace(x = tdt[2:nrow(tdt)]$time, y = round(tdt[2:nrow(tdt)]$ndr/1000, 2), type = 'bar', name = 'Doviz',
             hovertemplate = "Doviz <br> %{y} Milyar Dolar <br> %{x}<extra></extra>")%>% 
   layout(title = " Net Rezerv Pozisyonu (Milyar Dolar)") %>% 
-  layout(yaxis = list(tickformat = "000"),barmode = 'stack-relative')
+  layout(yaxis = list(tickformat = "000",fixedrange=T),barmode = 'stack-relative',
+         xaxis=list(fixedrange=T))
 g
 
 shnetr_graph <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = round(tdt[2:nrow(tdt)]$shnetr/1000, 2), 
@@ -599,7 +606,8 @@ shnetr_graph <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = round(tdt[2:nrow(tdt
                                                    '<br>',
                                                    '<sup>',
                                                    '(Milyar Dolar)',
-                                                   '</sup>')))
+                                                   '</sup>')),
+                        xaxis=list(fixedrange=T),yaxis=list(fixedrange=T))
 
 shnetr_graph
 
@@ -610,7 +618,8 @@ netr_graph <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = round(tdt[2:nrow(tdt)]
                                     '<br>',
                                     '<sup>',
                                     '(Milyar Dolar)',
-                                    '</sup>')))
+                                    '</sup>')),
+         xaxis=list(fixedrange=T),yaxis=list(fixedrange=T))
 
 netr_graph
 
@@ -621,7 +630,8 @@ brut_graph <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = round(tdt[2:nrow(tdt)]
                                     '<br>',
                                     '<sup>',
                                     '(Milyar Dolar)',
-                                    '</sup>')))
+                                    '</sup>')),
+         xaxis=list(fixedrange=T),yaxis=list(fixedrange=T))
 
 brut_graph
 
@@ -632,7 +642,8 @@ biy_graph <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = round(tdt[2:nrow(tdt)]$
                                     '<br>',
                                     '<sup>',
                                     '(Milyar Dolar)',
-                                    '</sup>')))
+                                    '</sup>')),
+         xaxis=list(fixedrange=T),yaxis=list(fixedrange=T))
 
 biy_graph
 
@@ -643,7 +654,8 @@ bdy_graph <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = round(tdt[2:nrow(tdt)]$
                                     '<br>',
                                     '<sup>',
                                     '(Milyar Dolar)',
-                                    '</sup>')))
+                                    '</sup>')),
+         xaxis=list(fixedrange=T),yaxis=list(fixedrange=T))
 
 bdy_graph
 
@@ -654,7 +666,8 @@ nar_graph <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = round(tdt[2:nrow(tdt)]$
                                     '<br>',
                                     '<sup>',
                                     '(Milyar Dolar)',
-                                    '</sup>')))
+                                    '</sup>')),
+         xaxis=list(fixedrange=T),yaxis=list(fixedrange=T))
 
 nar_graph
 
@@ -665,7 +678,8 @@ ndr_graph <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = round(tdt[2:nrow(tdt)]$
                                     '<br>',
                                     '<sup>',
                                     '(Milyar Dolar)',
-                                    '</sup>')))
+                                    '</sup>')),
+         xaxis=list(fixedrange=T),yaxis=list(fixedrange=T))
 
 ndr_graph
 
@@ -676,7 +690,8 @@ shndr_graph <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = round(tdt[2:nrow(tdt)
                                     '<br>',
                                     '<sup>',
                                     '(Milyar Dolar)',
-                                    '</sup>')))
+                                    '</sup>')),
+         xaxis=list(fixedrange=T),yaxis=list(fixedrange=T))
 
 shndr_graph
 
@@ -687,7 +702,8 @@ shnar_graph <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = round(tdt[2:nrow(tdt)
                                     '<br>',
                                     '<sup>',
                                     '(Milyar Dolar)',
-                                    '</sup>')))
+                                    '</sup>')),
+         xaxis=list(fixedrange=T),yaxis=list(fixedrange=T))
 
 shnar_graph
 
