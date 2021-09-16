@@ -16,6 +16,10 @@ output:
 
 knitr::opts_chunk$set(echo = TRUE)
 
+xxx <-5
+
+yyy<-19
+
 source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/master/docs/net.R")
 
 zaman <- tdt[8]$time

@@ -22,7 +22,7 @@ yyy <- 18
 
 source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/master/docs/net.R")
 
-zaman <- tdt[nrow(tdt)]$time
+zaman <- tdt[27]$time
 
 zaman1 <- tdt[tdt[time == zaman, which = T] - 1]$time
 
