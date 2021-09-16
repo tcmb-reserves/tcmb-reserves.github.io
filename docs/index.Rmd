@@ -24,7 +24,7 @@ source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/
 zaman <- tdt[nrow(tdt)]$time
 
 zaman1 <- tdt[tdt[time == zaman, which = T] - 1]$time
-
+zaman1
 ilkk <- as.Date("2021-01-01")
 
 source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/master/docs/graphs.R")

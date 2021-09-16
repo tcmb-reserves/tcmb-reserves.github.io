@@ -93,6 +93,7 @@ BIY[, sdr := sdr/(USD*1000)]
 
 # Bilanco Disi Yukumlulukler
 
+
 ### Yurtici Swap --------------
 
 pdftable_to_dt <- function(x) {
