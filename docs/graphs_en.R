@@ -500,8 +500,8 @@ ypme <- plot_ly(tdt, x = tdt[2:nrow(tdt)]$time, y = tdt[2:nrow(tdt)]$swbmevd,
                 type = 'scatter', mode = 'lines',
                 hovertemplate = "%{x} <br> %{y} <extra></extra>") %>%
   layout(title = "Ratio of Domestic Banks - Swap to Domestic Banks FX Deposits",
-         yaxis = list(tickformat = "%"),
-         xaxis = list(type = 'date',tickformat = "%d %B <br>%Y",fixedrange=T),yaxis=list(fixedrange=T))
+         yaxis = list(tickformat = "%",fixedrange=T),
+         xaxis = list(type = 'date',tickformat = "%d %B <br>%Y",fixedrange=T))
 
 ypme
 
