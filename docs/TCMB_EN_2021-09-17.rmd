@@ -1,0 +1,382 @@
+---
+title: CBRT Reserves and Swap Transcations <br> September 17 2021
+author: 
+  - Anıl İsmet Aşçı
+   [E-mail](mailto:ismet.asci@outlook.com)
+   [LinkedIn](https://www.linkedin.com/in/ismetasci/)
+  - Ömer Taha Gülberk
+   [E-mail](mailto:omertahagulberk@hotmail.com)
+   [LinkedIn](https://www.linkedin.com/in/omertahagulberk/)
+    
+output:
+ rmdformats::robobook
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = TRUE)
+
+xxx <- 5
+
+yyy <- 19
+
+source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/master/docs/netrezerv_en.R")
+
+zaman <- tdt[32]$time
+
+zaman1 <- tdt[tdt[time == zaman, which = T] - 1]$time
+
+ilkk <- as.Date("2021-01-01")
+
+source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/master/docs/graphs_en.R")
+
+```
+
+<p style="color:blue"> This page will be updated automatically as new data released.</p>
+
+[Download the Dataset](https://github.com/tcmb-reserves/tcmb-reserves.github.io/raw/master/data_table.xlsx)
+
+## About
+
+<div style="float: right;"><a href=TCMB_TR_2021-09-17.html>TR</a></div>
+<div style="float: left;"><a href="archive.html">Archive</a></div>
+<br>
+
+::: {style="text-align: justify;"}
+
+CBRT Off-Balance operations and CBRT Reserves are widespread on the media coverage. Also, CBRT Swap Transactions data cannot be reached from EVDS and published in PDF form which makes it difficult to analyze related data. We find publishing CBRT Reserves is necessary so that economists and academics with interest could easily access that. Data used in project can be found in [Gross Reserves](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/5/bie_abres2/en), [Central Bank Weekly Statements](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/5/bie_mbblnch/en) , and [International Reserves and Foreign Currency Liquidity](https://www.tcmb.gov.tr/wps/wcm/connect/ede968f2-dee8-4bb7-b7c4-c21f37a153eb/RT202103ING.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-ede968f2-dee8-4bb7-b7c4-c21f37a153eb-nAnhMEy). We used R program to analyze and visualize the data. Detailed information is available in the Methodology section. This study is open-source and for those who are interested available on [GitHub](https://github.com/tcmb-reserves/tcmb-reserves.github.io). The page will be updated as new data are published. 
+
+:::
+
+# CBRT Balance Sheet
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+DT::datatable(
+  yutk,options = list(dom = 't' ), 
+  caption = paste0('CBRT Balance Sheet Dated ', zaman)
+)
+```
+
+::: {style="text-align: justify;"}
+
+`r paste0(" CBRT's net reserves ",
+          ifelse(sign((tdt[time == zaman]$netr) - (tdt[time == zaman1]$netr)) == 1, paste0(" increased "), paste0(" decreased ")),
+          " by ",
+          paste0(abs(round((tdt[time == zaman]$netr) - (tdt[time == zaman1]$netr), 2)))," Million Dollars ",
+          " compared to last week, and ",
+          ifelse(sign((tdt[time == zaman]$netr) - (tdt[time == "2021-01-01"]$netr)) == 1, paste0(" expanded "), paste0(" declined ")),
+          " by ",
+          paste0(abs(round((tdt[time == zaman]$netr) - (tdt[time == "2021-01-01"]$netr), 2))),
+          " Million Dollars ",
+          " compared to the new year. ",
+          " Net reserves excluding swap ",
+          ifelse(sign((tdt[time == zaman]$shnetr) - (tdt[time == zaman1]$shnetr)) == 1, paste0(" rise "), paste0(" fell ")),
+          " by ",
+          paste0(abs(round((tdt[time == zaman]$shnetr) - (tdt[time == zaman1]$shnetr), 2))), 
+          " Million Dollars ",
+          " compared to previous week, and ",
+          ifelse(sign((tdt[time == zaman]$shnetr) - (tdt[time == "2021-01-01"]$shnetr)) == 1, paste0(" raised "), paste0(" dropped ")),
+          " by ",
+          paste0(abs(round((tdt[time == zaman]$shnetr) - (tdt[time == "2021-01-01"]$shnetr), 2))), 
+          " Million Dollars ",
+          " compared to the new year. " 
+) `
+
+:::
+
+::: {style="text-align: justify;"}
+
+`r paste0(" Net gold reserves ",
+          ifelse(sign((tdt[time == zaman]$nar) - (tdt[time == zaman1]$nar)) == 1, paste0("rise"), paste0("decline")),
+          " by ",
+          paste0(abs(round((tdt[time == zaman]$nar) - (tdt[time == zaman1]$nar), 2))), 
+          " Million Dollars ",
+          " since last week and ",
+          ifelse(sign((tdt[time == zaman]$nar) - (tdt[time == "2021-01-01"]$nar)) == 1, paste0(" gain "), paste0(" loss ")),
+          paste0(abs(round((tdt[time == zaman]$nar) - (tdt[time == "2021-01-01"]$nar), 2))), 
+          " Million Dollars ",
+          " since the new year and reached to ",
+          paste0(round((tdt[time == zaman]$nar), 2)), " Million Dollars. "
+          
+) `
+
+:::
+
+::: {style="text-align: justify;"}
+
+`r paste0(" Net foreign exchange reserves ",
+          ifelse(sign((tdt[time == zaman]$ndr) - (tdt[time == zaman1]$ndr)) == 1, paste0(" increased "), paste0(" decreased ")),
+          " by ",
+          paste0(abs(round((tdt[time == zaman]$ndr) - (tdt[time == zaman1]$ndr), 2))), 
+          " Million Dollars ",
+          " compared to previous week and ",
+          ifelse(sign((tdt[time == zaman]$ndr) - (tdt[time == "2021-01-01"]$ndr)) == 1, paste0(" rise "), paste0(" fell ")),
+          " by ",
+          paste0(abs(round((tdt[time == zaman]$ndr) - (tdt[time == "2021-01-01"]$ndr), 2))), 
+          " Million Dollars ",
+          " and reached to ",
+          paste0(round((tdt[time == zaman]$ndr), 2)), " Million Dollars. "
+          
+) `
+
+:::
+  
+::: {style="text-align: justify;"}
+
+`r paste0(" Since last week, net gold reserves excluding swap ",
+          ifelse(sign((tdt[time ==zaman]$shnar) - (tdt[time == zaman1]$shnar)) == 1, paste0(" raised "), paste0(" dropped ")),
+          " by ",
+          paste0(abs(round((tdt[time ==zaman]$shnar) - (tdt[time == zaman1]$shnar), 2))), 
+          " Million Dollars ",
+          " and reached to ",
+          paste0(round(tdt[time ==zaman]$shnar, 2)), " Million Dollars. ",
+          " In addition, net foreign exchange reserves excluding swap ",
+          ifelse(sign((tdt[time == zaman]$shndr) - (tdt[time == zaman1]$shndr)) == 1, paste0(" expanded "), paste0(" declined ")),
+          " by ",
+          paste0(abs(round((tdt[time == zaman]$shndr) - (tdt[time == zaman1]$shndr), 2))),
+          " Million Dollars ",
+          " and reached to ",
+          paste0(round((tdt[time == zaman]$shndr), 2)), " Million Dollars. "
+) `
+
+:::
+
+::: {style="text-align: justify;"}
+
+`r paste0(" Total liabilities (including balance sheet and off-balance sheet) ",
+          ifelse(sign((tdt[time == zaman]$ty) - (tdt[time == zaman1]$ty)) == 1, paste0(" increased "), paste0(" decreased ")),
+          " by ",
+          paste0(abs(round((tdt[time == zaman]$ty) - (tdt[time == zaman1]$ty), 2))), 
+          " Million Dollars ",
+          " since the last week. ",
+          " Also, it ",
+          ifelse(sign((tdt[time == zaman]$ty) - (tdt[time == "2021-01-01"]$ty)) == 1, paste0(" rise "), paste0(" fell ")),
+          " by ",
+          paste0(abs(round((tdt[time == zaman]$ty) - (tdt[time == "2021-01-01"]$ty), 2))), 
+          " Million Dollars ",
+          " and reached to ",
+          paste0(round((tdt[time == zaman]$ty)/1000, 2)), " Billion Dollars, ",
+          " compared to the new year. "
+          
+) `
+
+:::
+
+::: {style="text-align: justify;"}
+
+`r paste0(" The ratio of SWAP to Gross Reserves is % ", round(100*tdt[time == zaman]$swbro, 2), " . ")`
+
+:::
+
+
+## CBRT Reserves and Liabilities {.tabset}
+
+### Current {.tabset}
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="100%"}
+fig
+```
+
+### Weekly {.tabset}
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="100%"}
+sub2
+```
+
+## Net Reserves Position {.tabset}
+
+### Current {.tabset}
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="100%"}
+nr
+```
+
+### Weekly {.tabset}
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="100%"}
+sub3
+```
+
+## Net Reserves (excluding Swap) Position {.tabset}
+
+### Current {.tabset}
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="100%"}
+snr
+```
+
+### Weekly {.tabset}
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="100%"}
+sub4
+```
+
+### Weekly Reserves {.tabset}
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="100%"}
+sub1
+```
+
+## Net FX Position
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="100%"}
+ndpg
+```
+
+## Magnitude of SWAP Transactions
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="100%"}
+zama
+```
+
+## Magnitude of Options Transactions
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="100%"}
+viog
+```
+
+## Ratio of Domestic Banks - Swap to Domestic Banks - Total Deposits
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="100%"}
+ypme
+```
+
+# Detailed Table
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+DT::datatable(
+  det_tab,options = list(dom = 't',
+                         pageLength = 38), 
+  caption = paste0('Detailed CBRT Balance Sheet Dated ', zaman)
+) %>% formatStyle(
+  'Accounts',
+  target = 'row',
+  backgroundColor = styleEqual(c("Gross FX Reserves" , #1
+"Total Cash and Deposit" , #2
+"Securities" , #3
+"Gross Gold Reserves" , #4
+"Gross SDR Reserves" , #5
+"Total Gross Reserves" , #6 
+"Banking Sector Balance Sheet" , #7
+"Required Reserves" , #8
+"Required Reserves - FX" , #9
+"Required Reserves - Gold" , #10
+"Domestic Banks" , #11
+"Domestic Banks - Cash" , #12
+"Domestic Banks - Collateral" , #13
+"Domestic Banks - Gold" , #14
+"CBRT's Liabilities to Foreign Banks" , #15
+"SDR Liabilities" , #16
+"Other Deposits" , #17
+"Options", #18
+"Balance Sheet FX Liabilities" , #19
+"Balance Sheet Gold Liabilities" , #20
+"Balance Sheet Liabilities" , #21
+"Domestic Banks - Swap" , #22
+"Domestic Banks - Swap - FX" , #23
+"Domestic Banks - Swap - Gold" , #24
+"Foreign Central Banks - Swap" , #25
+"Off Balance Sheet FX Liabilities" , #26
+"Off Balance Sheet Gold Liabilities" , #27
+"Off Balance Sheet Liabilities" , #28
+"Total SWAP", #29
+"Total SWAP - FX", #30
+"Total SWAP - Gold", #31
+"Net FX Position", #32
+"Net FX Reserves" , #33
+"Net Gold Reserves" , #34
+"Net Reserves" , #35
+"Net FX Reserves (excluding Swap)" , #36
+"Net Gold Reserves (excluding Swap)" ,  #37
+"Net Reserves (excluding Swap)"  #38
+), 
+c("#D3D3D3" , #1
+"#BEBEBE" , #2
+"#BEBEBE" , #3
+"#D3D3D3" , #4
+"#D3D3D3" , #5
+"#FFFFFF" , #6 
+"#D3D3D3" , #7
+"#BEBEBE" , #8
+"#A8A8A8" , #9
+"#A8A8A8" , #10
+"#BEBEBE" , #11
+"#A8A8A8" , #12
+"#A8A8A8" , #13
+"#A8A8A8" , #14
+"#D3D3D3" , #15
+"#D3D3D3" , #16
+"#D3D3D3" , #17
+"#D3D3D3" , #18
+"#E8E8E8" , #19
+"#E8E8E8" , #20
+"#FFFFFF" , #21
+"#D3D3D3" , #22
+"#BEBEBE" , #23
+"#BEBEBE" , #24
+"#D3D3D3" , #25
+"#E8E8E8" , #26
+"#E8E8E8" , #27
+"#FFFFFF" , #28
+"#FFFFFF" , #29
+"#D3D3D3" , #30
+"#D3D3D3" , #31
+"#E8E8E8" , #32
+"#E8E8E8" , #33
+"#E8E8E8" , #34
+"#FFFFFF" , #35
+"#E8E8E8" , #36
+"#E8E8E8" , #37
+"#FFFFFF"   #38
+ ))
+)
+```
+
+# Methodology
+
+::: {style="text-align: justify;"}
+
+This study analyses the weekly Net Foreign Exchange Reserves and the Net Foreign Exchange Reserves Excluding Swaps of CBRT. Data on this page updates itself automatically.Data sources and the methodology is explained below in order to show the possible errors or differences that may occur because of methodology.
+
+:::
+  
+::: {style="text-align: justify;"}
+
+CBRT's [Gross Reserves](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/5/bie_abres2/en),were obtained along with the sub-accounts of foreign exchange and gold assets in terms of million dollars.The Treasury Liabilities Due to SDR Allocation has been removed from the Gross Reserves. After that, Gross Foreign Exchange Reserves divided into Foreign Exchange Securities, and Cash and FX Deposits.The Treasury Liabilities Due to SDR Allocation is obtained from [Central Bank Weekly Statements](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/5/bie_mbblnch/en)by using the A10 item, and the foreign exchange securities are obtained by using the A31 item from the same dataset. Since Central Bank Weekly Statement published in terms of Turkish Lira, they are converted into dollar terms by using [weekly exchange rates](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/1/bie_dkdovytl/en) data from CBRT. Using weekly exchange rate data may produce an error due to the valuation effect.
+
+:::
+  
+::: {style="text-align: justify;"}
+
+On-Balance Sheet Foreign Exchange Liabilities of the CBRT were obtained by [Central Bank Weekly Statements](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/5/bie_mbblnch/en) and daily [Options](https://www.tcmb.gov.tr/wps/wcm/connect/a5df108d-d109-4dc0-9ea6-76a78b196b4d/V%C4%B0OP+%C4%B0%C5%9Flemleri.pdf?MOD=AJPERES)
+dataset and obtaiined in dollar terms by dividing values to the weekly exchange rate. Public Sector Foreign Exchange Liabilities are not included in this study. Because of exclusion of this item and the valuation effect  due to weekly foreign exchange, the Net Reserve position may differ from other calculations. 
+
+:::
+
+::: {style="text-align: justify;"}
+
+Off-Balance Sheet Foreign Exchange Liabilities of the CBRT are calculated by using [CBRT Swap Transactions](https://www.tcmb.gov.tr/wps/wcm/connect/a6ffdb2f-47d9-4ae9-8c39-5075867aaec3/TCMB+Tarafli+Swap+Islemleri.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-a6ffdb2f-47d9-4ae9-8c39-5075867aaec3-nzm2YQt%22) and the [International Reserves and Foreign Currency Liquidity](https://www.tcmb.gov.tr/wps/wcm/connect/ede968f2-dee8-4bb7-b7c4-c21f37a153eb/RT202103ING.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-ede968f2-dee8-4bb7-b7c4-c21f37a153eb-nAnhMEy). Also, the CBRT Swap Transactions, which is published in PDF format,converted to [xlsx](https://github.com/aiasci/swap/raw/master/swap.xlsx) and [csv](https://github.com/aiasci/swap/raw/master/swap.csv) format by us. 
+"Domestic Banks - Swap" values are calculated by using CBRT Swap Transactions. Total Swap values are calculated by summing up the "2." and "3." values which is taken from the second table in the International Reserves and Foreign Currency Liquidity. "Foreign Central Banks - Swap" is calculated by subtracting "Domestic Banks - Swap" from Total Swap.
+
+:::
+                                                                         
+::: {style="text-align: justify;"}
+
+Lastly, On-and-Off Balance Sheet liabilities aree seperated in terms of foreign exchange and gold and the Net Foreign Exchange Reserves and the Net Foreign Exchange Reserves Excluding Swaps was obtained by subtracting those assets from Gross Reserves. Calculations can be seen from the detailed table above.
+
+:::
+  
+::: {style="text-align: justify;"}
+
+Problem may arises in te calculations due to holidays. 
+In such case, the most recent data are used. For example, the use of CBRT Swap Transactions data dated April 22 in calculations on April 23. In addition, CBRT Swap Transactions data dated January 4 were used in the calculations dated January 1.
+
+:::
+
+::: {style="text-align: justify;"}
+
+You can send email for contact or any sugestions.
+
+:::
+
+<a href="#about">Go to top of the page</a>
