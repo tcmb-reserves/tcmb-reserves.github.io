@@ -254,6 +254,14 @@ tswap <- as.Date(tswap)
 
 load(paste0(getwd(), "/Total_Swap.RData"))
 
+qq <- data.table(time = as.Date("2021-09-03"), tsw = 67410)
+
+qq1 <- data.table(time = as.Date("2021-09-10"), tsw = 68050)
+  
+qq2 <- data.table(time = as.Date("2021-09-17"), tsw = 68553)
+
+total_swap <- rbind(total_swap, qq2)
+
 total_swap_new <- data.table(time = tswap, tsw = val)
 
 if (sum(tswap == total_swap$time) < 1){
