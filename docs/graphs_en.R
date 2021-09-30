@@ -217,7 +217,7 @@ det_tab <- data.frame(
                  paste0(round((tdt[time == zaman1]$ndp)/1000, 2), " Milyar $"),
                  paste0(round((tdt[time == ilkk]$ndp)/1000, 2), " Milyar $")),
   
-  "22=1-10" = c("Net FX Reserves",
+  "22=1+3-10" = c("Net FX Reserves",
                paste0(round((tdt[time == zaman]$ndr)/1000, 2), " Billion $"),
                paste0(round((tdt[time == zaman1]$ndr)/1000, 2), " Billion $"),
                paste0(round((tdt[time == ilkk]$ndr)/1000, 2), " Billion $")),
