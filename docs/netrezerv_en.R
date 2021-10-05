@@ -27,10 +27,14 @@ Sys.setlocale(category = "LC_ALL", locale = "Turkish")
 BRUTR <- getDataSeries(c("TP.AB.C1", # Altin (altin)
                          "TP.AB.C2", # Doviz (doviz)
                          "TP.BL035", # SDR (SDR)
-                         "TP.BL005", # Menkul Kiymetler (mk)
-                         "TP.DK.USD.A.YTL"), startDate = "01-01-2021", CBRTKey = myCBRTKey, freq = 3)
+                         "TP.BL005" # Menkul Kiymetler (mk)
+), startDate = "01-01-2021", CBRTKey = myCBRTKey, freq = 3)
 
 BRUTR <- na.omit(BRUTR)
+
+USDD <- getDataSeries("TP.DK.USD.A.YTL", startDate = "01-01-2021", CBRTKey = myCBRTKey, freq = 1)
+
+BRUTR <- merge(BRUTR, USDD, by = "time")
 
 colnames(BRUTR) <- c("time", "altin", "doviz", "SDR", "mk", "USD")
 
@@ -59,10 +63,12 @@ BIY <- getDataSeries(c("TP.BL084", # Bankacilik Sektoru Mevduati (bsm)
                        "TP.BL089", # Zorunlu Karsiliklar Altin Kismi (zka)
                        "TP.BL091", # Diger Mevduat (dm)
                        "TP.BL097", # Yurt Disi Bankalar YP (fb)                 merkez bankasinin ydb a yukumlulugu mbydby
-                       "TP.BL099", # SDR 
-                       "TP.DK.USD.A.YTL"), startDate = "01-01-2021", CBRTKey = myCBRTKey, freq = 3)
+                       "TP.BL099" # SDR
+                       ), startDate = "01-01-2021", CBRTKey = myCBRTKey, freq = 3)
 
 BIY <- na.omit(BIY)
+
+BIY <- merge(BIY, USDD, by = "time")
 
 colnames(BIY) <- c("time", "bsm", "yib", "nakit", "teminat","altin", "ydb",
                    "zk", "zkd", "zka", "dm", "fb", "sdr", "USD")
