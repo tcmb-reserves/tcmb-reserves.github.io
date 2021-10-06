@@ -34,6 +34,10 @@ BRUTR <- na.omit(BRUTR)
 
 USDD <- getDataSeries("TP.DK.USD.A.YTL", startDate = "01-01-2021", CBRTKey = myCBRTKey, freq = 1)
 
+USD1 <- data.table(time = as.Date("2021-01-01"), TP.DK.USD.A.YTL = as.numeric(7.4194))
+
+USDD <- rbind(USD1, USDD)
+
 BRUTR <- merge(BRUTR, USDD, by = "time")
 
 colnames(BRUTR) <- c("time", "altin", "doviz", "SDR", "mk", "USD")
