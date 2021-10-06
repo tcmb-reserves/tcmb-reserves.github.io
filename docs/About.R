@@ -1,7 +1,3 @@
-<div style="float: right;"><a href=TCMB_TR_2021-09-24.html>TR</a></div>
-<div style="float: left;"><a href="archive.html">Archive</a></div>
-<br>
-    
 ::: {style="text-align: justify;"}
   
 CBRT Off-Balance operations and CBRT Reserves are widespread on the media coverage. Also, CBRT Swap Transactions data cannot be reached from EVDS and published in PDF form which makes it difficult to analyze related data. We find publishing CBRT Reserves is necessary so that economists and academics with interest could easily access that. Data used in project can be found in [Gross Reserves](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/5/bie_abres2/en), [Central Bank Weekly Statements](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/5/bie_mbblnch/en) , and [International Reserves and Foreign Currency Liquidity](https://www.tcmb.gov.tr/wps/wcm/connect/ede968f2-dee8-4bb7-b7c4-c21f37a153eb/RT202103ING.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-ede968f2-dee8-4bb7-b7c4-c21f37a153eb-nAnhMEy). We used R program to analyze and visualize the data. Detailed information is available in the Methodology section. This study is open-source and for those who are interested available on [GitHub](https://github.com/tcmb-reserves/tcmb-reserves.github.io). The page will be updated as new data are published. 
