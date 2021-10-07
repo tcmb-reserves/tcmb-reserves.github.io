@@ -1,5 +1,5 @@
 ---
-title: TCMB Rezervleri ve Swap İşlemleri <br> 24 Eylül 2021
+title: TCMB Rezervleri ve Swap İşlemleri <br> 4 Ekim 2021
 author: 
   - Anıl İsmet Aşçı
    [E-mail](mailto:ismet.asci@outlook.com)
@@ -31,6 +31,8 @@ ilkk <- as.Date("2021-01-01")
 source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/master/docs/graphs.R")
 
 ```
+
+<p style="color:red">Döviz kurunun haftalık ortalamasının kullanılması, ani kur artışlarında değerleme etkisi sebebiyle yanlış sonuçlar çıkarabiliyordu. Bu sebeple, hesabımızın daha doğru olması için günlük döviz kuru kullanmaya karar verdik. Hem geçmiş tarihlerin verilerini, hem de güncel veriyi bu doğrultuda düzenledik.</p>
 
 <p style="color:blue">Bu sayfa yeni veriler geldikçe otomatik olarak güncellenecektir.</p>
 
@@ -325,15 +327,14 @@ IMF Rezerv Pozisyonu çıkartılmış ve döviz varlıkları menkul kıymetler i
 IMF Rezerv Pozisyonu [Merkez Bankası Haftalık Vaziyeti](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/5/bie_mbblnch/tr) 
 veri setindeki A10 kalemi kullanılarak, döviz varlıklarındaki menkul kıymetler ise A31 kalemi kullanılarak elde edilmiştir. 
 Bu veriler TL cinsinden yayınlandığından alakalı haftadaki [kur verileri](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/1/bie_dkdovytl/tr)
-kullanılarak dolar cinsine çevirilmiştir. Döviz kurunun haftalık alınması, ani kur artışlarında değerleme etkisi sebebiyle yanlış sonuçlar 
-çıkartabilmektedir.
+kullanılarak dolar cinsine çevirilmiştir. Hesaplamalarda günlük döviz alış kuru (TP.DK.USD.A.YTL) kullanılmıştır.
 
 :::
 
 ::: {style="text-align: justify;"}
 
 TCMB'nin Bilanço İçi Yükümlülükleri ise [Merkez Bankası Haftalık Vaziyeti](https://evds2.tcmb.gov.tr/index.php?/evds/DataGroupLink/5/bie_mbblnch/tr)
-veri seti ve günlük [VIOP](https://www.tcmb.gov.tr/wps/wcm/connect/a5df108d-d109-4dc0-9ea6-76a78b196b4d/V%C4%B0OP+%C4%B0%C5%9Flemleri.pdf?MOD=AJPERES) işlemleri kullanılarak hazırlanmış ve alakalı haftadaki döviz kuruna bölünerek dolar cinsinden elde edilmiştir. 
+veri seti kullanılarak hazırlanmış ve alakalı gündeki döviz alış kuruna bölünerek dolar cinsinden elde edilmiştir. 
 Kamu Sektörü Yabancı Para Mevduatı, rezerv hesaplamalarına dahil edilmemiştir. 
 Bu kalemin dahil edilmemesi ve değerleme etkisiyle net rezerv pozisyonu diğer hesaplama yöntemleriyle çıkan sonuçlardan farklılık gösterebilmektedir.
 
@@ -341,8 +342,8 @@ Bu kalemin dahil edilmemesi ve değerleme etkisiyle net rezerv pozisyonu diğer 
 
 ::: {style="text-align: justify;"}
 
-TCMB'nin Bilanço Dışı Yükümlülükleri, [TCMB Taraflı Swap İşlemleri](https://www.tcmb.gov.tr/wps/wcm/connect/a6ffdb2f-47d9-4ae9-8c39-5075867aaec3/TCMB+Tarafli+Swap+Islemleri.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-a6ffdb2f-47d9-4ae9-8c39-5075867aaec3-nzm2YQt%22) ile 
-[Uluslararası Rezervler ve Döviz Likiditesi](https://www.tcmb.gov.tr/wps/wcm/connect/cc755e33-b5c0-4632-bfe4-2434d35da011/RT20210326TR.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-cc755e33-b5c0-4632-bfe4-2434d35da011-nzliV18) kullanılarak hesaplanmıştır.
+TCMB'nin Bilanço Dışı Yükümlülükleri, [TCMB Taraflı Swap İşlemleri](https://www.tcmb.gov.tr/wps/wcm/connect/a6ffdb2f-47d9-4ae9-8c39-5075867aaec3/TCMB+Tarafli+Swap+Islemleri.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-a6ffdb2f-47d9-4ae9-8c39-5075867aaec3-nzm2YQt%22),
+[Uluslararası Rezervler ve Döviz Likiditesi](https://www.tcmb.gov.tr/wps/wcm/connect/cc755e33-b5c0-4632-bfe4-2434d35da011/RT20210326TR.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-cc755e33-b5c0-4632-bfe4-2434d35da011-nzliV18) ve günlük [VIOP](https://www.tcmb.gov.tr/wps/wcm/connect/a5df108d-d109-4dc0-9ea6-76a78b196b4d/V%C4%B0OP+%C4%B0%C5%9Flemleri.pdf?MOD=AJPERES) işlemleri kullanılarak hesaplanmıştır.
 [TCMB Taraflı Swap İşlemleri](https://www.tcmb.gov.tr/wps/wcm/connect/a6ffdb2f-47d9-4ae9-8c39-5075867aaec3/TCMB+Tarafli+Swap+Islemleri.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-a6ffdb2f-47d9-4ae9-8c39-5075867aaec3-nzm2YQt%22) tarafımızca 
 [xlsx](https://github.com/aiasci/swap/raw/master/swap.xlsx) ve [csv](https://github.com/aiasci/swap/raw/master/swap.csv) formatına çevrilmiştir. 
 TCMB Taraflı Swap İşlemleri kullanılarak Yurtiçi Bankalar Swap verisi hesaplanmıştır. Toplam Swap değeri, Uluslararası Rezervler ve Döviz Likiditesi dosyasında yer alan “II. Döviz varlıklarından önceden belirlenmiş kısa dönem net çıkışlar (nominal değer)” tablosundaki “2.” ve “3.” değerleri toplanarak elde edilmiştir. Yurtdışı Merkez Bankaları Swap verisi ise Toplam Swap verisinden Yurtiçi Bankalar Swap verisi çıkartılarak elde edilmiştir.
