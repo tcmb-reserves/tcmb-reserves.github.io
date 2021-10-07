@@ -32,7 +32,7 @@ source("https://raw.githubusercontent.com/tcmb-reserves/tcmb-reserves.github.io/
 
 ```
 
-<p style="color:red">Döviz kurunun haftalık ortalamasının kullanılması, ani kur artışlarında değerleme etkisi sebebiyle yanlış sonuçlar çıkarabiliyordu. Bu sebeple, hesabımızın daha doğru olması için günlük döviz kuru kullanmaya karar verdik. Hem geçmiş tarihlerin verilerini, hem de güncel veriyi bu doğrultuda düzenledik.</p>
+<p style="color:red">Rezerv hesaplamalarımızın daha doğru olması için, haftalık ortalama döviz kuru yerine günlük döviz kuru kullanmaya karar verdik. Güncel ve geçmiş rezerv verilerini de bu doğrultuda güncelledik.</p>
 
 <p style="color:blue">Bu sayfa yeni veriler geldikçe otomatik olarak güncellenecektir.</p>
 
