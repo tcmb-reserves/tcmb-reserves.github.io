@@ -57,12 +57,16 @@ TCMB tarafından yapılan Swap işlemleri ve TCMB Rezervleri gündemde geniş bi
 
 # Merkez Bankasi Bilancosu
 
+<p style="color:red"> Bu site TCMB'nin resmi sitesi değildir, TCMB'nin verileri kullanılarak hazırlanmış bir sitedir. İlgililer Metodoloji bölümünü ve kaynak kodunu inceleyebilir.</p>
+
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 DT::datatable(
   yutk,options = list(dom = 't' ), 
   caption = paste0(zaman," Tarihli ",'Merkez Bankasi Bilancosu ')
 )
 ```
+
+<p style="color:red"> Bu site TCMB'nin resmi sitesi değildir, TCMB'nin verileri kullanılarak hazırlanmış bir sitedir. İlgililer Metodoloji bölümünü ve kaynak kodunu inceleyebilir.</p>
 
 ::: {style="text-align: justify;"}
 
