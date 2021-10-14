@@ -11,4 +11,7 @@ output:
 
 ```
 
-<p style="color:red">Sitemizin adında "TCMB" ibaresi yer alması sebebiyle oluşan yanlış anlamaların önüne geçmek adına sitemizin adresini değiştirmiş bulunmaktayız. Çalışmamıza artık http://mb-reserves.github.io/ adresinden ulaşabilirsiniz. Çalışmamızla alakalı detaylı bilgi için sitemizdeki "Çalışma Hakkında" ve "Metodoloji" bölümlerini incelemenizi tavsiye ederiz.</p>
+<p style="color:red">http://mb-reserves.github.io/</p>
+
+
+
